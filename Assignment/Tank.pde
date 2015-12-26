@@ -5,11 +5,12 @@ class Tank extends GameObject
      
    }
    
-   void render(float x, float y,float w)
+   void render(float x, float y)
    {
-     rect(x,y-w,w,w);
-     ellipse(x+(w/2),height-(w/2),w,w);
-     rect(x+(w/4),height-(w/2),w/2,-w);
+     fill(0,255,0);
+     rect(x,y-objectW,objectW,objectW);
+     ellipse(x+(objectW/2),height-(objectW/2),objectW,objectW);
+     rect(x+(objectW/4),height-(objectW/2),objectW/2,-objectW);
      
    }
 }

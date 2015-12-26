@@ -5,8 +5,9 @@ class Tower extends GameObject
      
    }
    
-   void render(float x, float y,float w)
+   void render(float x, float y)
    {
-       rect(x,y,w,w);
+       fill(0);
+       rect(x,y,objectW,objectW);
    }
 }
