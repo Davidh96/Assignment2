@@ -5,6 +5,7 @@ class Tank extends GameObject
      render(width-objectW,0+objectW);
    }
    
+   //draws the tank object
    void render(float x, float y)
    {
      fill(0,255,0);

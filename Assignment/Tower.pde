@@ -2,9 +2,10 @@ class Tower extends GameObject
 {
    Tower()
    {
-     
+
    }
    
+   //draws the tower object
    void render(float x, float y)
    {
        fill(0);

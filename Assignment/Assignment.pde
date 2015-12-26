@@ -23,7 +23,4 @@ void draw()
    //create the initial tank. This initial tank is part of the object menu.
    tank =new Tank();
    
-   tank.render(width/2,height); 
-   tower.render(width/2,0);
-
 }
