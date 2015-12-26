@@ -2,7 +2,7 @@ class ObjectMenu extends GameObject
 {
    ObjectMenu()
    {
-     
+      
    }
    
    void render()
