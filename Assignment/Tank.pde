@@ -10,6 +10,7 @@ class Tank extends GameObject
    {
      fill(0,255,0);
      stroke(0);
+     
      rect(x,y-objectW*.8,objectW,objectW);
      ellipse(x+(objectW/2),y-(objectW/2),objectW,objectW);
      rect(x+(objectW/4),y-(objectW/2),objectW/2,-objectW*.75);

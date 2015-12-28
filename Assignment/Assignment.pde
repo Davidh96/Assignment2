@@ -7,7 +7,7 @@ void setup()
 }
 
 Tank tank;
-Tower tower=new Tower();
+Tower tower;
 ObjectMenu obmenu=new ObjectMenu();
 Battlefield bkground=new Battlefield();
 
@@ -23,4 +23,8 @@ void draw()
    //create the initial tank. This initial tank is part of the object menu.
    tank =new Tank();
    
+   //create the initial towers.
+   tower =new Tower();
+   
+  tower=new Tower(); 
 }

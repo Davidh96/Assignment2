@@ -4,6 +4,6 @@ class GameObject
   
   GameObject()
   {
-     objectW=650/11; 
+     objectW=((float)600)/((float)11);
   }
 }
