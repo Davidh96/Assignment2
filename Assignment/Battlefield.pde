@@ -26,4 +26,18 @@ class Battlefield
       stroke(255,0,0);
       line(0,height/2,width,height/2);
    }
+   
+   void placeObj()
+   {
+      float objectW=width/11;
+      
+      if(mouseX>width-objectW)
+      {
+        Tank plTank =new Tank();
+         tkArray.add(plTank);
+         tkArray.get(0).placed=true; 
+      }
+         
+      
+   }
 }
