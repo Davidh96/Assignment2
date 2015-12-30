@@ -4,12 +4,15 @@
 void setup()
 {
   size(600,650);
+  xPos=0;
 }
 
 Tank tank;
 Tower tower;
 ObjectMenu obmenu=new ObjectMenu();
 Battlefield bkground=new Battlefield();
+
+float xPos;
 
 ArrayList<Tank> tkArray = new ArrayList<Tank>();
 
@@ -33,9 +36,30 @@ void draw()
   
   if(tkArray.size()>0)
   {
-      if(tkArray.get(0).placed==true)
+    for(int i=0;i<tkArray.size();i++)
+    {
+      if(tkArray.get(i).pick==true)
       {
-        (tkArray.get(0)).render(250,250);
+        if(mouseY>height-(width/11))
+        {
+           if(mousePressed)
+           {
+             tkArray.get(i).placed=true;
+           }
+        }
       }
+      
+      if(tkArray.get(i).placed==true)
+      {
+        
+        if(mousePressed)
+        {
+           xPos=mouseX;
+        }
+        (tkArray.get(i)).render(xPos,height);
+      }
+    }
   }
+  
+  
 }

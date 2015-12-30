@@ -2,6 +2,7 @@ class Tank extends GameObject
 {
     
    PVector pos;
+   boolean pick=false;
    boolean placed=false;
    
    Tank()
@@ -26,5 +27,6 @@ class Tank extends GameObject
      ellipse(pos.x+(objectW/2),pos.y-(objectW/2),objectW,objectW);
      rect(pos.x+(objectW/4),pos.y-(objectW/2),objectW/2,-objectW*.75);
           
-   }
+   } 
+   
 }

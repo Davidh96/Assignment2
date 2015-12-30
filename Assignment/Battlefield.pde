@@ -35,7 +35,7 @@ class Battlefield
       {
         Tank plTank =new Tank();
          tkArray.add(plTank);
-         tkArray.get(0).placed=true; 
+         tkArray.get(0).pick=true; 
       }
          
       
