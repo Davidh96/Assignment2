@@ -1,6 +1,7 @@
 class Battlefield
 {
    float starSize;
+   boolean showPotPlacement=false;
    
    Battlefield()
    {
@@ -23,7 +24,7 @@ class Battlefield
    //draws the battleLine/enemies line of sight
    void battleLine()
    {
-      stroke(255,0,0);
+      stroke(0,255,0);
       line(0,height/2,width,height/2);
    }
    
@@ -37,6 +38,30 @@ class Battlefield
          tkArray.add(plTank);
          tkArray.get(ind).pick=true; 
          ind++;
+         
+         showPotPlacement=true;
+      }
+      
+      if(showPotPlacement==true)
+      {
+         objChosen(); 
+
+      }
+   }
+   
+   void objChosen()
+   {
+      for(int i=0;i<10;i++)
+      {
+       fill(0);
+       stroke(0,0,255);
+       
+       float objectW= width/11;
+       
+       float x=i*objectW;
+       float y=height-objectW;
+       
+       rect(x,y,objectW,objectW); 
       }
    }
    
@@ -65,6 +90,7 @@ class Battlefield
           {
              xPos=mouseX;
              tkArray.get(i).placed=true;
+             showPotPlacement=false;
           }
         }
           (tkArray.get(i)).render(xPos,height);

@@ -24,6 +24,9 @@ class Tank extends GameObject
      
      pos=new PVector(x,y);
      
+    int roundPos=(int)pos.x/(int)objectW;
+    pos.x=roundPos*objectW;
+      
      rect(pos.x,pos.y-objectW*.8,objectW,objectW);
      ellipse(pos.x+(objectW/2),pos.y-(objectW/2),objectW,objectW);
      rect(pos.x+(objectW/4),pos.y-(objectW/2),objectW/2,-objectW*.75);
