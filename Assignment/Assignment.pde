@@ -13,6 +13,7 @@ ObjectMenu obmenu=new ObjectMenu();
 Battlefield bkground=new Battlefield();
 
 float xPos;
+int ind=0;
 
 ArrayList<Tank> tkArray = new ArrayList<Tank>();
 
@@ -21,7 +22,7 @@ void draw()
    //create the star background first. This will ensure that it does not overlap any other objects
    bkground.generate();
    bkground.battleLine();
-   bkground.placeObj();
+   bkground.pickObj();
   
    //reate the object menu which will be used by the player t choose items
    obmenu.render();
@@ -34,32 +35,7 @@ void draw()
    
   tower=new Tower(); 
   
-  if(tkArray.size()>0)
-  {
-    for(int i=0;i<tkArray.size();i++)
-    {
-      if(tkArray.get(i).pick==true)
-      {
-        if(mouseY>height-(width/11))
-        {
-           if(mousePressed)
-           {
-             tkArray.get(i).placed=true;
-           }
-        }
-      }
-      
-      if(tkArray.get(i).placed==true)
-      {
-        
-        if(mousePressed)
-        {
-           xPos=mouseX;
-        }
-        (tkArray.get(i)).render(xPos,height);
-      }
-    }
-  }
+  bkground.placeObj();
   
   
 }

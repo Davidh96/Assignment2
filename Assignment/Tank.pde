@@ -4,6 +4,7 @@ class Tank extends GameObject
    PVector pos;
    boolean pick=false;
    boolean placed=false;
+   boolean place=false;
    
    Tank()
    {
