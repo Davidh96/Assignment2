@@ -4,7 +4,6 @@
 void setup()
 {
   size(600,650);
-  xPos=0;
 }
 
 Tank tank;
@@ -12,9 +11,12 @@ Tower tower;
 ObjectMenu obmenu=new ObjectMenu();
 Battlefield bkground=new Battlefield();
 
-float xPos;
+//this array keeps track of object positions
+float xPos[]=new float[10];
 int ind=0;
+boolean objectChosen=false;
 
+//An array list for my tanks
 ArrayList<Tank> tkArray = new ArrayList<Tank>();
 
 void draw()
@@ -22,7 +24,7 @@ void draw()
    //create the star background first. This will ensure that it does not overlap any other objects
    bkground.generate();
    bkground.battleLine();
-   bkground.pickObj();
+
   
    //reate the object menu which will be used by the player t choose items
    obmenu.render();
@@ -35,7 +37,16 @@ void draw()
    
   tower=new Tower(); 
   
+  //displays the potential places where an object can be placed
+  bkground.showSlots();
+  
+  //this places the object on the screen
   bkground.placeObj();
   
-  
+}
+
+void mouseReleased()
+{
+       //This will ensure that only +1 object is created
+       bkground.createObj();   
 }

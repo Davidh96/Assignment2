@@ -1,8 +1,8 @@
 class Battlefield
 {
    float starSize;
-   boolean showPotPlacement=false;
-   
+   float objectW;
+
    Battlefield()
    {
       starSize=2;
@@ -25,77 +25,77 @@ class Battlefield
    void battleLine()
    {
       stroke(0,255,0);
-      line(0,height/2,width,height/2);
+      objectW=width/11;
+      line(0,height/2,width-objectW,height/2);
    }
    
-   void pickObj()
+   //this method displays where an object can be placed
+   void showSlots()
    {
-      float objectW=width/11;
-      
-      if(mouseX>width-objectW)
-      {
-        Tank plTank =new Tank();
-         tkArray.add(plTank);
-         tkArray.get(ind).pick=true; 
-         ind++;
-         
-         showPotPlacement=true;
-      }
-      
-      if(showPotPlacement==true)
-      {
-         objChosen(); 
-
-      }
+ 
+       if(objectChosen==true)
+       {
+          for(int i=0;i<10;i++)
+          {
+           fill(0,0,255,100);
+           stroke(0,0,255);
+           
+           float x=i*objectW;
+           float y=height-objectW;
+           
+           rect(x,y,objectW,objectW); 
+           
+          }
+       }
+     
    }
    
-   void objChosen()
+   //this method created an object
+   void createObj()
    {
-      for(int i=0;i<10;i++)
+     if(mouseX>width-objectW)
       {
-       fill(0);
-       stroke(0,0,255);
-       
-       float objectW= width/11;
-       
-       float x=i*objectW;
-       float y=height-objectW;
-       
-       rect(x,y,objectW,objectW); 
+           ind++;
+           Tank plTank =new Tank();
+           tkArray.add(plTank);
+           
+           objectChosen=true;
       }
+        
    }
    
+   //this method places the object on the battlefield
    void placeObj()
    {
-       if(tkArray.size()>0)
-  {
-    for(int i=0;i<tkArray.size();i++)
-    {
-      if(tkArray.get(i).pick==true)
-      {
-        if(mouseY>height-(width/11))
+ 
+     if(mouseY>height-objectW)
+     {
+        if(mousePressed)
         {
-           if(mousePressed)
-           {
-             tkArray.get(i).place=true;
-           }
-        }
-      }
-      
-      if(tkArray.get(i).place==true)
-      {
-        if(tkArray.get(i).placed==false)
-        {
-          if(mousePressed)
+          //This is an if statement to stop the player from moving the tank once it has been plaed
+          if(tkArray.get(ind-1).placedinSlot==false)
           {
-             xPos=mouseX;
-             tkArray.get(i).placed=true;
-             showPotPlacement=false;
+           xPos[ind-1]=mouseX; 
+           //the user has chosen to place the object in  a slot
+           tkArray.get(ind-1).placedinSlot=true;
+           objectChosen=false;
+           
           }
         }
-          (tkArray.get(i)).render(xPos,height);
-      }
-    }
-  }
+        
+     }
+        
+     for(int i=0;i<ind;i++)
+     {       
+           //If the array has any objects
+           if(tkArray.size()>0)
+           {
+             if(tkArray.get(i).placedinSlot==true)
+             {
+               tkArray.get(i).render(xPos[i],height); 
+             }
+               
+           }
+     }
    }
 }

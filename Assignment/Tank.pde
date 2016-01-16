@@ -2,9 +2,8 @@ class Tank extends GameObject
 {
     
    PVector pos;
-   boolean pick=false;
-   boolean placed=false;
-   boolean place=false;
+   boolean picked=false;
+   boolean placedinSlot=false;
    
    Tank()
    {
@@ -32,5 +31,7 @@ class Tank extends GameObject
      rect(pos.x+(objectW/4),pos.y-(objectW/2),objectW/2,-objectW*.75);
           
    } 
+   
+   
    
 }
