@@ -67,6 +67,7 @@ class Battlefield
    //this method places the object on the battlefield
    void placeObj()
    {
+     float move=2;
  
      if(mouseY>height-objectW)
      {
@@ -86,16 +87,23 @@ class Battlefield
      }
         
      for(int i=0;i<ind;i++)
-     {       
+     {      
+       
            //If the array has any objects
            if(tkArray.size()>0)
            {
              if(tkArray.get(i).placedinSlot==true)
              {
-               tkArray.get(i).render(xPos[i],height); 
+               tkArray.get(i).render(xPos[i],yPos[i]); 
+               if(yPos[i]>(width/2))
+               {
+                 yPos[i]-=move;
+               }
              }
                
            }
      }
+     
+     
    }
 }

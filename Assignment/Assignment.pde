@@ -4,6 +4,11 @@
 void setup()
 {
   size(600,650);
+  
+  for(int i=0;i<yPos.length;i++)
+  {
+     yPos[i]=height;
+  }
 }
 
 Tank tank;
@@ -13,6 +18,7 @@ Battlefield bkground=new Battlefield();
 
 //this array keeps track of object positions
 float xPos[]=new float[10];
+float yPos[]=new float[10];
 int ind=0;
 boolean objectChosen=false;
 
@@ -40,7 +46,6 @@ void draw()
   //displays the potential places where an object can be placed
   bkground.showSlots();
   
-  //this places the object on the screen
   bkground.placeObj();
   
 }
