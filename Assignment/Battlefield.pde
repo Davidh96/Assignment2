@@ -15,16 +15,16 @@ class Battlefield
       fill(255);
       stroke(255);
       
-      for(int i=0;i<10;i++)
+      for(int i=0;i<100;i++)
       {
-        ellipse(random(0,width),random(0,height),starSize,starSize);
+        ellipse(random(0,width-objectW),random(0,height),starSize,starSize);
       }
    }
    
    //draws the battleLine/enemies line of sight
    void battleLine()
    {
-      stroke(0,255,0);
+      stroke(255);
       objectW=width/11;
       line(0,height/2,width-objectW,height/2);
    }
