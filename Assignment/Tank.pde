@@ -20,7 +20,7 @@ class Tank extends GameObject
    //draws the tank object
    void render(float x, float y)
    {
-     init++;
+     init=1;
      stroke(0);
      
      pos=new PVector(x,y);
@@ -32,15 +32,14 @@ class Tank extends GameObject
      rect(pos.x,pos.y-objectW,objectW,objectW);
 
      fill(150,255,150);
-     
      ellipse(pos.x+(objectW/2),pos.y-(objectW/2),objectW,objectW);
      
     
     fill(0,255,0);
-     rect(pos.x+(objectW/4),pos.y-(objectW/2),objectW/2,-objectW);
+    rect(pos.x+(objectW/4),pos.y-(objectW/2),objectW/2,-objectW);
      
      //if this tank is NOT the objectMenu one
-     if(init>1)
+     if(init>0)
      {
        
          if(pos.y<(float)(width/2)+objectW)

@@ -25,6 +25,7 @@ boolean objectChosen=false;
 //An array list for my tanks
 ArrayList<Tank> tkArray = new ArrayList<Tank>();
 ArrayList<Bullet> blArray = new ArrayList<Bullet>();
+ArrayList<Tower> twArray = new ArrayList<Tower>();
 
 void draw()
 {
@@ -34,13 +35,10 @@ void draw()
    //reate the object menu which will be used by the player t choose items
    obmenu.render();
    
+   bkground.createTower();
+   
    //create the initial tank. This initial tank is part of the object menu.
    tank =new Tank();
-   
-   //create the initial towers.
-   tower =new Tower();
-   
-  tower=new Tower(); 
   
   //displays the potential places where an object can be placed
   bkground.showSlots();

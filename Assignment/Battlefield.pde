@@ -21,6 +21,17 @@ class Battlefield
       }
    }
    
+   //This method will create the towers
+   void createTower()
+   {
+     for(int i=0;i<10;i++)
+     {
+        Tower tower = new Tower();
+        twArray.add(tower);
+        twArray.get(i).render(i);
+     }
+   }
+   
    //draws the battleLine/enemies line of sight
    void battleLine()
    {
