@@ -24,13 +24,12 @@ boolean objectChosen=false;
 
 //An array list for my tanks
 ArrayList<Tank> tkArray = new ArrayList<Tank>();
+ArrayList<Bullet> blArray = new ArrayList<Bullet>();
 
 void draw()
 {
    //create the star background first. This will ensure that it does not overlap any other objects
    bkground.generate();
-   bkground.battleLine();
-
   
    //reate the object menu which will be used by the player t choose items
    obmenu.render();
@@ -48,6 +47,14 @@ void draw()
   
   bkground.placeObj();
   
+  bkground.battleLine();
+  
+  //This will move the bullets once they are fired
+  for(int i=0;i<blArray.size();i++)
+  {
+     blArray.get(i).pos.y-=2;
+  }
+
 }
 
 void mouseReleased()

@@ -17,7 +17,7 @@ class Battlefield
       
       for(int i=0;i<100;i++)
       {
-        ellipse(random(0,width-objectW),random(0,height),starSize,starSize);
+        //ellipse(random(0,width-objectW),random(0,height),starSize,starSize);
       }
    }
    
@@ -40,7 +40,7 @@ class Battlefield
            fill(0,0,255,100);
            stroke(0,0,255);
            
-           float x=i*objectW;
+           float x=(float)i*objectW;
            float y=height-objectW;
            
            rect(x,y,objectW,objectW); 
@@ -95,7 +95,7 @@ class Battlefield
              if(tkArray.get(i).placedinSlot==true)
              {
                tkArray.get(i).render(xPos[i],yPos[i]); 
-               if(yPos[i]>(width/2))
+               if(yPos[i]>(height/2))
                {
                  yPos[i]-=move;
                }
