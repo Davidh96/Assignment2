@@ -1,6 +1,7 @@
 class Tower extends GameObject
 {
    PVector pos;
+   int health;
    
    Tower()
    {

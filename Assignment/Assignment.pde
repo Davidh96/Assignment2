@@ -4,6 +4,7 @@
 void setup()
 {
   size(600,650);
+  objectW=width/11;
   
   for(int i=0;i<yPos.length;i++)
   {
@@ -21,6 +22,7 @@ float xPos[]=new float[10];
 float yPos[]=new float[10];
 int ind=0;
 boolean objectChosen=false;
+float objectW;
 
 //An array list for my tanks
 ArrayList<Tank> tkArray = new ArrayList<Tank>();
@@ -51,6 +53,12 @@ void draw()
   for(int i=0;i<blArray.size();i++)
   {
      blArray.get(i).pos.y-=2;
+     //if the bullet has reached an enemy target
+     if(blArray.get(i).pos.y<objectW)
+     {
+       //this method will reve the bullet from the blArray
+        blArray.get(i).destroy(); 
+     }
   }
 
 }
