@@ -25,6 +25,7 @@ class Battlefield
    //This method will create the towers
    void createTower()
    {
+      //if the towers have not been created yet
      if(twCreated==false)
      {
        if(twArray.size()<10)
@@ -33,16 +34,15 @@ class Battlefield
          {
             Tower tower = new Tower();
             twArray.add(tower);
-            twIndex.add(i);
           }
           twCreated=true;
        }
      }
      
+     //renders all the towers that need to be rendered
      for(int i=0;i<twArray.size();i++)
      {
         twArray.get(i).render(i); 
-        println((int)map(TWxPos.get(i),0,width,0,11),twArray.size(),TWxPos.size(),twIndex.get(i));
      }
    }
    

@@ -30,7 +30,7 @@ ArrayList<Tank> tkArray = new ArrayList<Tank>();
 ArrayList<Bullet> blArray = new ArrayList<Bullet>();
 ArrayList<Tower> twArray = new ArrayList<Tower>();
 ArrayList<Float> TWxPos = new ArrayList<Float>();
-ArrayList<Integer> twIndex = new ArrayList<Integer>();
+
 
 void draw()
 {
@@ -61,7 +61,8 @@ void draw()
      {
        //this method will reve the bullet from the blArray
         blArray.get(i).destroy();
-        twArray.get((int)(map(blArray.get(i).pos.x,0,width,0,11))).takeDamage((int)(map(blArray.get(i).pos.x,0,width,0,11)));
+        //this will tell the tower that it took damage and to decrease its health
+        twArray.get((int)(map(blArray.get(i).pos.x,0,width,0,11))).takeDamage();
      }
   }
 
