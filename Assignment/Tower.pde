@@ -1,11 +1,12 @@
 class Tower extends GameObject
 {
    PVector pos;
-   int health;
+   int health=1;
+   boolean init=true;
    
    Tower()
    {
-     
+   
    }
    
    //draws the tower object
@@ -14,7 +15,13 @@ class Tower extends GameObject
        fill(255,0,0);
        stroke(0);
        
-       pos=new PVector(i*objectW,0);
+       if(init==true)
+       {
+       TWxPos.add(i*objectW);
+       init=false;
+       }
+       pos=new PVector(TWxPos.get(i),0);
+       
        
        rect(pos.x,pos.y,objectW,objectW);
        
@@ -27,5 +34,18 @@ class Tower extends GameObject
        fill(255,100,100);
        rect(pos.x+20,pos.y+20,objectW-40,objectW-10);
        
+   }
+   
+   void takeDamage(int i)
+   {
+     
+      health--;
+      
+      twNum--;
+      
+      TWxPos.remove(i);
+      twArray.remove(i); 
+        
+      
    }
 }

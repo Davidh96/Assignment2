@@ -2,6 +2,7 @@ class Battlefield
 {
    float starSize;
    float objectW;
+   boolean twCreated=false;
 
    Battlefield()
    {
@@ -24,11 +25,24 @@ class Battlefield
    //This method will create the towers
    void createTower()
    {
-     for(int i=0;i<10;i++)
+     if(twCreated==false)
      {
-        Tower tower = new Tower();
-        twArray.add(tower);
-        twArray.get(i).render(i);
+       if(twArray.size()<10)
+       {
+         for(int i=0;i<10;i++)
+         {
+            Tower tower = new Tower();
+            twArray.add(tower);
+            twIndex.add(i);
+          }
+          twCreated=true;
+       }
+     }
+     
+     for(int i=0;i<twArray.size();i++)
+     {
+        twArray.get(i).render(i); 
+        println((int)map(TWxPos.get(i),0,width,0,11),twArray.size(),TWxPos.size(),twIndex.get(i));
      }
    }
    
@@ -87,7 +101,7 @@ class Battlefield
           //This is an if statement to stop the player from moving the tank once it has been plaed
           if(tkArray.get(ind-1).placedinSlot==false)
           {
-           xPos[ind-1]=mouseX; 
+           OxPos[ind-1]=mouseX; 
            //the user has chosen to place the object in  a slot
            tkArray.get(ind-1).placedinSlot=true;
            objectChosen=false;
@@ -105,10 +119,11 @@ class Battlefield
            {
              if(tkArray.get(i).placedinSlot==true)
              {
-               tkArray.get(i).render(xPos[i],yPos[i]); 
-               if(yPos[i]>(height/2))
+               tkArray.get(i).render(OxPos[i],OyPos[i]); 
+               if(OyPos[i]>(height/2))
                {
-                 yPos[i]-=move;
+                 OyPos[i]-=move;
+                 //println(map(tkArray.get(i).pos.x,0,width,0,11));
                }
              }
                

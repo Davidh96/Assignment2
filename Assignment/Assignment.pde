@@ -6,9 +6,9 @@ void setup()
   size(600,650);
   objectW=width/11;
   
-  for(int i=0;i<yPos.length;i++)
+  for(int i=0;i<OyPos.length;i++)
   {
-     yPos[i]=height;
+     OyPos[i]=height;
   }
 }
 
@@ -18,16 +18,19 @@ ObjectMenu obmenu=new ObjectMenu();
 Battlefield bkground=new Battlefield();
 
 //this array keeps track of object positions
-float xPos[]=new float[10];
-float yPos[]=new float[10];
+float OxPos[]=new float[10];
+float OyPos[]=new float[10];
 int ind=0;
 boolean objectChosen=false;
 float objectW;
+int twNum=10;
 
 //An array list for my tanks
 ArrayList<Tank> tkArray = new ArrayList<Tank>();
 ArrayList<Bullet> blArray = new ArrayList<Bullet>();
 ArrayList<Tower> twArray = new ArrayList<Tower>();
+ArrayList<Float> TWxPos = new ArrayList<Float>();
+ArrayList<Integer> twIndex = new ArrayList<Integer>();
 
 void draw()
 {
@@ -57,12 +60,12 @@ void draw()
      if(blArray.get(i).pos.y<objectW)
      {
        //this method will reve the bullet from the blArray
-        blArray.get(i).destroy(); 
+        blArray.get(i).destroy();
+        twArray.get((int)(map(blArray.get(i).pos.x,0,width,0,11))).takeDamage((int)(map(blArray.get(i).pos.x,0,width,0,11)));
      }
   }
 
 }
-
 void mouseReleased()
 {
        //This will ensure that only +1 object is created
