@@ -43,21 +43,29 @@ class Tower extends GameObject
        
    }
    
+   //this creates bllets and shoots at tanks
    void shoot()
    {
-    if(frame==20)
-    {
-      Bullet Bullet = new Bullet(pos.x,pos.y+objectW);
-      blArray.add(Bullet);
-      println(blArray.size());
-      frame=0;
-    }
-      frame++;
-      for(int i=0;i<blArray.size();i++)
-     {
-         boolean friendly=false;
-         blArray.get(i).render(friendly);
-         blArray.get(i).pos.y+=2;
+     if(destroyed==false)
+       {
+      if(frame==20)
+      {
+        Bullet Bullet = new Bullet(pos.x,pos.y+objectW);
+        blArray.add(Bullet);
+        frame=0;
+      }
+        frame++;
+        for(int i=0;i<blArray.size();i++)
+       {
+           boolean friendly=false;
+           blArray.get(i).render(friendly);
+           blArray.get(i).pos.y+=2;
+           
+           if(blArray.get(i).pos.y>(height/2)-objectW)
+           {
+              blArray.remove(i); 
+           }
+       }
      }
    }
    void takeDamage()

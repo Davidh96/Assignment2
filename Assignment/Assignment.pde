@@ -27,6 +27,7 @@ int twNum=10;
 
 //An array list for my tanks
 ArrayList<Tank> tkArray = new ArrayList<Tank>();
+//An array list for my towers
 ArrayList<Tower> twArray = new ArrayList<Tower>();
 ArrayList<Float> TWxPos = new ArrayList<Float>();
 
@@ -41,19 +42,18 @@ void draw()
    
    //create the towers on screen
    bkground.createTower();
-   
-   //create the initial tank. This initial tank is part of the object menu.
-   tank =new Tank();
   
   //displays the potential places where an object can be placed
   bkground.showSlots();
   
+  //places object on screen
   bkground.placeObj();
   
+  //displays the battleline
   bkground.battleLine();
-  
 
 }
+
 void mouseReleased()
 {
        //This will ensure that only +1 object is created
