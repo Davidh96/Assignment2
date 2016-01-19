@@ -27,7 +27,6 @@ int twNum=10;
 
 //An array list for my tanks
 ArrayList<Tank> tkArray = new ArrayList<Tank>();
-ArrayList<Bullet> blArray = new ArrayList<Bullet>();
 ArrayList<Tower> twArray = new ArrayList<Tower>();
 ArrayList<Float> TWxPos = new ArrayList<Float>();
 
@@ -40,6 +39,7 @@ void draw()
    //reate the object menu which will be used by the player t choose items
    obmenu.render();
    
+   //create the towers on screen
    bkground.createTower();
    
    //create the initial tank. This initial tank is part of the object menu.
@@ -52,19 +52,6 @@ void draw()
   
   bkground.battleLine();
   
-  //This will move the bullets once they are fired
-  for(int i=0;i<blArray.size();i++)
-  {
-     blArray.get(i).pos.y-=2;
-     //if the bullet has reached an enemy target
-     if(blArray.get(i).pos.y<objectW)
-     {
-       //this method will reve the bullet from the blArray
-        blArray.get(i).destroy();
-        //this will tell the tower that it took damage and to decrease its health
-        twArray.get((int)(map(blArray.get(i).pos.x,0,width,0,11))).takeDamage();
-     }
-  }
 
 }
 void mouseReleased()

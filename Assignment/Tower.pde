@@ -2,8 +2,10 @@ class Tower extends GameObject
 {
    PVector pos;
    int health=10;
+   ArrayList<Bullet> blArray = new ArrayList<Bullet>();
    boolean init=true;
    boolean destroyed=false; 
+   int frame=0;
    
    Tower()
    {
@@ -41,6 +43,23 @@ class Tower extends GameObject
        
    }
    
+   void shoot()
+   {
+    if(frame==20)
+    {
+      Bullet Bullet = new Bullet(pos.x,pos.y+objectW);
+      blArray.add(Bullet);
+      println(blArray.size());
+      frame=0;
+    }
+      frame++;
+      for(int i=0;i<blArray.size();i++)
+     {
+         boolean friendly=false;
+         blArray.get(i).render(friendly);
+         blArray.get(i).pos.y+=2;
+     }
+   }
    void takeDamage()
    {
      //decrease health by 1

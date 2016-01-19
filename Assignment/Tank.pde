@@ -6,6 +6,7 @@ class Tank extends GameObject
    boolean placedinSlot=false;
    int init=0;
    int frame=0;
+   ArrayList<Bullet> blArray = new ArrayList<Bullet>();
 
    Tank()
    {
@@ -47,7 +48,7 @@ class Tank extends GameObject
            //after 1 secnd create a bullet
            if(frame>60)
            {
-             Bullet bullet = new Bullet(pos.x,pos.y);
+             Bullet bullet = new Bullet(pos.x,pos.y-objectW);
              blArray.add(bullet);
              //reset timer
              frame=0;
@@ -56,7 +57,8 @@ class Tank extends GameObject
           //render all bullets in the blArray
           for(int i=0;i<blArray.size();i++)
           {
-             blArray.get(i).render();
+            boolean friendly=true;
+            blArray.get(i).render(friendly);
           } 
           //a frame has passed
           frame++;
@@ -64,8 +66,26 @@ class Tank extends GameObject
          }
 
      }
+     shoot();
           
    } 
+   
+   void shoot()
+   {
+     for(int i=0;i<blArray.size();i++)
+     {
+       blArray.get(i).pos.y-=2;
+     
+       if(blArray.get(i).pos.y<objectW)
+       {
+         //this method will reve the bullet from the blArray
+          blArray.remove(i);
+          //this will tell the tower that it took damage and to decrease its health
+          twArray.get((int)(map(blArray.get(i).pos.x,0,width,0,11))).takeDamage();
+       }
+     }
+      
+   }
    
    
 }

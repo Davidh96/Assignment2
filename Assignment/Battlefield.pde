@@ -125,6 +125,10 @@ class Battlefield
                  OyPos[i]-=move;
                  //println(map(tkArray.get(i).pos.x,0,width,0,11));
                }
+               if(OyPos[i]<=(height/2))
+               {
+                  twArray.get((int)map(OxPos[i],0,width,0,11)).shoot(); 
+               }
              }
                
            }
