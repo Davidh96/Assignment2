@@ -63,6 +63,20 @@ class Tower extends GameObject
            
            if(blArray.get(i).pos.y>(height/2)-objectW)
            {
+             //go through the array of tanks
+             for(int j=0;j<tkArray.size();j++)
+             {
+               //will check if the object has actually been given a position on the screen
+               if(tkArray.get(j).placedinSlot==true)
+               {
+                 //if the bullet and object are in the same lane
+                if((int)map(blArray.get(i).pos.x,0,width,0,11)==(int)map(tkArray.get(j).pos.x,0,width,0,11))
+                {
+                  //object takes damage
+                  tkArray.get(j).takeDamage();
+                }
+               }
+             }
               blArray.remove(i); 
            }
        }

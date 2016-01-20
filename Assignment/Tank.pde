@@ -4,6 +4,8 @@ class Tank extends GameObject
    PVector pos;
    boolean picked=false;
    boolean placedinSlot=false;
+   int health=10;
+   boolean destroyed=false;
    int init=1;
    int frame=0;
    ArrayList<Bullet> blArray = new ArrayList<Bullet>();
@@ -21,7 +23,8 @@ class Tank extends GameObject
    //draws the tank object
    void render(float x, float y)
    {
-     
+     if(destroyed==false)
+     {
      stroke(0);
      
      pos=new PVector(x,y);
@@ -71,9 +74,7 @@ class Tank extends GameObject
            }
        
      }
-     
-   
-    
+     }
    } 
    
    void shoot()
@@ -91,6 +92,19 @@ class Tank extends GameObject
        }
      }
       
+   }
+   
+   void takeDamage()
+   {
+     //decrease health by 1
+     health--;
+     
+     //if health is below 1 then the tower has been destroyed
+     if(health<1)
+     {
+       destroyed=true; 
+     } 
+     
    }
    
    
