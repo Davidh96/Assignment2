@@ -5,6 +5,7 @@ class Tower extends GameObject
    ArrayList<Bullet> blArray = new ArrayList<Bullet>();
    boolean init=true;
    boolean destroyed=false; 
+   boolean fire=true;
    int frame=0;
    
    Tower()
@@ -46,39 +47,47 @@ class Tower extends GameObject
    //this creates bllets and shoots at tanks
    void shoot()
    {
+    
      if(destroyed==false)
-       {
-      if(frame==20)
-      {
-        Bullet Bullet = new Bullet(pos.x,pos.y+objectW);
-        blArray.add(Bullet);
-        frame=0;
-      }
-        frame++;
-        for(int i=0;i<blArray.size();i++)
-       {
-           boolean friendly=false;
-           blArray.get(i).render(friendly);
-           blArray.get(i).pos.y+=2;
-           
-           if(blArray.get(i).pos.y>(height/2)-objectW)
-           {
-             //go through the array of tanks
-             for(int j=0;j<tkArray.size();j++)
+     {
+        if(fire==true)
+        {
+        if(frame==20)
+        {
+          Bullet Bullet = new Bullet(pos.x,pos.y+objectW);
+          blArray.add(Bullet);
+          frame=0;
+        }
+          frame++;
+          for(int i=0;i<blArray.size();i++)
+         {
+             boolean friendly=false;
+             blArray.get(i).render(friendly);
+             blArray.get(i).pos.y+=2;
+             
+             if(blArray.get(i).pos.y>(height/2)-objectW)
              {
-               //will check if the object has actually been given a position on the screen
-               if(tkArray.get(j).placedinSlot==true)
+               //go through the array of tanks
+               for(int j=0;j<tkArray.size();j++)
                {
-                 //if the bullet and object are in the same lane
-                if((int)map(blArray.get(i).pos.x,0,width,0,11)==(int)map(tkArray.get(j).pos.x,0,width,0,11))
-                {
-                  //object takes damage
-                  tkArray.get(j).takeDamage();
-                }
+                 //will check if the object has actually been given a position on the screen
+                 if(tkArray.get(j).placedinSlot==true)
+                 {
+                   //if the bullet and object are in the same lane
+                  if((int)map(blArray.get(i).pos.x,0,width,0,11)==(int)map(tkArray.get(j).pos.x,0,width,0,11))
+                  {
+                    //object takes damage
+                    tkArray.get(j).takeDamage();
+                    if(tkArray.get(j).destroyed==true)
+                    {
+                       fire=false; 
+                    }
+                  }
+                 }
                }
+                blArray.remove(i); 
              }
-              blArray.remove(i); 
-           }
+         }
        }
      }
    }

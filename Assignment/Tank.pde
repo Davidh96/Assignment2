@@ -46,12 +46,9 @@ class Tank extends GameObject
 
      //if the tower infront has not been destroyed  
      if(twArray.get((int)map(pos.x,0,width,0,11)).destroyed==false)
-     {
-       
-         //println(twArray.get((int)map(pos.x,0,width-objectW,0,9)));
-         
-           if(pos.y<(float)(width/2)+objectW)
-           {
+       {
+         if(pos.y<(float)(width/2)+objectW)
+         {
              //after 1 secnd create a bullet
              if(frame>60)
              {
@@ -69,11 +66,11 @@ class Tank extends GameObject
             } 
             //a frame has passed
             frame++;
-
-         shoot();
-           }
-       
-     }
+  
+            shoot();
+         }
+         
+       }
      }
    } 
    
