@@ -5,7 +5,6 @@ class Tank extends GameObject
    boolean picked=false;
    boolean placedinSlot=false;
    int health=10;
-   boolean destroyed=false;
    int init=1;
    int frame=0;
    
@@ -19,15 +18,12 @@ class Tank extends GameObject
    //draws the tank object
    void render()
    {
-     if(destroyed==false)
-     {
       stroke(0);
        
       //this will place the tank in a slot rather than the actual position chosen by the user
       int roundPos=(int)pos.x/(int)objectW;
       pos.x=roundPos*objectW;
     
-      
      fill(0,0,255);
      rect(pos.x,pos.y-objectW,objectW,objectW);
 
@@ -65,7 +61,7 @@ class Tank extends GameObject
          }
          
        }
-     }
+     
    } 
    
    //This method shoots bullets from the tank
@@ -94,8 +90,8 @@ class Tank extends GameObject
      
      //if health is below 1 then the tower has been destroyed
      if(health<1)
-     {
-       destroyed=true; 
+     { 
+       tkArray.remove(this);
      } 
      
    }
@@ -130,20 +126,30 @@ class Tank extends GameObject
    void move()
    {
      int move=2;
+       //if the tank has been placed, it will move to the battleline
+       if(placedinSlot==true)
+       {
+         render(); 
+         if(pos.y>(height/2))
+         {
+           pos.y-=move;
+         }
+         if(pos.y<=(height/2))
+         {
+            twArray.get((int)map(pos.x,0,width,0,11)).shoot(pos.y); 
+         }
+         else
+         {
+            if(twArray.get((int)map(pos.x,0,width,0,11)).blArray.size()>0)
+            {
+               for(int i=0;i<twArray.get((int)map(pos.x,0,width,0,11)).blArray.size();i++)
+               {
+                 twArray.get((int)map(pos.x,0,width,0,11)).blArray.remove(i);
+               }
+            }
+         }
+       }
      
-     //if the tank has been placed, it will move to the battleline
-     if(placedinSlot==true)
-     {
-       render(); 
-       if(pos.y>(height/2))
-       {
-         pos.y-=move;
-       }
-       if(pos.y<=(height/2))
-       {
-          twArray.get((int)map(pos.x,0,width,0,11)).shoot(); 
-       }
-     }
    }
    
    

@@ -10,7 +10,7 @@ class Tower extends GameObject
    
    Tower()
    {
-   
+     
    }
    
    //draws the tower object
@@ -20,15 +20,8 @@ class Tower extends GameObject
      {
        fill(255,0,0);
        stroke(0);
-       
-       //this code stops the creation of more towers than needed
-       if(init==true)
-       {
-       TWxPos.add(i*objectW);
-       init=false;
-       }
-       
-       pos=new PVector(TWxPos.get(i),0);
+      
+       pos=new PVector(i*objectW,0);
 
        rect(pos.x,pos.y,objectW,objectW);
        
@@ -45,27 +38,27 @@ class Tower extends GameObject
    }
    
    //this creates bllets and shoots at tanks
-   void shoot()
+   void shoot(float tkY)
    {
     
      if(destroyed==false)
      {
-        if(fire==true)
-        {
         if(frame==20)
         {
           Bullet Bullet = new Bullet(pos.x,pos.y+objectW);
           blArray.add(Bullet);
           frame=0;
         }
-          frame++;
+        
+         frame++;
+          
           for(int i=0;i<blArray.size();i++)
          {
              boolean friendly=false;
              blArray.get(i).render(friendly);
              blArray.get(i).pos.y+=2;
              
-             if(blArray.get(i).pos.y>(height/2)-objectW)
+             if(blArray.get(i).pos.y>=tkY-objectW)
              {
                //go through the array of tanks
                for(int j=0;j<tkArray.size();j++)
@@ -78,18 +71,13 @@ class Tower extends GameObject
                   {
                     //object takes damage
                     tkArray.get(j).takeDamage();
-                    if(tkArray.get(j).destroyed==true)
-                    {
-                       fire=false; 
-                    }
                   }
                  }
                }
                 blArray.remove(i); 
              }
          }
-       }
-     }
+      }
    }
    void takeDamage()
    {
@@ -100,6 +88,7 @@ class Tower extends GameObject
      if(health<1)
      {
        destroyed=true; 
+       
      }  
       
    }
