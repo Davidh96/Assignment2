@@ -8,6 +8,7 @@ class Tank extends GameObject
    boolean destroyed=false;
    int init=1;
    int frame=0;
+   
    ArrayList<Bullet> blArray = new ArrayList<Bullet>();
 
    Tank()
@@ -15,33 +16,26 @@ class Tank extends GameObject
     
    }
    
-   Tank(float x, float y)
-   {
-      render(x,y);
-   }
-   
    //draws the tank object
-   void render(float x, float y)
+   void render()
    {
      if(destroyed==false)
      {
-     stroke(0);
-     
-     pos=new PVector(x,y);
-     
-    int roundPos=(int)pos.x/(int)objectW;
-    pos.x=roundPos*objectW;
+      stroke(0);
+       
+      //this will place the tank in a slot rather than the actual position chosen by the user
+      int roundPos=(int)pos.x/(int)objectW;
+      pos.x=roundPos*objectW;
     
       
-     fill(0,255,0);
+     fill(0,0,255);
      rect(pos.x,pos.y-objectW,objectW,objectW);
 
-     fill(150,255,150);
+     fill(150,150,255);
      ellipse(pos.x+(objectW/2),pos.y-(objectW/2),objectW,objectW);
      
     
-    fill(0,255,0);
-    
+    fill(0,0,255);
     rect(pos.x+(objectW/4),pos.y-(objectW/2),objectW/2,-objectW);
 
      //if the tower infront has not been destroyed  
@@ -74,6 +68,7 @@ class Tank extends GameObject
      }
    } 
    
+   //This method shoots bullets from the tank
    void shoot()
    {
      for(int i=0;i<blArray.size();i++)
@@ -91,6 +86,7 @@ class Tank extends GameObject
       
    }
    
+   //This method deals with damage taken
    void takeDamage()
    {
      //decrease health by 1
@@ -102,6 +98,52 @@ class Tank extends GameObject
        destroyed=true; 
      } 
      
+   }
+   
+   //This method deals with the placement of a tank
+   void placeObj()
+   {
+ 
+     if(mouseY>height-objectW)
+     {
+        if(mousePressed)
+        {
+          //This is an if statement to stop the player from moving the tank once it has been plaed
+          if(placedinSlot==false)
+          {
+           //give the tank its position
+           pos=new PVector(mouseX,height); 
+           
+           //the user has chosen to place the object in  a slot
+           placedinSlot=true;
+           objectChosen=false;
+           
+          }
+        }
+     }
+    
+    //call the move method so that the tank gets into position
+    move();
+
+   }
+   
+   void move()
+   {
+     int move=2;
+     
+     //if the tank has been placed, it will move to the battleline
+     if(placedinSlot==true)
+     {
+       render(); 
+       if(pos.y>(height/2))
+       {
+         pos.y-=move;
+       }
+       if(pos.y<=(height/2))
+       {
+          twArray.get((int)map(pos.x,0,width,0,11)).shoot(); 
+       }
+     }
    }
    
    

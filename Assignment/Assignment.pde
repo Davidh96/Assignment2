@@ -5,11 +5,7 @@ void setup()
 {
   size(600,650);
   objectW=width/11;
-  
-  for(int i=0;i<OyPos.length;i++)
-  {
-     OyPos[i]=height;
-  }
+  strokeWeight(3);
 }
 
 Tank tank;
@@ -17,9 +13,6 @@ Tower tower;
 ObjectMenu obmenu=new ObjectMenu();
 Battlefield bkground=new Battlefield();
 
-//this array keeps track of object positions
-float OxPos[]=new float[10];
-float OyPos[]=new float[10];
 int ind=0;
 boolean objectChosen=false;
 float objectW;
@@ -47,7 +40,10 @@ void draw()
   bkground.showSlots();
   
   //places object on screen
-  bkground.placeObj();
+  for(int i=0;i<tkArray.size();i++)
+  {
+    tkArray.get(i).placeObj();
+  }
   
   //displays the battleline
   bkground.battleLine();

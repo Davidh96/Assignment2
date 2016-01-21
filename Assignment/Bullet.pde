@@ -11,6 +11,7 @@ class Bullet extends GameObject
    //this method creates my bullet
    void render(boolean friendly)
    {     
+     
      if(friendly)
      {
       fill(0,0,255);

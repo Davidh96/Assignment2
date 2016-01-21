@@ -22,30 +22,6 @@ class Battlefield
       }
    }
    
-   //This method will create the towers
-   void createTower()
-   {
-      //if the towers have not been created yet
-     if(twCreated==false)
-     {
-       if(twArray.size()<10)
-       {
-         for(int i=0;i<10;i++)
-         {
-            Tower tower = new Tower();
-            twArray.add(tower);
-          }
-          twCreated=true;
-       }
-     }
-     
-     //renders all the towers that need to be rendered
-     for(int i=0;i<twArray.size();i++)
-     {
-        twArray.get(i).render(i); 
-     }
-   }
-   
    //draws the battleLine/enemies line of sight
    void battleLine()
    {
@@ -57,7 +33,6 @@ class Battlefield
    //this method displays where an object can be placed
    void showSlots()
    {
- 
        if(objectChosen==true)
        {
           for(int i=0;i<10;i++)
@@ -89,51 +64,28 @@ class Battlefield
         
    }
    
-   //this method places the object on the battlefield
-   void placeObj()
+   //This method will create the towers
+   void createTower()
    {
-     float move=2;
- 
-     if(mouseY>height-objectW)
+      //if the towers have not been created yet
+     if(twCreated==false)
      {
-        if(mousePressed)
-        {
-          //This is an if statement to stop the player from moving the tank once it has been plaed
-          if(tkArray.get(ind-1).placedinSlot==false)
-          {
-           OxPos[ind-1]=mouseX; 
-           //the user has chosen to place the object in  a slot
-           tkArray.get(ind-1).placedinSlot=true;
-           objectChosen=false;
-           
+       if(twArray.size()<10)
+       {
+         for(int i=0;i<10;i++)
+         {
+            Tower tower = new Tower();
+            twArray.add(tower);
           }
-        }
-        
-     }
-        
-     for(int i=0;i<ind;i++)
-     {      
-       
-           //If the array has any objects
-           if(tkArray.size()>0)
-           {
-             if(tkArray.get(i).placedinSlot==true)
-             {
-               tkArray.get(i).render(OxPos[i],OyPos[i]); 
-               if(OyPos[i]>(height/2))
-               {
-                 OyPos[i]-=move;
-                 //println(map(tkArray.get(i).pos.x,0,width,0,11));
-               }
-               if(OyPos[i]<=(height/2))
-               {
-                  twArray.get((int)map(OxPos[i],0,width,0,11)).shoot(); 
-               }
-             }
-               
-           }
+          twCreated=true;
+       }
      }
      
-     
+     //renders all the towers that need to be rendered
+     for(int i=0;i<twArray.size();i++)
+     {
+        twArray.get(i).render(i); 
+     }
    }
+   
 }
