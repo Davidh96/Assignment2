@@ -4,19 +4,21 @@
 void setup()
 {
   size(600,650);
-  objectW=width/11;
+  objectW=width/lanes;
   
 }
 
-Tank tank;
-Tower tower;
+boolean objectChosen=false;
+boolean tankAllowed=true;
+float objectW;
+int objNum=10;
+int lanes=11;
+
+boolean laneCheck[] = new boolean[objNum];
+
 ObjectMenu obmenu=new ObjectMenu();
 Battlefield bkground=new Battlefield();
 
-int ind=0;
-boolean objectChosen=false;
-float objectW;
-int twNum=10;
 
 //An array list for my tanks
 ArrayList<Tank> tkArray = new ArrayList<Tank>();
@@ -25,7 +27,8 @@ ArrayList<Tower> twArray = new ArrayList<Tower>();
 
 void draw()
 {
-  strokeWeight(2);
+   strokeWeight(2);
+   
    //create the star background first. This will ensure that it does not overlap any other objects
    bkground.generate();
   
@@ -47,23 +50,13 @@ void draw()
   //displays the battleline
   bkground.battleLine();
   
-  if(tkArray.size()>1)
-  {
-    if(tkArray.get(1).placedinSlot==true)
-    {
- // println(tkArray.get(1).health);
-    }
-  }
-  
-  for(int i=0;i<tkArray.size();i++)
-  {
-     println(tkArray.get(i).health); 
-  }
+  //display objects to select from
+  obmenu.objMenu();
 
 }
 
 void mouseReleased()
 {
        //This will ensure that only +1 object is created
-       bkground.createObj();   
+       bkground.createObj(); 
 }

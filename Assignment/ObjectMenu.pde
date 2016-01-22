@@ -1,4 +1,4 @@
-class ObjectMenu extends GameObject
+class ObjectMenu
 {
    ObjectMenu()
    {
@@ -12,4 +12,13 @@ class ObjectMenu extends GameObject
       stroke(255);
       rect(width-objectW,0,objectW,height); 
    }
+   
+    void objMenu()
+  {
+    float menuLane=width-objectW;
+    
+    Tank mTank=new Tank();
+    mTank.pos=new PVector(menuLane,objectW);
+    mTank.render();
+  }
 }

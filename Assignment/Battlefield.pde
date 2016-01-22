@@ -7,6 +7,7 @@ class Battlefield
    Battlefield()
    {
       starSize=2;
+      
    }
    
    //this method creates the moving background
@@ -26,7 +27,7 @@ class Battlefield
    void battleLine()
    {
       stroke(255);
-      objectW=width/11;
+      objectW=width/lanes;
       line(0,height/2,width-objectW,height/2);
    }
    
@@ -35,10 +36,18 @@ class Battlefield
    {
        if(objectChosen==true)
        {
-          for(int i=0;i<10;i++)
+          for(int i=0;i<laneCheck.length;i++)
           {
-           fill(0,0,255,100);
-           stroke(0,0,255);
+            if(laneCheck[i])
+            {
+              fill(255,0,0,100);
+              stroke(255,0,0);
+            }
+            else
+            {
+             fill(0,0,255,100);
+             stroke(0,0,255);
+            }
            
            float x=(float)i*objectW;
            float y=height-objectW;
@@ -55,11 +64,16 @@ class Battlefield
    {
      if(mouseX>width-objectW)
       {
-           ind++;
-           Tank plTank =new Tank();
-           tkArray.add(plTank);
-           
+        if(tkArray.size()<objNum)
+        {
+          if(tankAllowed)
+          {
+           Tank tank =new Tank();
+           tkArray.add(tank);
            objectChosen=true;
+           tankAllowed=false;
+          }
+        }
       }
         
    }
@@ -70,21 +84,21 @@ class Battlefield
       //if the towers have not been created yet
      if(twCreated==false)
      {
-       if(twArray.size()<10)
-       {
-         for(int i=0;i<10;i++)
+         //create 10 towers
+         for(int i=0;i<objNum;i++)
          {
-            Tower tower = new Tower();
+            Tower tower = new Tower(i);
             twArray.add(tower);
           }
+          
+          //all towers are created
           twCreated=true;
-       }
      }
      
      //renders all the towers that need to be rendered
      for(int i=0;i<twArray.size();i++)
      {
-        twArray.get(i).render(i); 
+        twArray.get(i).render(); 
      }
    }
    

@@ -1,38 +1,38 @@
 class Tower extends GameObject
 {
-   PVector pos;
-   int health=10;
-   ArrayList<Bullet> blArray = new ArrayList<Bullet>();
-   boolean init=true;
+
    boolean destroyed=false; 
-   boolean fire=true;
    int frame=0;
    
-   Tower()
+   
+   Tower(int i)
    {
-     
+      pos=new PVector(i*objectW,0);
+      lane=(int)map(pos.x,0,width,0,11);
+      health=15;
    }
    
    //draws the tower object
-   void render(int i)
+   void render()
    {
      if(destroyed==false)
      {
        fill(255,0,0);
        stroke(0);
-      
-       pos=new PVector(i*objectW,0);
-
        rect(pos.x,pos.y,objectW,objectW);
        
        fill(255,100,100);
        stroke(255,100,100);
        rect(pos.x+10,pos.y+10,objectW-20,objectW-20);
+       
        stroke(0);
        fill(255,0,0);
        ellipse(pos.x+(objectW/2),pos.y+(objectW/2),30,30);
+       
        fill(255,100,100);
        rect(pos.x+20,pos.y+20,objectW-40,objectW-10);
+       
+       
      }
        
    }
@@ -43,7 +43,7 @@ class Tower extends GameObject
     
      if(destroyed==false)
      {
-        if(frame==20)
+        if(frame==25)
         {
           Bullet Bullet = new Bullet(pos.x,pos.y+objectW);
           blArray.add(Bullet);
@@ -67,7 +67,7 @@ class Tower extends GameObject
                  if(tkArray.get(j).placedinSlot==true)
                  {
                    //if the bullet and object are in the same lane
-                  if((int)map(blArray.get(i).pos.x,0,width,0,11)==(int)map(tkArray.get(j).pos.x,0,width,0,11))
+                  if(lane==(int)map(tkArray.get(j).pos.x,0,width,0,11))
                   {
                     //object takes damage
                     tkArray.get(j).takeDamage();
@@ -88,7 +88,6 @@ class Tower extends GameObject
      if(health<1)
      {
        destroyed=true; 
-       
      }  
       
    }

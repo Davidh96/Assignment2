@@ -25,10 +25,5 @@ class Bullet extends GameObject
       rect(pos.x,pos.y,5,10);
       
    }
-   
-   //This method removes bullets from an array  
-   void destroy()
-   {
-      //blArray.remove(this); 
-   }
+  
 }
