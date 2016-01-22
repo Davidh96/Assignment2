@@ -16,11 +16,6 @@ class Battlefield
       background(0);
       fill(255);
       stroke(255);
-      
-      for(int i=0;i<100;i++)
-      {
-        //ellipse(random(0,width-objectW),random(0,height),starSize,starSize);
-      }
    }
    
    //draws the battleLine/enemies line of sight

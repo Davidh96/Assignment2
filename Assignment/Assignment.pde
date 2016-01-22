@@ -6,6 +6,11 @@ void setup()
   size(600,650);
   objectW=width/lanes;
   
+  for(int i=0;i<stars;i++)
+  {
+     Star star = new Star();
+     stArray.add(star);
+  }
 }
 
 boolean objectChosen=false;
@@ -13,13 +18,15 @@ boolean tankAllowed=true;
 float objectW;
 int objNum=10;
 int lanes=11;
+int stars=150;
 
 boolean laneCheck[] = new boolean[objNum];
 
 ObjectMenu obmenu=new ObjectMenu();
 Battlefield bkground=new Battlefield();
 
-
+//An array list for the stars in the background
+ArrayList<Star> stArray = new ArrayList<Star>();
 //An array list for my tanks
 ArrayList<Tank> tkArray = new ArrayList<Tank>();
 //An array list for my towers
@@ -34,6 +41,11 @@ void draw()
   
    //reate the object menu which will be used by the player t choose items
    obmenu.render();
+   
+   for(int i=0;i<stArray.size();i++)
+   {
+       stArray.get(i).move();
+   }
    
    //create the towers on screen
    bkground.createTower();
