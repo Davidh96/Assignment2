@@ -2,7 +2,7 @@ class IFO extends GameObject
 {
   IFO()
   {
-    
+    health=10;
   }
   
    //draws the tank object
@@ -19,14 +19,18 @@ class IFO extends GameObject
      {
        laneCheck[lane]=true; 
      }
-     
-     ellipse(pos.x,pos.y,objectW,objectW);
+    
+     fill(0,0,255);
+     ellipse(pos.x+(objectW/2),pos.y-(objectW/2),objectW,objectW);
+     fill(150,150,255);
+     ellipse(pos.x+(objectW/2),pos.y-(objectW/2),objectW/2,objectW/2);
+ 
      
    } 
    
    void move()
    {
-     int move=2;
+     int move=3;
        //if the tank has been placed, it will move to the battleline
        if(placedinSlot==true)
        {
@@ -63,7 +67,7 @@ class IFO extends GameObject
        if(pos.y<(float)(width/2)+objectW)
        {
            //after 1 secnd create a bullet
-           if(frame>50)
+           if(frame>30)
            {
              Bullet bullet = new Bullet(pos.x,pos.y-objectW);
              blArray.add(bullet);
@@ -88,7 +92,7 @@ class IFO extends GameObject
      
        if(blArray.get(i).pos.y<objectW)
        {
-         //this method will reve the bullet from the blArray
+         //this method will remove the bullet from the blArray
           blArray.remove(i);
           //this will tell the tower that it took damage and to decrease its health
           twArray.get(lane).takeDamage();

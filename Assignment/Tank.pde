@@ -37,7 +37,7 @@ class Tank extends GameObject
    
    void move()
    {
-     int move=2;
+     int move=1;
        //if the tank has been placed, it will move to the battleline
        if(placedinSlot==true)
        {
@@ -99,7 +99,7 @@ class Tank extends GameObject
      
        if(blArray.get(i).pos.y<objectW)
        {
-         //this method will reve the bullet from the blArray
+         //this method will remove the bullet from the blArray
           blArray.remove(i);
           //this will tell the tower that it took damage and to decrease its health
           twArray.get(lane).takeDamage();

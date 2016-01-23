@@ -26,4 +26,21 @@ class ObjectMenu
     mIFO.render();
     
   }
+  
+  void objChosen()
+  {
+    if(mouseY<=objectW)
+    {
+         Tank tank =new Tank();
+         objArray.add(tank);
+    }
+    if(mouseY<=objectW*2 && mouseY>objectW)
+    {
+       IFO ifo=new IFO();
+       objArray.add(ifo);
+    }
+    
+    objectChosen=true;
+    tankAllowed=false; 
+  }
 }

@@ -69,6 +69,9 @@ void draw()
 
 void mouseReleased()
 {
+       if(mouseX>width-objectW)
+      {
        //This will ensure that only +1 object is created
        bkground.createObj(); 
+      }
 }

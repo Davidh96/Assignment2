@@ -56,17 +56,12 @@ class Battlefield
    //this method created an object
    void createObj()
    {
-     if(mouseX>width-objectW)
+
+      if(objArray.size()<objNum)
       {
-        if(objArray.size()<objNum)
+        if(tankAllowed)
         {
-          if(tankAllowed)
-          {
-           Tank tank =new Tank();
-           objArray.add(tank);
-           objectChosen=true;
-           tankAllowed=false;
-          }
+           obmenu.objChosen();
         }
       }
         
