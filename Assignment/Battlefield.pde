@@ -22,7 +22,7 @@ class Battlefield
    void battleLine()
    {
       stroke(255);
-      objectW=width/lanes;
+      objectW=(float)width/lanes;
       line(0,height/2,width-objectW,height/2);
    }
    
@@ -33,18 +33,17 @@ class Battlefield
        {
           for(int i=0;i<laneCheck.length;i++)
           {
+            stroke(255,255,255);
             if(laneCheck[i])
             {
               fill(255,0,0,100);
-              stroke(255,0,0);
             }
             else
             {
              fill(0,0,255,100);
-             stroke(0,0,255);
             }
            
-           float x=(float)i*objectW;
+           float x=i*objectW;
            float y=height-objectW;
            
            rect(x,y,objectW,objectW); 
@@ -59,12 +58,12 @@ class Battlefield
    {
      if(mouseX>width-objectW)
       {
-        if(tkArray.size()<objNum)
+        if(objArray.size()<objNum)
         {
           if(tankAllowed)
           {
            Tank tank =new Tank();
-           tkArray.add(tank);
+           objArray.add(tank);
            objectChosen=true;
            tankAllowed=false;
           }

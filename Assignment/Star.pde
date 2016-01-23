@@ -6,7 +6,7 @@ class Star
    Star()
    {
      //give the star a random position on the battlefield
-     pos=new PVector(random(0,width-objectW-10),random(0,height));
+     pos=new PVector(random(0,width-objectW-10),random(objectW,height));
      //random speeds
      speed=random(2,4);
    }

@@ -1,4 +1,4 @@
-class Bullet extends GameObject
+class Bullet 
 {
    PVector pos;
    float move=2;

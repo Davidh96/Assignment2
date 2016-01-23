@@ -1,8 +1,13 @@
-class Tower extends GameObject
+class Tower 
 {
 
    boolean destroyed=false; 
-   int frame=0;
+  int frame=0;
+  float objectW=width/(float)lanes;
+  PVector pos;
+  int health;
+  ArrayList<Bullet> blArray = new ArrayList<Bullet>();
+  int lane;
    
    
    Tower(int i)
@@ -31,8 +36,7 @@ class Tower extends GameObject
        
        fill(255,100,100);
        rect(pos.x+20,pos.y+20,objectW-40,objectW-10);
-       
-       
+
      }
        
    }
@@ -61,16 +65,16 @@ class Tower extends GameObject
              if(blArray.get(i).pos.y>=tkY-objectW)
              {
                //go through the array of tanks
-               for(int j=0;j<tkArray.size();j++)
+               for(int j=0;j<objArray.size();j++)
                {
                  //will check if the object has actually been given a position on the screen
-                 if(tkArray.get(j).placedinSlot==true)
+                 if(objArray.get(j).placedinSlot==true)
                  {
                    //if the bullet and object are in the same lane
-                  if(lane==(int)map(tkArray.get(j).pos.x,0,width,0,11))
+                  if(lane==objArray.get(j).lane)
                   {
                     //object takes damage
-                    tkArray.get(j).takeDamage();
+                    objArray.get(j).takeDamage();
                   }
                  }
                }

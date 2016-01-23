@@ -1,13 +1,10 @@
-class Tank extends GameObject
+class IFO extends GameObject
 {
-
-   
-
-   Tank()
-   {
-      health=10;
-   }
-   
+  IFO()
+  {
+    
+  }
+  
    //draws the tank object
    void render()
    {
@@ -23,15 +20,7 @@ class Tank extends GameObject
        laneCheck[lane]=true; 
      }
      
-     fill(0,0,255);
-     rect(pos.x,pos.y-objectW,objectW,objectW);
-
-     fill(150,150,255);
-     ellipse(pos.x+(objectW/2),pos.y-(objectW/2),objectW,objectW);
-     
-    
-    fill(0,0,255);
-    rect(pos.x+(objectW/4),pos.y-(objectW/2),objectW/2,-objectW);
+     ellipse(pos.x,pos.y,objectW,objectW);
      
    } 
    
@@ -108,8 +97,6 @@ class Tank extends GameObject
       
     }
    }
-   
-   
-   
-   
+  
+  
 }

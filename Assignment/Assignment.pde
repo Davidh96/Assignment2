@@ -18,7 +18,7 @@ boolean tankAllowed=true;
 float objectW;
 int objNum=10;
 int lanes=11;
-int stars=150;
+int stars=100;
 
 boolean laneCheck[] = new boolean[objNum];
 
@@ -28,7 +28,7 @@ Battlefield bkground=new Battlefield();
 //An array list for the stars in the background
 ArrayList<Star> stArray = new ArrayList<Star>();
 //An array list for my tanks
-ArrayList<Tank> tkArray = new ArrayList<Tank>();
+ArrayList<GameObject> objArray = new ArrayList<GameObject>();
 //An array list for my towers
 ArrayList<Tower> twArray = new ArrayList<Tower>();
 
@@ -54,9 +54,9 @@ void draw()
   bkground.showSlots();
   
   //places object on screen
-  for(int i=0;i<tkArray.size();i++)
+  for(int i=0;i<objArray.size();i++)
   {
-    tkArray.get(i).placeObj();
+    objArray.get(i).placeObj();
   }
   
   //displays the battleline

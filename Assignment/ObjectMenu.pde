@@ -20,5 +20,10 @@ class ObjectMenu
     Tank mTank=new Tank();
     mTank.pos=new PVector(menuLane,objectW);
     mTank.render();
+    
+    IFO mIFO = new IFO();
+    mIFO.pos=new PVector(menuLane,objectW*2);
+    mIFO.render();
+    
   }
 }
