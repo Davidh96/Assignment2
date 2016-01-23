@@ -33,14 +33,17 @@ class ObjectMenu
     {
          Tank tank =new Tank();
          objArray.add(tank);
+         objectChosen=true;
+         objAllowed=false; 
     }
     if(mouseY<=objectW*2 && mouseY>objectW)
     {
        IFO ifo=new IFO();
        objArray.add(ifo);
+       objectChosen=true;
+       objAllowed=false; 
     }
     
-    objectChosen=true;
-    tankAllowed=false; 
+    
   }
 }

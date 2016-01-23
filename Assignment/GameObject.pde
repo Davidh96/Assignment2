@@ -3,6 +3,7 @@ abstract class GameObject
   float objectW;
   PVector pos;
   int health;
+  int maxhealth;
   ArrayList<Bullet> blArray = new ArrayList<Bullet>();
   int lane;
   boolean placedinSlot=false;
@@ -32,7 +33,7 @@ abstract class GameObject
            {
               //the user has chosen to place the object in  a slot
              placedinSlot=true;
-             tankAllowed=true;
+             objAllowed=true;
              objectChosen=false;
            }
 
@@ -60,6 +61,7 @@ abstract class GameObject
      } 
      
    }
+   
   
   abstract void render();
   abstract void shoot();

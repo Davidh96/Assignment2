@@ -8,13 +8,15 @@ class Tower
   int health;
   ArrayList<Bullet> blArray = new ArrayList<Bullet>();
   int lane;
+  int maxhealth;
    
    
    Tower(int i)
    {
       pos=new PVector(i*objectW,0);
       lane=(int)map(pos.x,0,width,0,11);
-      health=15;
+      maxhealth=15;
+      health=maxhealth;
    }
    
    //draws the tower object
@@ -24,18 +26,17 @@ class Tower
      {
        fill(255,0,0);
        stroke(0);
-       rect(pos.x,pos.y,objectW,objectW);
+       ellipse(pos.x+objectW/2,pos.y+objectW/2+10,objectW,objectW);
        
+       //gun turret
        fill(255,100,100);
-       stroke(255,100,100);
-       rect(pos.x+10,pos.y+10,objectW-20,objectW-20);
+       rect(pos.x+objectW*.15,pos.y+objectW*.35,objectW*.15,objectW);
+       rect(pos.x+objectW*.85,pos.y+objectW*.35,-objectW*.15,objectW);
        
-       stroke(0);
-       fill(255,0,0);
-       ellipse(pos.x+(objectW/2),pos.y+(objectW/2),30,30);
        
-       fill(255,100,100);
-       rect(pos.x+20,pos.y+20,objectW-40,objectW-10);
+       //healthbar
+       fill(0,255,0);
+       rect(pos.x,pos.y,map(health,0,maxhealth,0,objectW),10);
 
      }
        

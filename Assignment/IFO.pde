@@ -1,8 +1,9 @@
 class IFO extends GameObject
 {
   IFO()
-  {
-    health=10;
+  { 
+    maxhealth=10;
+    health=maxhealth;
   }
   
    //draws the tank object
@@ -13,17 +14,20 @@ class IFO extends GameObject
      //this will place the tank in a slot rather than the actual position chosen by the user
      lane=(int)pos.x/(int)objectW;
      pos.x=lane*objectW;
-     
-     //this is to ensure that the check lane is for objs placed and not for the object in the objMenu
-     if(lane<objNum)
-     {
-       laneCheck[lane]=true; 
-     }
     
      fill(0,0,255);
      ellipse(pos.x+(objectW/2),pos.y-(objectW/2),objectW,objectW);
      fill(150,150,255);
      ellipse(pos.x+(objectW/2),pos.y-(objectW/2),objectW/2,objectW/2);
+     
+      //this is to ensure that the check lane is for objs placed and not for the object in the objMenu
+     if(lane<objNum)
+     {
+       laneCheck[lane]=true;
+       //healthbar
+       fill(0,255,0);
+       rect(pos.x,pos.y,map(health,0,maxhealth,0,objectW),10);
+     }
  
      
    } 

@@ -47,7 +47,14 @@ class Battlefield
            float y=height-objectW;
            
            rect(x,y,objectW,objectW); 
-           
+          }
+          if(mouseY>height-objectW && mouseX<width-objectW)
+          {
+             int lane=(int)map(mouseX,0,width,0,11);
+             lane=(int)(lane*objectW);
+             fill(255,255,255,100);
+             rect(lane,height,objectW,-height);
+             
           }
        }
      
@@ -59,7 +66,7 @@ class Battlefield
 
       if(objArray.size()<objNum)
       {
-        if(tankAllowed)
+        if(objAllowed)
         {
            obmenu.objChosen();
         }

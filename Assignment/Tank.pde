@@ -5,7 +5,8 @@ class Tank extends GameObject
 
    Tank()
    {
-      health=10;
+      maxhealth=10;
+      health=maxhealth;
    }
    
    //draws the tank object
@@ -17,21 +18,27 @@ class Tank extends GameObject
      lane=(int)pos.x/(int)objectW;
      pos.x=lane*objectW;
      
+     fill(0,0,255);
+     //left wheel
+     rect(pos.x,pos.y-objectW,objectW*.25,objectW);
+     //right wheel
+     rect(pos.x+objectW*.75,pos.y-objectW,objectW*.25,objectW);
+     
+     //gun turret
+     fill(150,150,255);
+     ellipse(pos.x+(objectW/2),pos.y-(objectW/2),objectW,objectW);
+     fill(0,0,255);
+     rect(pos.x+(objectW/4),pos.y-(objectW/2),objectW/2,-objectW);
+     
      //this is to ensure that the check lane is for objs placed and not for the object in the objMenu
      if(lane<objNum)
      {
-       laneCheck[lane]=true; 
+       laneCheck[lane]=true;
+       //healthbar
+       fill(0,255,0);
+       rect(pos.x,pos.y,map(health,0,maxhealth,0,objectW),10);
      }
-     
-     fill(0,0,255);
-     rect(pos.x,pos.y-objectW,objectW,objectW);
-
-     fill(150,150,255);
-     ellipse(pos.x+(objectW/2),pos.y-(objectW/2),objectW,objectW);
-     
     
-    fill(0,0,255);
-    rect(pos.x+(objectW/4),pos.y-(objectW/2),objectW/2,-objectW);
      
    } 
    

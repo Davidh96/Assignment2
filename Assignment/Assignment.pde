@@ -14,7 +14,7 @@ void setup()
 }
 
 boolean objectChosen=false;
-boolean tankAllowed=true;
+boolean objAllowed=true;
 float objectW;
 int objNum=10;
 int lanes=11;
