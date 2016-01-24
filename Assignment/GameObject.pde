@@ -7,7 +7,7 @@ abstract class GameObject
   ArrayList<Bullet> blArray = new ArrayList<Bullet>();
   int lane;
   boolean placedinSlot=false;
-   int frame=0;
+  int frame=0;
   
   GameObject()
   {

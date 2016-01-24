@@ -20,6 +20,7 @@ int objNum=10;
 int lanes=11;
 int stars=100;
 
+
 boolean laneCheck[] = new boolean[objNum];
 
 ObjectMenu obmenu=new ObjectMenu();
@@ -31,6 +32,8 @@ ArrayList<Star> stArray = new ArrayList<Star>();
 ArrayList<GameObject> objArray = new ArrayList<GameObject>();
 //An array list for my towers
 ArrayList<Tower> twArray = new ArrayList<Tower>();
+//An array list for my capture probes
+ArrayList<Probe> prArray=new ArrayList<Probe>();
 
 void draw()
 {
@@ -58,14 +61,15 @@ void draw()
   {
     objArray.get(i).placeObj();
   }
+
+  //call the capture function from a random tower
+  twArray.get((int)random(0,10)).capture();
   
   //displays the battleline
   bkground.battleLine();
   
   //display objects to select from
   obmenu.objMenu();
-  
-  println(twArray.get(0).blArray.size());
 
 }
 
