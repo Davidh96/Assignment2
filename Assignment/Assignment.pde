@@ -22,6 +22,7 @@ int stars=100;
 
 
 boolean laneCheck[] = new boolean[objNum];
+boolean laneCaptured[] = new boolean[objNum];
 
 ObjectMenu obmenu=new ObjectMenu();
 Battlefield bkground=new Battlefield();
@@ -61,7 +62,7 @@ void draw()
   {
     objArray.get(i).placeObj();
   }
-
+ 
   //call the capture function from a random tower
   twArray.get((int)random(0,10)).capture();
   
@@ -70,6 +71,7 @@ void draw()
   
   //display objects to select from
   obmenu.objMenu();
+  
 
 }
 

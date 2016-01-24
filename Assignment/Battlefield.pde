@@ -16,6 +16,17 @@ class Battlefield
       background(0);
       fill(255);
       stroke(255);
+      
+      for(int i=0;i<laneCaptured.length;i++)
+      {
+        //if a lane has been captured
+        if(laneCaptured[i]==true)
+            {
+               fill(255,0,0,100);
+               stroke(255,0,0);
+               rect(i*objectW,height,objectW,-height);
+            }
+      }
    }
    
    //draws the battleLine/enemies line of sight

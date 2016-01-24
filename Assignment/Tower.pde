@@ -18,7 +18,6 @@ abstract class Tower
   //this method will try and capture a lane
   void capture()
   {
-
       if(prArray.size()<5)
       {
         Probe probe=new Probe(pos.x,pos.y);
@@ -36,8 +35,8 @@ abstract class Tower
           //if rand1 and rand2 are not the same 
           else
           {
-             //wait 250 frames
-             if(time==250)
+             //wait 120 frames
+             if(time==120)
              {
              //before removing the probe from the array list and trying to get the same random numbers again
              prArray.remove(i);
