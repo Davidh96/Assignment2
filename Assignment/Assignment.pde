@@ -64,6 +64,8 @@ void draw()
   
   //display objects to select from
   obmenu.objMenu();
+  
+  println(twArray.get(0).blArray.size());
 
 }
 

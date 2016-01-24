@@ -10,6 +10,7 @@ class IFO extends GameObject
    void render()
    {
      stroke(0);
+     
        
      //this will place the tank in a slot rather than the actual position chosen by the user
      lane=(int)pos.x/(int)objectW;
@@ -35,6 +36,7 @@ class IFO extends GameObject
    void move()
    {
      int move=3;
+     
        //if the tank has been placed, it will move to the battleline
        if(placedinSlot==true)
        {

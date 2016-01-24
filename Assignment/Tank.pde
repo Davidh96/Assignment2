@@ -1,8 +1,6 @@
 class Tank extends GameObject
 {
 
-   
-
    Tank()
    {
       maxhealth=10;
@@ -45,6 +43,7 @@ class Tank extends GameObject
    void move()
    {
      int move=1;
+     
        //if the tank has been placed, it will move to the battleline
        if(placedinSlot==true)
        {

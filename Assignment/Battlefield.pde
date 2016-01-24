@@ -83,7 +83,7 @@ class Battlefield
          //create 10 towers
          for(int i=0;i<objNum;i++)
          {
-            Tower tower = new Tower(i);
+            Turret tower = new Turret(i);
             twArray.add(tower);
           }
           
