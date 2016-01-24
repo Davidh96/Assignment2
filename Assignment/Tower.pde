@@ -9,6 +9,7 @@ abstract class Tower
   int lane;
   int maxhealth;
   int time=0;
+  boolean laneCleared=false;
   
   
   abstract void render();

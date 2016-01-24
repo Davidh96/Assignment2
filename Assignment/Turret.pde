@@ -88,7 +88,8 @@ class Turret extends Tower
      //if health is below 1 then the tower has been destroyed
      if(health<1)
      {
-       destroyed=true; 
+       destroyed=true;
+       laneCleared=true;
      }  
       
    }

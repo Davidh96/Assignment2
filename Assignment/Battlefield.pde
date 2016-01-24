@@ -17,15 +17,22 @@ class Battlefield
       fill(255);
       stroke(255);
       
-      for(int i=0;i<laneCaptured.length;i++)
+      for(int i=0;i<twArray.size();i++)
       {
         //if a lane has been captured
         if(laneCaptured[i]==true)
-            {
-               fill(255,0,0,100);
-               stroke(255,0,0);
-               rect(i*objectW,height,objectW,-height);
-            }
+        {
+           fill(255,0,0,100);
+           stroke(255,0,0);
+           rect(i*objectW,height,objectW,-height);
+        }
+        //if the player has cleared the lane
+        if(twArray.get(i).laneCleared)
+        {
+           fill(0,0,255,100);
+           stroke(0,0,255);
+           rect(i*objectW,height,objectW,-height);
+        }
       }
    }
    
