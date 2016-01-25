@@ -29,6 +29,10 @@ class ObjectMenu
     lineman.pos=new PVector(menuLane,objectW*3);
     lineman.render();
     
+    Bomber bomber = new Bomber();
+    bomber.pos=new PVector(menuLane,objectW*4);
+    bomber.render();
+    
   }
   
   void objChosen()
@@ -51,6 +55,13 @@ class ObjectMenu
     {
        Lineman lineman = new Lineman();
        objArray.add(lineman);
+       objectChosen=true;
+       objAllowed=false; 
+    }
+     if(mouseY<=objectW*4 && mouseY>objectW*3)
+    {
+       Bomber bomber = new Bomber();
+       objArray.add(bomber);
        objectChosen=true;
        objAllowed=false; 
     }

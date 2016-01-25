@@ -47,7 +47,6 @@ class Lineman extends GameObject
            frame=0;
            }
            frame++;
-           println(frame);
          }
     }
      
