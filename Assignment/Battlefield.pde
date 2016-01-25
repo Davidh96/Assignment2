@@ -41,7 +41,7 @@ class Battlefield
    {
       stroke(255);
       objectW=(float)width/lanes;
-      line(0,height/2,width-objectW,height/2);
+      line(0,bLineY,width-objectW,bLineY);
    }
    
    //this method displays where an object can be placed

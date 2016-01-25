@@ -25,6 +25,10 @@ class ObjectMenu
     mIFO.pos=new PVector(menuLane,objectW*2);
     mIFO.render();
     
+    Lineman lineman = new Lineman();
+    lineman.pos=new PVector(menuLane,objectW*3);
+    lineman.render();
+    
   }
   
   void objChosen()
@@ -40,6 +44,13 @@ class ObjectMenu
     {
        IFO ifo=new IFO();
        objArray.add(ifo);
+       objectChosen=true;
+       objAllowed=false; 
+    }
+    if(mouseY<=objectW*3 && mouseY>objectW*2)
+    {
+       Lineman lineman = new Lineman();
+       objArray.add(lineman);
        objectChosen=true;
        objAllowed=false; 
     }

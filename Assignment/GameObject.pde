@@ -14,10 +14,9 @@ abstract class GameObject
      objectW=((float)600)/lanes;
   }
   
-  //This method deals with the placement of a tank
+  //This method deals with the placement of an obj
    void placeObj()
    {
- 
      if(mouseY>height-objectW && mouseX<width-objectW)
      {
         if(mousePressed)
@@ -64,6 +63,5 @@ abstract class GameObject
    
   
   abstract void render();
-  abstract void shoot();
   abstract void move();
 }

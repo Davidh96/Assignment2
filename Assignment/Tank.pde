@@ -12,7 +12,7 @@ class Tank extends GameObject
    {
      stroke(0);
        
-     //this will place the tank in a slot rather than the actual position chosen by the user
+    //this will place the tank in a slot rather than the actual position chosen by the user
      lane=(int)pos.x/(int)objectW;
      pos.x=lane*objectW;
      
@@ -48,14 +48,17 @@ class Tank extends GameObject
        if(placedinSlot==true)
        {
          render(); 
-         if(pos.y>(height/2))
+        if(pos.y>(height/2))
          {
            pos.y-=move;
          }
-         if(pos.y<=(height/2))
+         if(pos.y<=(bLineY))
          {
             twArray.get(lane).shoot(pos.y); 
-            shoot();
+         }
+         if(pos.y<=height/2)
+         {
+          shoot(); 
          }
          else
          {

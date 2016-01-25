@@ -5,6 +5,7 @@ void setup()
 {
   size(600,650);
   objectW=width/lanes;
+  bLineY=height/2;
   
   for(int i=0;i<stars;i++)
   {
@@ -19,8 +20,8 @@ float objectW;
 int objNum=10;
 int lanes=11;
 int stars=100;
-
-
+float bLineY;
+                                                                                                                                                                                                                                                                                  
 boolean laneCheck[] = new boolean[objNum];
 boolean laneCaptured[] = new boolean[objNum];
 
@@ -72,7 +73,6 @@ void draw()
   //display objects to select from
   obmenu.objMenu();
   
-
 }
 
 void mouseReleased()
