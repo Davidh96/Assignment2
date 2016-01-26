@@ -3,8 +3,9 @@
 
 void setup()
 {
+
   size(600,650);
-  objectW=width/lanes;
+  objectW=width/(float)lanes;
   bLineY=height/2;
   
   for(int i=0;i<stars;i++)
@@ -23,7 +24,9 @@ int stars=100;
 float bLineY;
                                                                                                                                                                                                                                                                                   
 boolean laneCheck[] = new boolean[objNum];
+
 boolean laneCaptured[] = new boolean[objNum];
+boolean laneCleared[]=new boolean[objNum];
 
 ObjectMenu obmenu=new ObjectMenu();
 Battlefield bkground=new Battlefield();
@@ -65,14 +68,14 @@ void draw()
   }
  
   //call the capture function from a random tower
-  twArray.get((int)random(0,10)).capture();
+  twArray.get((int)random(0,twArray.size())).capture();
   
   //displays the battleline
   bkground.battleLine();
   
   //display objects to select from
   obmenu.objMenu();
-  
+
 }
 
 void mouseReleased()

@@ -19,7 +19,7 @@ class Probe
    void render()
    {
       //if lane not yet captured
-      if(laneCaptured[lane]==false && twArray.get(lane).laneCleared==false)
+      if(laneCaptured[lane]==false && laneCleared[lane]==false)
       {
         float move=2;
   

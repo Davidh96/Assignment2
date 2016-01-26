@@ -15,7 +15,7 @@ class ObjectMenu
    
     void objMenu()
   {
-    float menuLane=width-objectW;
+    float menuLane=(float)width-(float)objectW;
     
     Tank mTank=new Tank();
     mTank.pos=new PVector(menuLane,objectW);

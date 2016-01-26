@@ -1,20 +1,16 @@
 abstract class Tower 
 {
-  boolean destroyed=false; 
   int frame=0;
-  float objectW=width/(float)lanes;
   PVector pos;
   int health;
   ArrayList<Bullet> blArray = new ArrayList<Bullet>();
   int lane;
   int maxhealth;
   int time=0;
-  boolean laneCleared=false;
-  
   
   abstract void render();
-  abstract void shoot(float tkY);
-  abstract void takeDamage();
+  abstract void shoot(int k);
+
   
   //this method will try and capture a lane
   void capture()
@@ -46,9 +42,22 @@ abstract class Tower
              time++;
           }
         }
-        
-   
-    
+
   }
+  
+     void takeDamage()
+   {
+     //decrease health by 1
+     health--;
+
+     
+     //if health is below 1 then the tower has been destroyed
+     if(health<1)
+     {
+       laneCleared[lane]=true;
+       twArray.remove(this);
+       
+     } 
+   }
   
 }

@@ -52,13 +52,9 @@ class Tank extends GameObject
          {
            pos.y-=move;
          }
-         if(pos.y<=(bLineY))
-         {
-            twArray.get(lane).shoot(pos.y); 
-         }
          if(pos.y<=height/2)
          {
-          shoot(); 
+          detect(); 
          }
          else
          {
@@ -70,55 +66,52 @@ class Tank extends GameObject
                }
             }
          }
+         
        }
      
+   }
+   
+   //This method is used to detect wheth an object should be fired at
+   void detect()
+   {
+      for(int i=0;i<twArray.size();i++)
+      {
+         if(twArray.get(i).lane==lane)
+         {
+            shoot(i); 
+         } 
+      } 
    }
    
    //This method shoots bullets from the tank
-   void shoot()
+   void shoot(int k)
    {
-    //if the tower infront has not been destroyed  
-   if(twArray.get(lane).destroyed==false)
-     {
-       if(pos.y<(float)(width/2)+objectW)
-       {
-           //after 1 secnd create a bullet
-           if(frame>50)
-           {
-             Bullet bullet = new Bullet(pos.x,pos.y-objectW);
-             blArray.add(bullet);
-             //reset timer
-             frame=0;
-           }
-          
-          //render all bullets in the blArray
-          for(int i=0;i<blArray.size();i++)
-          {
-            boolean friendly=true;
-            blArray.get(i).render(friendly);
-          } 
-          //a frame has passed
-          frame++;
 
-          
-       }
-     for(int i=0;i<blArray.size();i++)
-     {
-       blArray.get(i).pos.y-=2;
-     
-       if(blArray.get(i).pos.y<objectW)
-       {
-         //this method will remove the bullet from the blArray
-          blArray.remove(i);
-          //this will tell the tower that it took damage and to decrease its health
-          twArray.get(lane).takeDamage();
-       }
-     }
+      if(frame==40)
+      {
+        Bullet Bullet = new Bullet(pos.x,pos.y-objectW);
+        blArray.add(Bullet);
+        frame=0;
+      }
       
-    }
-   }
-   
-   
-   
+      frame++;
+          
+          for(int i=0;i<blArray.size();i++)
+         {
+             boolean friendly=true;
+             blArray.get(i).render(friendly);
+             blArray.get(i).pos.y-=2;
+         
+             if(blArray.get(i).pos.y<objectW)
+             {
+
+                    //object takes damage
+                    twArray.get(k).takeDamage();
+                 
+                blArray.remove(i); 
+             }
+         }
+      }
+     
    
 }

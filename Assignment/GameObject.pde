@@ -1,6 +1,5 @@
 abstract class GameObject
 {
-  float objectW;
   PVector pos;
   int health;
   int maxhealth;
@@ -8,11 +7,6 @@ abstract class GameObject
   int lane;
   boolean placedinSlot=false;
   int frame=0;
-  
-  GameObject()
-  {
-     objectW=((float)600)/lanes;
-  }
   
   //This method deals with the placement of an obj
    void placeObj()

@@ -1,13 +1,9 @@
 class Battlefield
 {
-   float starSize;
-   float objectW;
    boolean twCreated=false;
 
    Battlefield()
    {
-      starSize=2;
-      
    }
    
    //this method creates the moving background
@@ -17,7 +13,7 @@ class Battlefield
       fill(255);
       stroke(255);
       
-      for(int i=0;i<twArray.size();i++)
+      for(int i=0;i<objNum;i++)
       {
         //if a lane has been captured
         if(laneCaptured[i]==true)
@@ -27,7 +23,7 @@ class Battlefield
            rect(i*objectW,height,objectW,-height);
         }
         //if the player has cleared the lane
-        if(twArray.get(i).laneCleared)
+        if(laneCleared[i])
         {
            fill(0,0,255,100);
            stroke(0,0,255);

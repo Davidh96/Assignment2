@@ -18,8 +18,7 @@ class Turret extends Tower
    //draws the tower object
    void render()
    {
-     if(destroyed==false)
-     {
+
        fill(255,0,0);
        stroke(0);
        ellipse(pos.x+objectW/2,pos.y+objectW/2+10,objectW,objectW);
@@ -33,64 +32,71 @@ class Turret extends Tower
        //healthbar
        fill(0,255,0);
        rect(pos.x,pos.y,map(health,0,maxhealth,0,objectW),10);
+       
+       detect();
 
-     }
        
    }
    
-   //this creates bllets and shoots at tanks
-   void shoot(float tkY)
+   //This method is used to detect wheth an object should be fired at
+   void detect()
    {
-    
-     if(destroyed==false)
-     {
-        if(frame==25)
+      for(int i=0;i<objArray.size();i++)
+      {
+        //if the object has been placed, prevents program from crashing
+        if(objArray.get(i).placedinSlot==true)
         {
-          Bullet Bullet = new Bullet(pos.x,pos.y+objectW);
-          blArray.add(Bullet);
-          frame=0;
-        }
-        
-         frame++;
-          
-          for(int i=0;i<blArray.size();i++)
+          //if an object is in the same lane
+         if(objArray.get(i).lane==lane)
          {
-             boolean friendly=false;
-             blArray.get(i).render(friendly);
-             blArray.get(i).pos.y+=2;
-             
-             if(blArray.get(i).pos.y>=tkY-objectW)
+           //if the object is past the bLineY
+           if(objArray.get(i).pos.y<=bLineY)
+           {
+             //this is to ensure that the towers will nly shoot at tanks and ifos
+             if(objArray.get(i) instanceof Tank || objArray.get(i) instanceof IFO)
              {
-               //go through the array of tanks
-               for(int j=0;j<objArray.size();j++)
-               {
-                 //will check if the object has actually been given a position on the screen
-                 if(objArray.get(j).placedinSlot==true)
-                 {
-                   //if the bullet and object are in the same lane
-                  if(lane==objArray.get(j).lane)
-                  {
-                    //object takes damage
-                    objArray.get(j).takeDamage();
-                  }
-                 }
-               }
-                blArray.remove(i); 
+                shoot(i); 
              }
+           }
          }
+        }
       }
    }
-   void takeDamage()
+   
+   //this creates bllets and shoots at tanks
+   void shoot(int k)
    {
-     //decrease health by 1
-     health--;
-     
-     //if health is below 1 then the tower has been destroyed
-     if(health<1)
-     {
-       destroyed=true;
-       laneCleared=true;
-     }  
+      //create a bullet every 25 frames
+      if(frame==25)
+      {
+        Bullet Bullet = new Bullet(pos.x,pos.y+objectW);
+        blArray.add(Bullet);
+        frame=0;
+      }
       
-   }
+      frame++;
+        
+        //go through every bullet in the array
+       for(int i=0;i<blArray.size();i++)
+       {
+           //will set the bullet to be red when friendly is false
+           boolean friendly=false;
+           blArray.get(i).render(friendly);
+           
+           //move pos.y +2
+           blArray.get(i).pos.y+=2;
+  
+           if(blArray.get(i).pos.y>height/2-objectW)
+           {
+              //object takes damage
+              objArray.get(k).takeDamage();
+              blArray.remove(i); 
+           }
+       
+       }
+    }
+   
+ 
+      
+
 }
