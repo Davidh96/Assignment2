@@ -13,7 +13,8 @@ class Mech extends Tower
    //draws the tower object
    void render()
    {
-
+       stroke(0);
+       
        fill(255,100,100);
        rect(pos.x,pos.y+10,objectW,objectW/2);
        

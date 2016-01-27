@@ -50,9 +50,14 @@ abstract class GameObject
      if(health<1)
      { 
        laneCheck[lane]=false;
-       objArray.remove(this);
+       destroy();
      } 
      
+   }
+   
+   void destroy()
+   {
+     objArray.remove(this);
    }
    
   
