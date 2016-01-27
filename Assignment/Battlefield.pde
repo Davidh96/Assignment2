@@ -107,19 +107,49 @@ class Battlefield
            }
            if(createMedusa[i])
            {
-                Medusa medusa = new Medusa(i);
-                twArray.add(medusa);
-                //all towers are created
-                twCreated[i]=true;
-                createMedusa[i]=false;
+             //to prevent out of bounds issues
+             if(i<9)
+             {
+               //if the tower up one also allows for a medusa
+               if(createMedusa[i+1])
+               {
+                  Medusa medusa1 = new Medusa(i);
+                  twArray.add(medusa1);
+                  //all towers are created
+                  twCreated[i]=true;
+                  createMedusa[i]=false;
+                  
+                  Medusa medusa2 = new Medusa(i+1);
+                  twArray.add(medusa2);
+                  //all towers are created
+                  twCreated[i]=true;
+                  createMedusa[i]=false;
+               }
+             }
+             //to prevent out of bounds issues
+             if(i>0)
+             {
+               //if the tower down one also allows for a medusa
+               if(createMedusa[i-1])
+               {
+                 Medusa medusa1 = new Medusa(i);
+                  twArray.add(medusa1);
+                  //all towers are created
+                  twCreated[i]=true;
+                  createMedusa[i]=false;
+                  
+                  Medusa medusa2 = new Medusa(i-1);
+                  twArray.add(medusa2);
+                  //all towers are created
+                  twCreated[i]=true;
+                  createMedusa[i]=false;
+               }
+                
+            }
            }
          }
            
-          
-          
-          
 
-     
      //renders all the towers that need to be rendered
      for(int i=0;i<twArray.size();i++)
      {
