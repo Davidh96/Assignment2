@@ -1,6 +1,5 @@
 class Battlefield
 {
-   boolean twCreated=false;
 
    Battlefield()
    {
@@ -91,19 +90,26 @@ class Battlefield
    //This method will create the towers
    void createTower()
    {
-      //if the towers have not been created yet
-     if(twCreated==false)
-     {
-         //create 10 towers
+
+    //create 10 towers
          for(int i=0;i<objNum;i++)
          {
-            Turret tower = new Turret(i);
-            twArray.add(tower);
-          }
+           if(createMech[i])
+           {
+             if(twCreated[i]==false)
+             {
+                Mech mech = new Mech(i);
+                twArray.add(mech);
+                //all towers are created
+                twCreated[i]=true;
+             }
+           }
+         }
+           
           
-          //all towers are created
-          twCreated=true;
-     }
+          
+          
+
      
      //renders all the towers that need to be rendered
      for(int i=0;i<twArray.size();i++)

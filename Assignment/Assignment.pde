@@ -3,7 +3,6 @@
 
 void setup()
 {
-
   size(600,650);
   objectW=width/(float)lanes;
   bLineY=height/2;
@@ -13,6 +12,14 @@ void setup()
      Star star = new Star();
      stArray.add(star);
   }
+         //create 10  initial towers
+         for(int i=0;i<objNum;i++)
+         {
+            Turret turret = new Turret(i);
+            twArray.add(turret);
+            //all towers are created
+            twCreated[i]=true;
+         }
 }
 
 boolean objectChosen=false;
@@ -24,6 +31,8 @@ int stars=100;
 float bLineY;
                                                                                                                                                                                                                                                                                   
 boolean laneCheck[] = new boolean[objNum];
+boolean twCreated[]=new boolean [objNum];
+boolean createMech[]=new boolean [objNum];
 
 boolean laneCaptured[] = new boolean[objNum];
 boolean laneCleared[]=new boolean[objNum];
@@ -75,6 +84,7 @@ void draw()
   
   //display objects to select from
   obmenu.objMenu();
+  
 
 }
 
