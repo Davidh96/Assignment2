@@ -55,7 +55,14 @@ abstract class Tower
      if(health<1)
      {
        //laneCleared[lane]=true;
-       createMech[lane]=true;
+       if(this instanceof Turret)
+       {
+         createMech[lane]=true;
+       }
+       if(this instanceof Mech)
+       {
+         createMedusa[lane]=true;
+       }
        twCreated[lane]=false;
        
        twArray.remove(this);

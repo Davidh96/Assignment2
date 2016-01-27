@@ -34,6 +34,8 @@ float bLineY;
 boolean laneCheck[] = new boolean[objNum];
 boolean twCreated[]=new boolean [objNum];
 boolean createMech[]=new boolean [objNum];
+boolean createMedusa[]=new boolean [objNum];
+
 
 boolean laneCaptured[] = new boolean[objNum];
 boolean laneCleared[]=new boolean[objNum];

@@ -96,13 +96,22 @@ class Battlefield
          {
            if(createMech[i])
            {
-             if(twCreated[i]==false)
+             if(twCreated[i]==false && createMech[i])
              {
                 Mech mech = new Mech(i);
                 twArray.add(mech);
                 //all towers are created
                 twCreated[i]=true;
+                createMech[i]=false;
              }
+           }
+           if(createMedusa[i])
+           {
+                Medusa medusa = new Medusa(i);
+                twArray.add(medusa);
+                //all towers are created
+                twCreated[i]=true;
+                createMedusa[i]=false;
            }
          }
            
