@@ -1,10 +1,11 @@
 class Mech extends Tower
 {
+  boolean armSwitch=true;
    Mech(int i)
    {
       pos=new PVector(i*objectW,0);
       lane=(int)map(pos.x,0,width,0,11);
-      maxhealth=15;
+      maxhealth=30;
       health=maxhealth;
    }
    //draws the tower object
@@ -12,7 +13,10 @@ class Mech extends Tower
    {
 
        fill(255,0,0);
-       rect(pos.x,pos.y,objectW,objectW);
+       rect(pos.x,pos.y+10,objectW,objectW/2);
+       //arms
+       rect(pos.x,pos.y+10,10,objectW);
+       rect(pos.x+objectW,pos.y,-10,objectW+10);
        
        //healthbar
        fill(0,255,0);
@@ -52,9 +56,21 @@ class Mech extends Tower
    void shoot(int k)
    {
       //create a bullet every 25 frames
-      if(frame==25)
+      if(frame==20)
       {
-        Bullet Bullet = new Bullet(pos.x,pos.y+objectW);
+        float arm;
+        
+        if(armSwitch)
+        {
+          arm=pos.x-(objectW/2);
+          armSwitch=false;
+        }
+        else
+        {
+          arm=pos.x+(objectW/2);
+          armSwitch=true;
+        }
+        Bullet Bullet = new Bullet(arm,pos.y+objectW);
         blArray.add(Bullet);
         frame=0;
       }
