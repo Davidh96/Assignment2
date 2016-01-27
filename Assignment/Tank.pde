@@ -56,16 +56,6 @@ class Tank extends GameObject
          {
           detect(); 
          }
-         else
-         {
-            if(twArray.get(lane).blArray.size()>0)
-            {
-               for(int i=0;i<twArray.get(lane).blArray.size();i++)
-               {
-                 twArray.get(lane).blArray.remove(i);
-               }
-            }
-         }
          
        }
      

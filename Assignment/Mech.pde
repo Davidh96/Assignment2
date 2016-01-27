@@ -12,44 +12,21 @@ class Mech extends Tower
    void render()
    {
 
-       fill(255,0,0);
+       fill(255,100,100);
        rect(pos.x,pos.y+10,objectW,objectW/2);
+       
+       fill(255,0,0);
        //arms
        rect(pos.x,pos.y+10,10,objectW);
        rect(pos.x+objectW,pos.y,-10,objectW+10);
+       
+       ellipse(pos.x+objectW/2,pos.y+objectW/2,objectW/3,objectW/3);
        
        //healthbar
        fill(0,255,0);
        rect(pos.x,pos.y,map(health,0,maxhealth,0,objectW),10);
        
        detect();
-
-       
-   }
-   
-   //This method is used to detect wheth an object should be fired at
-   void detect()
-   {
-      for(int i=0;i<objArray.size();i++)
-      {
-        //if the object has been placed, prevents program from crashing
-        if(objArray.get(i).placedinSlot==true)
-        {
-          //if an object is in the same lane
-         if(objArray.get(i).lane==lane)
-         {
-           //if the object is past the bLineY
-           if(objArray.get(i).pos.y<=bLineY)
-           {
-             //this is to ensure that the towers will nly shoot at tanks and ifos
-             if(objArray.get(i) instanceof Tank || objArray.get(i) instanceof IFO)
-             {
-                shoot(i); 
-             }
-           }
-         }
-        }
-      }
    }
    
    //this creates bllets and shoots at tanks

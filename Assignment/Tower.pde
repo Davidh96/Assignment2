@@ -62,5 +62,37 @@ abstract class Tower
        
      } 
    }
+   
+   //This method is used to detect wheth an object should be fired at
+   void detect()
+   {
+      for(int i=0;i<objArray.size();i++)
+      {
+        //if the object has been placed, prevents program from crashing
+        if(objArray.get(i).placedinSlot==true)
+        {
+          //if an object is in the same lane
+         if(objArray.get(i).lane==lane)
+         {
+           //if the object is past the bLineY
+           if(objArray.get(i).pos.y<=bLineY)
+           {
+             //this is to ensure that the towers will nly shoot at tanks and ifos
+             if(objArray.get(i) instanceof Tank || objArray.get(i) instanceof IFO)
+             {
+                shoot(i); 
+             }
+           }
+           else
+           {
+              for(int j=0;j<blArray.size();j++)
+              {
+                 blArray.remove(j); 
+              }
+           }
+         }
+        }
+      }
+   }
   
 }

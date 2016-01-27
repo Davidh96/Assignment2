@@ -12,14 +12,15 @@ void setup()
      Star star = new Star();
      stArray.add(star);
   }
-         //create 10  initial towers
-         for(int i=0;i<objNum;i++)
-         {
-            Turret turret = new Turret(i);
-            twArray.add(turret);
-            //all towers are created
-            twCreated[i]=true;
-         }
+  
+   //create 10  initial towers
+   for(int i=0;i<objNum;i++)
+   {
+      Turret turret = new Turret(i);
+      twArray.add(turret);
+      //all towers are created
+      twCreated[i]=true;
+   }
 }
 
 boolean objectChosen=false;
