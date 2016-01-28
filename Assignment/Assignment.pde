@@ -92,6 +92,8 @@ void draw()
   //display objects to select from
   obmenu.objMenu();
   
+  callMotherShip(); 
+  
 
 }
 
@@ -102,4 +104,19 @@ void mouseReleased()
        //This will ensure that only +1 object is created
        bkground.createObj(); 
       }
+}
+
+//Will create a mother ship,the final boss
+void callMotherShip()
+{
+    //only created once all other ships are destroyed 
+    if(twArray.size()<1)
+    {
+      for(int i=0;i<objNum;i++)
+      {
+       MotherShip mShip = new MotherShip(i);
+       twArray.add(mShip);
+      }
+    }
+    
 }

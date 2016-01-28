@@ -67,6 +67,11 @@ abstract class Tower
          twCreated[lane]=false;
          twArray.remove(this);
        }
+       if(this instanceof MotherShip)
+       {
+          twArray.remove(this); 
+       }
+      
 
        
      } 
