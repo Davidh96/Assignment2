@@ -105,20 +105,25 @@ class Battlefield
                 createMech[i]=false;
              }
            }
-           if(createMedusa[i])
+           //if this lane allows for a medusa to be created and has not been created before
+           if(createMedusa[i] && medusaCreated[i]==false)
            {
              //to prevent out of bounds issues
              if(i<9)
              {
-               //if the tower up one also allows for a medusa
-               if(createMedusa[i+1])
+               //if the tower up one also allows for a medusa andif the tower upone has not ben created already
+               if(createMedusa[i+1] && medusaCreated[i+1]==false)
                {
+                  //medusa has been created and cannot be created again in this lane
+                  medusaCreated[i]=true;
                   Medusa medusa1 = new Medusa(i);
                   twArray.add(medusa1);
                   //all towers are created
                   twCreated[i]=true;
                   createMedusa[i]=false;
                   
+                  //medusa has been created and cannot be created again in this lane
+                  medusaCreated[i+1]=true;
                   Medusa medusa2 = new Medusa(i+1);
                   twArray.add(medusa2);
                   //all towers are created
@@ -126,29 +131,9 @@ class Battlefield
                   createMedusa[i]=false;
                }
              }
-             //to prevent out of bounds issues
-             if(i>0)
-             {
-               //if the tower down one also allows for a medusa
-               if(createMedusa[i-1])
-               {
-                 Medusa medusa1 = new Medusa(i);
-                  twArray.add(medusa1);
-                  //all towers are created
-                  twCreated[i]=true;
-                  createMedusa[i]=false;
-                  
-                  Medusa medusa2 = new Medusa(i-1);
-                  twArray.add(medusa2);
-                  //all towers are created
-                  twCreated[i]=true;
-                  createMedusa[i]=false;
-               }
-                
-            }
            }
+                
          }
-           
 
      //renders all the towers that need to be rendered
      for(int i=0;i<twArray.size();i++)

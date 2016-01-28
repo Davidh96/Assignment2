@@ -35,6 +35,7 @@ boolean laneCheck[] = new boolean[objNum];
 boolean twCreated[]=new boolean [objNum];
 boolean createMech[]=new boolean [objNum];
 boolean createMedusa[]=new boolean [objNum];
+boolean medusaCreated[]=new boolean [objNum];
 
 
 boolean laneCaptured[] = new boolean[objNum];
@@ -79,8 +80,11 @@ void draw()
     objArray.get(i).placeObj();
   }
  
+ if(twArray.size()>0)
+ {
   //call the capture function from a random tower
   twArray.get((int)random(0,twArray.size())).capture();
+ }
   
   //displays the battleline
   bkground.battleLine();

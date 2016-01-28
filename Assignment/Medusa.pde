@@ -66,6 +66,7 @@ class Medusa extends Tower
     //this method controls the destruction of medusa
     void destroy()
     {
+       
        if(health<1)
        {
          //set the healh to 0 so that the health doesnt go into minus values
@@ -75,13 +76,14 @@ class Medusa extends Tower
             //find the index of the medusa half in the next lane
              if(lane==twArray.get(i).lane+1)
              {
-                if(twArray.get(i).health<1)
-                {   
-                    //the two halfs are destroyed
-                    twArray.remove(this);
-                    twArray.remove(i);
-                }
+                  if(twArray.get(i).health<1)
+                  {   
+                      //the two halfs are destroyed
+                      twArray.remove(this);
+                      twArray.remove(i);
+                  }
              }
+
           }
        }
     }
