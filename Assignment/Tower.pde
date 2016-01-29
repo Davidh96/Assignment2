@@ -54,9 +54,10 @@ abstract class Tower
      //if health is below 1 then the tower has been destroyed
      if(health<1)
      {
-       
+
        if(this instanceof Turret)
        {
+         
          createMech[lane]=true;
          twCreated[lane]=false;
          twArray.remove(this);
@@ -67,8 +68,10 @@ abstract class Tower
          twCreated[lane]=false;
          twArray.remove(this);
        }
+       
        if(this instanceof MotherShip)
        {
+          laneCleared[lane]=true;
           twArray.remove(this); 
        }
       

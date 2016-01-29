@@ -92,9 +92,22 @@ void draw()
   //display objects to select from
   obmenu.objMenu();
   
-  callMotherShip(); 
-  
+println(twArray.size());
 
+resetTW();
+
+}
+
+//this will reset towers when there is no towers left, this is to fix issues that were occuring when creating the mothership
+void resetTW()
+{
+  if(twArray.size()<1)
+  {
+     for(int i=0;i<objNum;i++)
+     {
+        twCreated[i]=false; 
+     }
+  }
 }
 
 void mouseReleased()
@@ -104,19 +117,4 @@ void mouseReleased()
        //This will ensure that only +1 object is created
        bkground.createObj(); 
       }
-}
-
-//Will create a mother ship,the final boss
-void callMotherShip()
-{
-    //only created once all other ships are destroyed 
-    if(twArray.size()<1)
-    {
-      for(int i=0;i<objNum;i++)
-      {
-       MotherShip mShip = new MotherShip(i);
-       twArray.add(mShip);
-      }
-    }
-    
 }

@@ -86,11 +86,11 @@ class Battlefield
       }
         
    }
-   
+   int check=0;
    //This method will create the towers
    void createTower()
    {
-
+    check=0;
     //create 10 towers
          for(int i=0;i<objNum;i++)
          {
@@ -120,7 +120,6 @@ class Battlefield
                   twArray.add(medusa1);
                   //all towers are created
                   twCreated[i]=true;
-                  createMedusa[i]=false;
                   
                   //medusa has been created and cannot be created again in this lane
                   medusaCreated[i+1]=true;
@@ -128,12 +127,35 @@ class Battlefield
                   twArray.add(medusa2);
                   //all towers are created
                   twCreated[i]=true;
-                  createMedusa[i]=false;
                }
              }
+              
+           
            }
                 
          }
+         
+             for(int j=0;j<objNum;j++)
+           {
+              if(createMedusa[j])
+              {
+                 check++; 
+              }
+           }
+
+for(int k=0;k<objNum;k++)
+{
+   if(check==10 && twCreated[k]==false)
+   {
+     
+     twCreated[k]=true;
+
+     MotherShip mShip = new MotherShip(k);
+     twArray.add(mShip);
+     
+     
+   }
+}
 
      //renders all the towers that need to be rendered
      for(int i=0;i<twArray.size();i++)
