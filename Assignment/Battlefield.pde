@@ -124,7 +124,7 @@ class Battlefield
             createMech[i]=false;
          }
        }
-       
+
           //if this lane allows for a medusa to be created and has not been created before
          if(createMedusa[i] && medusaCreated[i]==false)
          {
@@ -149,28 +149,33 @@ class Battlefield
            }
          }
               
-       }    
-     }
-     //checks that a mothership can be created, which is only after the creation of a Medusa
-     for(int j=0;j<objNum;j++)
-     {
-        if(createMedusa[j])
-        {
-           check++; 
         }
+       
      }
-
-      for(int k=0;k<objNum;k++)
-      {
-         //check if a mthersip can be created
-         if(check==10 && twCreated[k]==false)
-         {
-           twCreated[k]=true;
-           MotherShip mShip = new MotherShip(k);
-           twArray.add(mShip);
+     if(twArray.size()<1)
+     {
+       //checks that a mothership can be created, which is only after the creation of a Medusa
+       for(int j=0;j<objNum;j++)
+       {
+          if(createMedusa[j])
+          {
+             check++; 
+          }
+       }
   
-         }
+        for(int k=0;k<objNum;k++)
+        {
+           //check if a mthersip can be created
+           if(check==10 && twCreated[k]==false)
+           {
+             twCreated[k]=true;
+             MotherShip mShip = new MotherShip(k);
+             twArray.add(mShip);
+    
+           }
+        }
       }
+      
       //renders all the towers that need to be rendered
       for(int i=0;i<twArray.size();i++)
       {
