@@ -2,11 +2,6 @@
 class Turret extends Tower
 {
   
-  Turret()
-  {
-    
-  }
-   
    Turret(int i)
    {
       pos=new PVector(i*objectW,0);
@@ -71,8 +66,5 @@ class Turret extends Tower
        
        }
     }
-   
- 
-      
 
 }

@@ -2,6 +2,8 @@ class Star
 {
    PVector pos;
    float speed;
+   float starW=10;
+   float starH=5;
    
    Star()
    {
@@ -16,12 +18,12 @@ class Star
      fill(255);
      stroke(255);
      
-     rect(pos.x,pos.y,10,5);
+     rect(pos.x,pos.y,starW,starH);
      
      //change x position by -speed, looks like stars flying by
      pos.x-=speed;
       
-     if(pos.x<0)
+     if(pos.x+starW<0)
      {
         //reset stars to side of screen
         pos.x=width-objectW-10;

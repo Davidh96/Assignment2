@@ -13,7 +13,7 @@ void setup()
      stArray.add(star);
   }
   
-   //create 10  initial towers
+   //create 10  initial towers -turrets
    for(int i=0;i<objNum;i++)
    {
       Turret turret = new Turret(i);
@@ -31,7 +31,7 @@ int lanes=11;
 int stars=100;
 float bLineY;
                                                                                                                                                                                                                                                                                   
-boolean laneCheck[] = new boolean[objNum];
+boolean laneUsed[] = new boolean[objNum];
 boolean twCreated[]=new boolean [objNum];
 boolean createMech[]=new boolean [objNum];
 boolean createMedusa[]=new boolean [objNum];
@@ -91,28 +91,12 @@ void draw()
   
   //display objects to select from
   obmenu.objMenu();
-  
-println(twArray.size());
-
-resetTW();
-
 }
 
-//this will reset towers when there is no towers left, this is to fix issues that were occuring when creating the mothership
-void resetTW()
-{
-  if(twArray.size()<1)
-  {
-     for(int i=0;i<objNum;i++)
-     {
-        twCreated[i]=false; 
-     }
-  }
-}
 
 void mouseReleased()
 {
-       if(mouseX>width-objectW)
+      if(mouseX>width-objectW)
       {
        //This will ensure that only +1 object is created
        bkground.createObj(); 

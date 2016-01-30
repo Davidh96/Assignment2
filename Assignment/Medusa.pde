@@ -11,11 +11,9 @@ class Medusa extends Tower
    //draws the tower object
    void render()
    {
-
        fill(255,0,0);
        stroke(255,0,0);
        rect(pos.x,pos.y+10,objectW,objectW);
-       
        
        //healthbar
        fill(0,255,0);
@@ -23,11 +21,8 @@ class Medusa extends Tower
        rect(pos.x,pos.y,map(health,0,maxhealth,0,objectW),10);
        
        detect();
-       destroy();
-
-       
+       destroy();  
    }
-   
    
    //this creates bllets and shoots at tanks
    void shoot(int k)
@@ -56,7 +51,6 @@ class Medusa extends Tower
            {
               //object takes damage
               objArray.get(k).destroy();
-              laneCheck[lane]=false;
               blArray.remove(i); 
            }
        
@@ -78,6 +72,8 @@ class Medusa extends Tower
              {
                   if(twArray.get(i).health<1)
                   {   
+                      twCreated[lane]=false;
+                      twCreated[lane-1]=false;
                       //the two halfs are destroyed
                       twArray.remove(this);
                       twArray.remove(i);

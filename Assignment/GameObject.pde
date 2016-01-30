@@ -1,12 +1,15 @@
 abstract class GameObject
 {
   PVector pos;
-  int health;
-  int maxhealth;
-  ArrayList<Bullet> blArray = new ArrayList<Bullet>();
   int lane;
   boolean placedinSlot=false;
   int frame=0;
+  int health;
+  int maxhealth;
+  ArrayList<Bullet> blArray = new ArrayList<Bullet>();
+  
+  abstract void render();
+  abstract void move();
   
   //This method deals with the placement of an obj
    void placeObj()
@@ -17,17 +20,22 @@ abstract class GameObject
         {
           //This is an if statement to stop the player from moving the tank once it has been plaed
           if(placedinSlot==false)
-          {
+          {   
+           
+           //this will place the tank in a slot rather than the actual position chosen by the user
+           lane=(int)(mouseX/objectW);
            //give the tank its position
-           pos=new PVector(mouseX,height);
+           pos=new PVector(lane*objectW,height);
+
            
            //checks if the lane already has an object in it
-           if(laneCheck[(int)pos.x/(int)objectW]==false)
+           if(laneUsed[(int)(mouseX/objectW)]==false)
            {
-              //the user has chosen to place the object in  a slot
+             //the user has chosen to place the object in  a slot
              placedinSlot=true;
              objAllowed=true;
              objectChosen=false;
+             laneUsed[(int)(mouseX/objectW)]=true;
            }
 
           }
@@ -49,7 +57,6 @@ abstract class GameObject
      //if health is below 1 then the tower has been destroyed
      if(health<1)
      { 
-       laneCheck[lane]=false;
        destroy();
      } 
      
@@ -57,10 +64,8 @@ abstract class GameObject
    
    void destroy()
    {
+     laneUsed[lane]=false;
      objArray.remove(this);
    }
-   
   
-  abstract void render();
-  abstract void move();
 }

@@ -1,56 +1,49 @@
 class IFO extends GameObject
 {
-  IFO()
-  { 
-    maxhealth=10;
-    health=maxhealth;
-  }
+    
+    IFO()
+    { 
+      maxhealth=10;
+      health=maxhealth;
+    }
   
    //draws the tank object
    void render()
    {
      stroke(0);
-
-     //this will place the tank in a slot rather than the actual position chosen by the user
-     lane=(int)pos.x/(int)objectW;
-     pos.x=lane*objectW;
     
      fill(0,0,255);
      ellipse(pos.x+(objectW/2),pos.y-(objectW/2),objectW,objectW);
      fill(150,150,255);
      ellipse(pos.x+(objectW/2),pos.y-(objectW/2),objectW/2,objectW/2);
      
-      //this is to ensure that the check lane is for objs placed and not for the object in the objMenu
-     if(lane<objNum)
+     //this is to ensure that the check lane is for objs placed and not for the object in the objMenu
+     if(placedinSlot)
      {
-       laneCheck[lane]=true;
        //healthbar
        fill(0,255,0);
        rect(pos.x,pos.y,map(health,0,maxhealth,0,objectW),10);
-     }
- 
-     
+     }     
    } 
    
+   //this method controls the IFO movements
    void move()
    {
      int move=3;
      
-       //if the tank has been placed, it will move to the battleline
-       if(placedinSlot==true)
+     //if the tank has been placed, it will move to the battleline
+     if(placedinSlot==true)
+     {
+       render(); 
+       if(pos.y>(height/2))
        {
-         render(); 
-         if(pos.y>(height/2))
-         {
-           pos.y-=move;
-         }
-         if(pos.y<=height/2)
-         {
-          detect(); 
-         }
-            
+         pos.y-=move;
        }
-     
+       if(pos.y<=height/2)
+       {
+        detect(); 
+       }    
+     }
    }
    
    //This method is used to detect wheth an object should be fired at
@@ -86,10 +79,8 @@ class IFO extends GameObject
          
              if(blArray.get(i).pos.y<objectW)
              {
-
-                    //object takes damage
-                    twArray.get(k).takeDamage();
-                 
+                //object takes damage
+                twArray.get(k).takeDamage();
                 blArray.remove(i); 
              }
          }

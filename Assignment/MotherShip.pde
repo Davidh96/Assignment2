@@ -1,11 +1,6 @@
 //This is the basic tower type
 class MotherShip extends Tower
 {
-  
-  MotherShip()
-  {
-    
-  }
    
    MotherShip(int i)
    {

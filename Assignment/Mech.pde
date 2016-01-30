@@ -2,6 +2,7 @@ class Mech extends Tower
 {
   //will be used to fire bullets from both arms of the mech
   boolean armSwitch=true;
+  float armW=10;
   
    Mech(int i)
    {
@@ -20,14 +21,14 @@ class Mech extends Tower
        
        fill(255,0,0);
        //arms
-       rect(pos.x,pos.y+10,10,objectW);
-       rect(pos.x+objectW,pos.y,-10,objectW+10);
+       rect(pos.x,pos.y+10,armW,objectW);
+       rect(pos.x+objectW,pos.y,-armW,objectW+armW);
        
        ellipse(pos.x+objectW/2,pos.y+objectW/2,objectW/3,objectW/3);
        
        //healthbar
        fill(0,255,0);
-       rect(pos.x,pos.y,map(health,0,maxhealth,0,objectW),10);
+       rect(pos.x,pos.y,map(health,0,maxhealth,0,objectW),armW);
        
        detect();
    }
@@ -42,12 +43,12 @@ class Mech extends Tower
         
         if(armSwitch)
         {
-          arm=pos.x-(objectW/2);
+          arm=pos.x-((objectW/2)-(armW/2));
           armSwitch=false;
         }
         else
         {
-          arm=pos.x+(objectW/2);
+          arm=pos.x+((objectW/2)-(armW/2));
           armSwitch=true;
         }
         Bullet Bullet = new Bullet(arm,pos.y+objectW);

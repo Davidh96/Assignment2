@@ -10,13 +10,12 @@ class Bomber extends GameObject
    
    void render()
    {
-     //this will place the bomber in a slot rather than the actual position chosen by the user
-     lane=(int)pos.x/(int)objectW;
-     pos.x=lane*objectW;
-     
-     if(lane!=10)
+
+     if(placedinSlot)
      {
       fill(255);
+      stroke(255,0,0);
+      laneUsed[lane]=true;
       ellipse(pos.x+objectW/2,pos.y-objectW/2,random(objectW,objectW+10),random(objectW,objectW+10)); 
      }
      
@@ -31,6 +30,7 @@ class Bomber extends GameObject
      fill(255, 165, 0);
      stroke(255, 165, 0);
      ellipse(pos.x+10,pos.y-(objectW+10),5,5);
+
     
    }
    
@@ -38,14 +38,26 @@ class Bomber extends GameObject
    {
     int move=2;
     
-       //if the tank has been placed, it will move to the battleline
+       //if the bomber has been placed, it will move to the battleline
        if(placedinSlot==true)
        {
-         render(); 
+        render(); 
+        //move until it has reached the other end of the battlefield
         if(pos.y>objectW)
          {
            pos.y-=move;
          }
+         
+         //once the bomb reaches the battle line
+         if(pos.y<=(bLineY))
+         {
+            //if 1 then the bomb will exploe prematurely
+            if(preExplode==1)
+            {
+              destroy(); 
+            }
+         }
+         
          //will check for collision with tower 
          for(int i=0;i<twArray.size();i++)
          {
@@ -56,19 +68,11 @@ class Bomber extends GameObject
                 {
                    //will only half the health of a tower from its current health
                    twArray.get(i).health=twArray.get(i).health/2;
-                   objArray.remove(this);
+                   destroy();
                 }
              }
          }
-         //once the bomb reaches the battle line
-         if(pos.y<=(bLineY))
-         {
-             //if 1 then the bomb will exploe prematurely
-            if(preExplode==1)
-            {
-              objArray.remove(this); 
-            }
-         }
+         
        }
    }
    

@@ -11,7 +11,6 @@ abstract class Tower
   abstract void render();
   abstract void shoot(int k);
 
-  
   //this method will try and capture a lane
   void capture()
   {
@@ -57,7 +56,6 @@ abstract class Tower
 
        if(this instanceof Turret)
        {
-         
          createMech[lane]=true;
          twCreated[lane]=false;
          twArray.remove(this);
@@ -74,9 +72,7 @@ abstract class Tower
           laneCleared[lane]=true;
           twArray.remove(this); 
        }
-      
-
-       
+    
      } 
    }
    

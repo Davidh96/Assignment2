@@ -11,10 +11,6 @@ class Tank extends GameObject
    void render()
    {
      stroke(0);
-       
-    //this will place the tank in a slot rather than the actual position chosen by the user
-     lane=(int)pos.x/(int)objectW;
-     pos.x=lane*objectW;
      
      fill(0,0,255);
      //left wheel
@@ -29,15 +25,12 @@ class Tank extends GameObject
      rect(pos.x+(objectW/4),pos.y-(objectW/2),objectW/2,-objectW);
      
      //this is to ensure that the check lane is for objs placed and not for the object in the objMenu
-     if(lane<objNum)
+     if(placedinSlot)
      {
-       laneCheck[lane]=true;
        //healthbar
        fill(0,255,0);
        rect(pos.x,pos.y,map(health,0,maxhealth,0,objectW),10);
      }
-    
-     
    } 
    
    void move()
@@ -94,10 +87,8 @@ class Tank extends GameObject
          
              if(blArray.get(i).pos.y<objectW)
              {
-
-                    //object takes damage
-                    twArray.get(k).takeDamage();
-                 
+                //object takes damage
+                twArray.get(k).takeDamage();
                 blArray.remove(i); 
              }
          }

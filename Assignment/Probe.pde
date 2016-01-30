@@ -69,7 +69,7 @@ class Probe
     //this method deals with the probe capturing lanes
     void capture()
     {
-        laneCheck[lane]=true;
+        laneUsed[lane]=true;
         laneCaptured[lane]=true;
     }
    
