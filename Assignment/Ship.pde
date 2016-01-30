@@ -1,7 +1,7 @@
-class Tank extends GameObject
+class Ship extends GameObject
 {
 
-   Tank()
+   Ship()
    {
       maxhealth=10;
       health=maxhealth;
@@ -12,18 +12,6 @@ class Tank extends GameObject
    {
      stroke(0);
      
-     fill(0,0,255);
-     //left wheel
-     rect(pos.x,pos.y-objectW,objectW*.25,objectW);
-     //right wheel
-     rect(pos.x+objectW*.75,pos.y-objectW,objectW*.25,objectW);
-     
-     //gun turret
-     fill(150,150,255);
-     ellipse(pos.x+(objectW/2),pos.y-(objectW/2),objectW,objectW);
-     fill(0,0,255);
-     rect(pos.x+(objectW/4),pos.y-(objectW/2),objectW/2,-objectW);
-     
      //this is to ensure that the check lane is for objs placed and not for the object in the objMenu
      if(placedinSlot)
      {
@@ -31,6 +19,21 @@ class Tank extends GameObject
        fill(0,255,0);
        rect(pos.x,pos.y,map(health,0,maxhealth,0,objectW),10);
      }
+     
+     fill(0,0,255);
+     //left wheel
+     rect(pos.x,pos.y,(objectW*.25),-objectW/2);
+     //right wheel
+     rect(pos.x+objectW*.75,pos.y,(objectW*.25),-objectW/2);
+     
+     //gun turret
+     fill(0,0,255);
+     rect(pos.x+(objectW/4),pos.y,objectW/2,-objectW);
+     fill(150,150,255);
+     ellipse(pos.x+(objectW/2),pos.y-(objectW/4),objectW/2,objectW/2);
+     
+     
+
    } 
    
    void move()

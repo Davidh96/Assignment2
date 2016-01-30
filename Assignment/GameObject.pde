@@ -22,15 +22,16 @@ abstract class GameObject
           if(placedinSlot==false)
           {   
            
-           //this will place the tank in a slot rather than the actual position chosen by the user
-           lane=(int)(mouseX/objectW);
-           //give the tank its position
-           pos=new PVector(lane*objectW,height);
+
 
            
            //checks if the lane already has an object in it
            if(laneUsed[(int)(mouseX/objectW)]==false)
            {
+              //this will place the tank in a slot rather than the actual position chosen by the user
+             lane=(int)(mouseX/objectW);
+             //give the tank its position
+             pos=new PVector(lane*objectW,height);
              //the user has chosen to place the object in  a slot
              placedinSlot=true;
              objAllowed=true;

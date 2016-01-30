@@ -91,7 +91,7 @@ abstract class Tower
            if(objArray.get(i).pos.y<=bLineY)
            {
              //this is to ensure that the towers will nly shoot at tanks and ifos
-             if(objArray.get(i) instanceof Tank || objArray.get(i) instanceof IFO)
+             if(objArray.get(i) instanceof Ship || objArray.get(i) instanceof IFO)
              {
                 shoot(i); 
              }

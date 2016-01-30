@@ -1,5 +1,7 @@
 class ObjectMenu
 {
+   ArrayList<GameObject> menuObjs=new ArrayList<GameObject>();
+   float padding=10;
    ObjectMenu()
    {
       
@@ -13,36 +15,53 @@ class ObjectMenu
       rect(width-objectW,0,objectW,height); 
    }
    
-    void objMenu()
+  void objMenu()
   {
     float menuLane=(float)width-(float)objectW;
     
-    Tank mTank=new Tank();
-    mTank.pos=new PVector(menuLane,objectW);
-    mTank.render();
+    Ship mShip=new Ship();
+    mShip.pos=new PVector(menuLane,objectW+padding);
+    menuObjs.add(mShip);
+    mShip.render();
     
     IFO mIFO = new IFO();
-    mIFO.pos=new PVector(menuLane,objectW*2);
+    mIFO.pos=new PVector(menuLane,(objectW*2)+padding);
+    menuObjs.add(mIFO);
     mIFO.render();
     
     Lineman lineman = new Lineman();
-    lineman.pos=new PVector(menuLane,objectW*3);
+    lineman.pos=new PVector(menuLane,(objectW*3)+padding);
+    menuObjs.add(lineman);
     lineman.render();
     
     Bomber bomber = new Bomber();
-    bomber.pos=new PVector(menuLane,objectW*4);
+    bomber.pos=new PVector(menuLane,(objectW*4)+padding);
+    menuObjs.add(bomber);
     bomber.render();
     
+    for(int i=1;i<5;i++)
+    {
+       stroke(255);
+       line(menuLane,objectW*i+padding,menuLane+objectW,objectW*i+padding);
+    }
+    if(mouseX>width-objectW)
+    {
+      if(mouseY<objectW*4)
+      {   fill(255,255,255,100);
+          rect(width-objectW,(int)map(mouseY,0,objectW*4,0,4)*objectW+padding,objectW,objectW);
+      }
+    }
   }
   
   void objChosen()
   {
+
     if(mouseY<=objectW)
     {
-         Tank tank =new Tank();
-         objArray.add(tank);
+         Ship ship =new Ship();
+         objArray.add(ship);
          objectChosen=true;
-         objAllowed=false; 
+         objAllowed=false;
     }
     if(mouseY<=objectW*2 && mouseY>objectW)
     {

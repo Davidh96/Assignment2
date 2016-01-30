@@ -20,6 +20,15 @@ class Battlefield
            fill(255,0,0,100);
            stroke(255,0,0);
            rect(i*objectW,height,objectW,-height);
+           laneUsed[i]=true;
+           
+           for(int j=0;j<objArray.size();j++)
+           {
+             if(objArray.get(j).lane==i)
+             {
+                 objArray.remove(j);
+             }
+           }
         }
         
         //if the player has cleared the lane
