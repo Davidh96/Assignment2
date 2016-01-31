@@ -6,6 +6,7 @@ class Bomber extends GameObject
    Bomber()
    {
       preExplode=(int)random(0,2);
+      cost=50;
    }
    
    void render()

@@ -60,6 +60,7 @@ class Probe
          {
            if(mousePressed)
            {
+              credit.applyTo();
               prArray.remove(this);
            }
          }

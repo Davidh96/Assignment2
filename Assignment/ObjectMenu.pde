@@ -83,31 +83,47 @@ class ObjectMenu
 
     if(mouseY<=objectW)
     {
+      if(credit.amount>=100)
+      {
          Ship ship =new Ship();
          objArray.add(ship);
          objectChosen=true;
          objAllowed=false;
+         credit.reduce(ship.cost);
+      }
     }
     if(mouseY<=objectW*2 && mouseY>objectW)
     {
+      if(credit.amount>=200)
+      {
        IFO ifo=new IFO();
        objArray.add(ifo);
        objectChosen=true;
        objAllowed=false; 
+       credit.reduce(ifo.cost);
+      }
     }
     if(mouseY<=objectW*3 && mouseY>objectW*2)
     {
+      if(credit.amount>=250)
+      {
        Lineman lineman = new Lineman();
        objArray.add(lineman);
        objectChosen=true;
        objAllowed=false; 
+       credit.reduce(lineman.cost);
+      }
     }
      if(mouseY<=objectW*4 && mouseY>objectW*3)
     {
+      if(credit.amount>=50)
+      {
        Bomber bomber = new Bomber();
        objArray.add(bomber);
        objectChosen=true;
-       objAllowed=false; 
+       objAllowed=false;
+       credit.reduce(bomber.cost);
+      }
     }
     
     

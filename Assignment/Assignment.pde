@@ -42,6 +42,7 @@ boolean laneCleared[]=new boolean[objNum];
 
 ObjectMenu obmenu=new ObjectMenu();
 Battlefield bkground=new Battlefield();
+Credit credit = new Credit();
 
 //An array list for the stars in the background
 ArrayList<Star> stArray = new ArrayList<Star>();
@@ -100,6 +101,9 @@ void draw()
   {
      hlArray.get(i).render(); 
   }
+  
+  //displays the amount of credits a user has
+  credit.display();
 
 }
 

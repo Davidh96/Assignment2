@@ -5,6 +5,7 @@ class Ship extends GameObject
    {
       maxhealth=10;
       health=maxhealth;
+      cost=100;
    }
    
    //draws the tank object

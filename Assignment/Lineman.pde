@@ -1,5 +1,9 @@
 class Lineman extends GameObject
 {  
+  Lineman()
+  {
+     cost=250; 
+  }
    //draws the tank object
    void render()
    {

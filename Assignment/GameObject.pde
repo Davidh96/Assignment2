@@ -7,6 +7,7 @@ abstract class GameObject
   int health;
   int maxhealth;
   ArrayList<Bullet> blArray = new ArrayList<Bullet>();
+  int cost;
   
   abstract void render();
   abstract void move();

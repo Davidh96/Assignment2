@@ -5,6 +5,7 @@ class IFO extends GameObject
     { 
       maxhealth=10;
       health=maxhealth;
+      cost=200;
     }
   
    //draws the tank object
