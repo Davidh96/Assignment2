@@ -37,7 +37,6 @@ boolean createMech[]=new boolean [objNum];
 boolean createMedusa[]=new boolean [objNum];
 boolean medusaCreated[]=new boolean [objNum];
 
-
 boolean laneCaptured[] = new boolean[objNum];
 boolean laneCleared[]=new boolean[objNum];
 
@@ -52,6 +51,7 @@ ArrayList<GameObject> objArray = new ArrayList<GameObject>();
 ArrayList<Tower> twArray = new ArrayList<Tower>();
 //An array list for my capture probes
 ArrayList<Probe> prArray=new ArrayList<Probe>();
+ArrayList<HealthPowerUp> hlArray=new ArrayList<HealthPowerUp>();
 
 void draw()
 {
@@ -91,6 +91,15 @@ void draw()
   
   //display objects to select from
   obmenu.objMenu();
+  
+  //cals the method that will control the creation of powerups
+  bkground.createPowerUp();
+  
+  //renders all health powerups
+  for(int i=0;i<hlArray.size();i++)
+  {
+     hlArray.get(i).render(); 
+  }
 
 }
 

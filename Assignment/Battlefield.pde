@@ -1,9 +1,5 @@
 class Battlefield
 {
-
-   Battlefield()
-   {
-   }
    
    //this method creates the moving background
    void generate()
@@ -103,6 +99,18 @@ class Battlefield
         
    }
    
+   int frame=0;
+   void createPowerUp()
+   {
+      if(frame==60*10)
+      {
+         HealthPowerUp health =new HealthPowerUp();
+         hlArray.add(health);
+         frame=0;
+      }
+       frame++;
+   }
+   
    int check=0;
    //This method will create the towers
    void createTower()
@@ -152,6 +160,8 @@ class Battlefield
         }
        
      }
+     
+     //checks if all other towers have been destroyed
      if(twArray.size()<1)
      {
        //checks that a mothership can be created, which is only after the creation of a Medusa
