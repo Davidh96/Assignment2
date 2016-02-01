@@ -9,7 +9,7 @@ abstract class Tower
   int time=0;
   
   abstract void render();
-  abstract void shoot(int k);
+  abstract void shoot();
 
   //this method will try and capture a lane
   void capture()
@@ -90,10 +90,10 @@ abstract class Tower
            //if the object is past the bLineY
            if(objArray.get(i).pos.y<=bLineY)
            {
-             //this is to ensure that the towers will nly shoot at tanks and ifos
+             //this is to ensure that the towers will only shoot at tanks and ifos
              if(objArray.get(i) instanceof Ship || objArray.get(i) instanceof IFO)
              {
-                shoot(i); 
+                shoot(); 
              }
            }
            else
@@ -106,6 +106,34 @@ abstract class Tower
          }
         }
       }
+   }
+   
+   void doDamage()
+   {
+       //go through every bullet in the array
+       for(int i=0;i<blArray.size();i++)
+       {
+           //will set the bullet to be red when friendly is false
+           boolean friendly=false;
+           blArray.get(i).render(friendly);
+           
+           //move pos.y +2
+           blArray.get(i).pos.y+=2;
+           
+           for(int j=0;j<objArray.size();j++)
+           {
+             if(lane==objArray.get(j).lane)
+             {
+               if(blArray.get(i).pos.y>objArray.get(j).pos.y-objectW)
+               {
+                  //object takes damage
+                  objArray.get(j).takeDamage();
+                  blArray.remove(i); 
+               }
+             }
+           }
+       
+       } 
    }
   
 }

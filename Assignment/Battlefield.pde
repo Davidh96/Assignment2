@@ -4,7 +4,6 @@ class Battlefield
    //this method creates the moving background
    void generate()
    {
-      background(0);
       fill(255);
       stroke(255);
       

@@ -34,7 +34,7 @@ class Mech extends Tower
    }
    
    //this creates bllets and shoots at tanks
-   void shoot(int k)
+   void shoot()
    {
       //create a bullet every 25 frames
       if(frame==20)
@@ -57,25 +57,8 @@ class Mech extends Tower
       }
       
       frame++;
-        
-        //go through every bullet in the array
-       for(int i=0;i<blArray.size();i++)
-       {
-           //will set the bullet to be red when friendly is false
-           boolean friendly=false;
-           blArray.get(i).render(friendly);
-           
-           //move pos.y +2
-           blArray.get(i).pos.y+=2;
-  
-           if(blArray.get(i).pos.y>height/2-objectW)
-           {
-              //object takes damage
-              objArray.get(k).takeDamage();
-              blArray.remove(i); 
-           }
-       
-       }
+      
+      doDamage();
     }
    
 }

@@ -60,6 +60,7 @@ ArrayList<HealthPowerUp> hlArray=new ArrayList<HealthPowerUp>();
 void draw()
 {
     strokeWeight(2);
+    background(0);
     
     if(menuChoice==0)
     {
@@ -122,7 +123,6 @@ void menuControl()
 {
    menu.display();
    menu.interact();
-   println(menuChoice);
 }
 
 

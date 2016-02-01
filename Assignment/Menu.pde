@@ -7,7 +7,11 @@ class Menu
    
    void display()
    {
+      
+       background();
+       
        fill(255);
+       stroke(0);
        textAlign(CENTER,CENTER);
        textSize(50);
        text("STAR CONFRONTATION",width/2,150);
@@ -23,6 +27,17 @@ class Menu
        text("PLAY",width/2,(height/2)+(objectW/2));
        text("TUTORIAL",width/2,(height/2)+(objectW/2)+objectW);
        text("CREDIT",width/2,(height/2)+(objectW/2)*5);
+      
+   }
+   
+   void background()
+   {
+     
+       for(int i=0;i<stArray.size();i++)
+       {
+           
+           stArray.get(i).move();
+       }
    }
    
    void interact()
