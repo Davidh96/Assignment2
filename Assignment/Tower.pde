@@ -122,13 +122,16 @@ abstract class Tower
            
            for(int j=0;j<objArray.size();j++)
            {
-             if(lane==objArray.get(j).lane)
+             if(objArray.get(j) instanceof Ship || objArray.get(j) instanceof IFO)
              {
-               if(blArray.get(i).pos.y>objArray.get(j).pos.y-objectW)
+               if(lane==objArray.get(j).lane && objArray.get(j).placedinSlot)
                {
-                  //object takes damage
-                  objArray.get(j).takeDamage();
-                  blArray.remove(i); 
+                 if(blArray.get(i).pos.y>objArray.get(j).pos.y-objectW)
+                 {
+                    //object takes damage
+                    objArray.get(j).takeDamage();
+                    blArray.remove(i); 
+                 }
                }
              }
            }

@@ -54,13 +54,13 @@ class IFO extends GameObject
       {
          if(twArray.get(i).lane==lane)
          {
-            shoot(i); 
+            shoot(); 
          } 
       } 
    }
    
    //This method shoots bullets from the tank
-   void shoot(int k)
+   void shoot()
    {
 
       if(frame==25)
@@ -72,19 +72,8 @@ class IFO extends GameObject
       
       frame++;
           
-          for(int i=0;i<blArray.size();i++)
-         {
-             boolean friendly=true;
-             blArray.get(i).render(friendly);
-             blArray.get(i).pos.y-=2;
-         
-             if(blArray.get(i).pos.y<objectW)
-             {
-                //object takes damage
-                twArray.get(k).takeDamage();
-                blArray.remove(i); 
-             }
-         }
+      doDamage();
+      
       }
   
 }

@@ -4,7 +4,7 @@ class Credit implements PowerUp
   
   Credit()
   {
-    amount=100;
+    amount=50000;
   }
   
   void display()

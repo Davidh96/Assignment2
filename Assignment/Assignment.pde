@@ -25,6 +25,7 @@ void setup()
 
 boolean objectChosen=false;
 boolean objAllowed=true;
+boolean endGame=false;
 float objectW;
 int objNum=10;
 int lanes=11;
@@ -65,6 +66,10 @@ void draw()
     if(menuChoice==0)
     {
        menuControl();
+    }
+    if(menuChoice==3)
+    {
+       exit(); 
     }
    
    if(menuChoice==1)
@@ -116,6 +121,9 @@ void draw()
       
       //displays the amount of credits a user has
       credit.display();
+      
+      endGame();
+      
    }
 
 }
@@ -136,4 +144,59 @@ void mouseReleased()
        bkground.createObj(); 
       }
   }
+}
+
+void endGame()
+{
+  int win=0;
+  int lose=0;
+  
+   if(endGame)
+   {
+     if(twArray.size()<objNum)
+     {
+        stroke(random(0,255),random(0,255),random(0,255));
+        rect((width-objectW)/2-objectW,height/2+(height/4),objectW*2,objectW);
+        textSize(15);
+        fill(0);
+        text("END GAME?",(width-objectW)/2,height/2+(height/4)+objectW/2);
+        if(mouseX>(width-objectW)/2-objectW && mouseX<(width-objectW)/2+objectW)
+        {
+          if(mouseY>height/2+(height/4) && mouseY<height/2+(height/4)+objectW)
+          {
+             if(mousePressed)
+             {
+                menuChoice=0; 
+             }
+          }
+        }
+        
+       for(int i=0;i<objNum;i++)
+       {
+          if(laneCleared[i])
+          {
+             win++;
+          }
+          if(laneCaptured[i])
+          {
+             lose++; 
+          }
+       }
+       
+       textAlign(CENTER,CENTER);
+       textSize(50);
+       fill(255);
+       
+       if(win>lose)
+       {
+          text("YOU WIN!",(width-objectW)/2,150);
+       }
+       if(win<lose)
+       {
+          text("YOU LOSE!",(width-objectW)/2,150);
+       }
+     }
+     
+     
+   }
 }

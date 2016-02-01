@@ -19,11 +19,12 @@ class MotherShip extends Tower
       rect(pos.x,pos.y+10,objectW,objectW);
        
        
-       //healthbar
-       fill(0,255,0);
-       rect(pos.x,pos.y,map(health,0,maxhealth,0,objectW),10);
+     //healthbar
+     fill(0,255,0);
+     rect(pos.x,pos.y,map(health,0,maxhealth,0,objectW),10);
        
-       detect();
+      detect();
+      endGame=true;
        
    }
    

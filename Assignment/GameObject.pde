@@ -69,5 +69,28 @@ abstract class GameObject
      laneUsed[lane]=false;
      objArray.remove(this);
    }
+   
+   void doDamage()
+   {
+         for(int i=0;i<blArray.size();i++)
+         {
+             boolean friendly=true;
+             blArray.get(i).render(friendly);
+             blArray.get(i).pos.y-=2;
+          
+            for(int j=0;j<twArray.size();j++)
+            {
+              if(lane==twArray.get(j).lane)
+              {
+               if(blArray.get(i).pos.y<objectW)
+               {
+                  //object takes damage
+                  twArray.get(j).takeDamage();
+                  blArray.remove(i); 
+               }
+              }
+            }
+         } 
+   }
   
 }

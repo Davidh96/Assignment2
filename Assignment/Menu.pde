@@ -26,7 +26,7 @@ class Menu
        fill(0);
        text("PLAY",width/2,(height/2)+(objectW/2));
        text("TUTORIAL",width/2,(height/2)+(objectW/2)+objectW);
-       text("CREDIT",width/2,(height/2)+(objectW/2)*5);
+       text("EXIT",width/2,(height/2)+(objectW/2)*5);
       
    }
    
