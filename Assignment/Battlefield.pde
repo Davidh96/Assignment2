@@ -17,11 +17,21 @@ class Battlefield
            rect(i*objectW,height,objectW,-height);
            laneUsed[i]=true;
            
+           //remove obj in captured lane
            for(int j=0;j<objArray.size();j++)
            {
              if(objArray.get(j).lane==i)
              {
                  objArray.remove(j);
+             }
+           }
+           
+           //remove tower in captured lane
+           for(int j=0;j<twArray.size();j++)
+           {
+             if(twArray.get(j).lane==i)
+             {
+                 twArray.remove(j);
              }
            }
         }
@@ -116,81 +126,85 @@ class Battlefield
    {
     check=0;
     
+    
      //create 10 towers
      for(int i=0;i<objNum;i++)
      {
-       //if a slot wants a mech
-       if(createMech[i])
-       {
-         if(twCreated[i]==false && createMech[i])
+         //if a slot wants a mech
+         if(createMech[i])
          {
-            Mech mech = new Mech(i);
-            twArray.add(mech);
-            //all towers are created
-            twCreated[i]=true;
-            createMech[i]=false;
-         }
-       }
-
-          //if this lane allows for a medusa to be created and has not been created before
-         if(createMedusa[i] && medusaCreated[i]==false)
-         {
-          if(i<9)
-          {
-           //if the tower up one also allows for a medusa and if the tower up one has not been created already
-           if(createMedusa[i+1] && medusaCreated[i+1]==false)
+           if(twCreated[i]==false && createMech[i])
            {
-              //medusa has been created and cannot be created again in this lane
-              medusaCreated[i]=true;
-              Medusa medusa1 = new Medusa(i);
-              twArray.add(medusa1);
+              Mech mech = new Mech(i);
+              twArray.add(mech);
               //all towers are created
               twCreated[i]=true;
-              
-              //medusa has been created and cannot be created again in this lane
-              medusaCreated[i+1]=true;
-              Medusa medusa2 = new Medusa(i+1);
-              twArray.add(medusa2);
-              //all towers are created
-              twCreated[i+1]=true;
+              createMech[i]=false;
            }
          }
-              
+  
+            //if this lane allows for a medusa to be created and has not been created before
+           if(createMedusa[i] && medusaCreated[i]==false)
+           {
+            if(i<9)
+            {
+             //if the tower up one also allows for a medusa and if the tower up one has not been created already
+             if(createMedusa[i+1] && medusaCreated[i+1]==false)
+             {
+                //medusa has been created and cannot be created again in this lane
+                medusaCreated[i]=true;
+                Medusa medusa1 = new Medusa(i);
+                twArray.add(medusa1);
+                //all towers are created
+                twCreated[i]=true;
+                
+                //medusa has been created and cannot be created again in this lane
+                medusaCreated[i+1]=true;
+                Medusa medusa2 = new Medusa(i+1);
+                twArray.add(medusa2);
+                //all towers are created
+                twCreated[i+1]=true;
+             }
+           }
+                
+          }
+         
+       
+       
+       //checks if all other towers have been destroyed
+       if(twArray.size()<1)
+       {
+         //checks that a mothership can be created, which is only after the creation of a Medusa
+         for(int j=0;j<objNum;j++)
+         {
+            if(createMedusa[j])
+            {
+               check++; 
+            }
+         }
+    
+          for(int k=0;k<objNum;k++)
+          {
+             //check if a mthersip can be created
+             if(check==10 && twCreated[k]==false)
+             {
+               twCreated[k]=true;
+               MotherShip mShip = new MotherShip(k);
+               twArray.add(mShip);
+      
+             }
+          }
         }
        
      }
-     
-     //checks if all other towers have been destroyed
-     if(twArray.size()<1)
-     {
-       //checks that a mothership can be created, which is only after the creation of a Medusa
-       for(int j=0;j<objNum;j++)
-       {
-          if(createMedusa[j])
-          {
-             check++; 
-          }
-       }
-  
-        for(int k=0;k<objNum;k++)
+        
+        //renders all the towers that need to be rendered
+        for(int i=0;i<twArray.size();i++)
         {
-           //check if a mthersip can be created
-           if(check==10 && twCreated[k]==false)
-           {
-             twCreated[k]=true;
-             MotherShip mShip = new MotherShip(k);
-             twArray.add(mShip);
-    
-           }
+           twArray.get(i).render(); 
         }
-      }
       
-      //renders all the towers that need to be rendered
-      for(int i=0;i<twArray.size();i++)
-      {
-         twArray.get(i).render(); 
-      }
-    }
+   }
    
    
 }
