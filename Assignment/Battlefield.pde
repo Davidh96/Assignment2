@@ -99,11 +99,15 @@ class Battlefield
    {
       if(objArray.size()<objNum)
       {
-        if(objAllowed)
+        //if the user chooses another obj
+        if(objAllowed==false)
         {
-           obmenu.objChosen();
+           objArray.remove(objArray.size()-1);
+           objAllowed=true;
+ 
         }
-      } 
+        obmenu.objChosen();
+      }
    }
    
    int frame=0;

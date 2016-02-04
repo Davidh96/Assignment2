@@ -129,6 +129,8 @@ void draw()
       //checks if the user has reached the end of the game
       endGame();
       
+      println(objArray.size());
+      
       
    }
 
