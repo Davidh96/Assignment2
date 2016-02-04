@@ -97,15 +97,13 @@ class Battlefield
    //this method created an object
    void createObj()
    {
-
       if(objArray.size()<objNum)
       {
         if(objAllowed)
         {
            obmenu.objChosen();
         }
-      }
-        
+      } 
    }
    
    int frame=0;
@@ -177,7 +175,7 @@ class Battlefield
          //checks that a mothership can be created, which is only after the creation of a Medusa
          for(int j=0;j<objNum;j++)
          {
-            if(createMedusa[j])
+            if(createMedusa[j] || laneCaptured[j])
             {
                check++; 
             }

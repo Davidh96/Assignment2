@@ -122,11 +122,18 @@ void draw()
       //displays the amount of credits a user has
       credit.display();
       
+      //will allow a user to delete an obj once they have been played
+      Bin bin=new Bin();
+      bin.detect();
+      
+      //checks if the user has reached the end of the game
       endGame();
+      
       
    }
 
 }
+
 void menuControl()
 {
    menu.display();
@@ -140,8 +147,8 @@ void mouseReleased()
   {
       if(mouseX>width-objectW)
       {
-       //This will ensure that only +1 object is created
-       bkground.createObj(); 
+         //This will ensure that only +1 object is created
+         bkground.createObj();
       }
   }
 }

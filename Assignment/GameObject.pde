@@ -22,10 +22,7 @@ abstract class GameObject
           //This is an if statement to stop the player from moving the tank once it has been plaed
           if(placedinSlot==false)
           {   
-           
 
-
-           
            //checks if the lane already has an object in it
            if(laneUsed[(int)(mouseX/objectW)]==false)
            {

@@ -38,6 +38,7 @@ class ObjectMenu
     menuObjs.add(bomber);
     bomber.render();
     
+    
     for(int i=1;i<5;i++)
     {
        stroke(255);
@@ -125,6 +126,7 @@ class ObjectMenu
        credit.reduce(bomber.cost);
       }
     }
+
     
     
   }
