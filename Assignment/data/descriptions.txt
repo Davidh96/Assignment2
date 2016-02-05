@@ -1,0 +1,11 @@
+Ship
+Is slow to both move and fire, but each bullet packs a punch! Real bang for your buck choice if lacking credits.
+
+IFO
+An Identified Flying Object, a nippy little assault option and a whole lot faster at shooting, has less health than a Ship however.
+
+Lineman
+Moves the battleline and provides 10secs of cover, making it useless for enemy towers to shoot you!
+
+Bomber
+Great choice for initial damage, however it only deals damage of half of a towers current health. 

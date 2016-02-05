@@ -57,6 +57,7 @@ abstract class GameObject
      if(health<1)
      { 
        destroy();
+       explode();
      } 
      
    }
@@ -88,6 +89,16 @@ abstract class GameObject
               }
             }
          } 
+   }
+   
+   void explode()
+   {
+      for(int i=0;i<50;i++)
+      {
+         Fragment frag=new Fragment();
+         frag.pos=new PVector(pos.x+objectW/2,pos.y);
+         fragments.add(frag);
+      }
    }
   
 }

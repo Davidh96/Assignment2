@@ -72,8 +72,20 @@ abstract class Tower
           laneCleared[lane]=true;
           twArray.remove(this); 
        }
+       
+       explode();
     
      } 
+   }
+   
+   void explode()
+   {
+      for(int i=0;i<50;i++)
+      {
+         Fragment frag=new Fragment();
+         frag.pos=new PVector(pos.x+objectW/2,pos.y+objectW/2);
+         fragments.add(frag);
+      }
    }
    
    //This method is used to detect wheth an object should be fired at

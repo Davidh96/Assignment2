@@ -57,6 +57,8 @@ ArrayList<Tower> twArray = new ArrayList<Tower>();
 ArrayList<Probe> prArray=new ArrayList<Probe>();
 //An array list for my health powerups
 ArrayList<HealthPowerUp> hlArray=new ArrayList<HealthPowerUp>();
+//An array list for my fragments
+ArrayList<Fragment> fragments=new ArrayList<Fragment>();
 
 void draw()
 {
@@ -81,6 +83,13 @@ void draw()
        //reate the object menu which will be used by the player t choose items
        obmenu.render();
        
+       //renders fragments created from the destruction of objs and towers
+       for(int i=0;i<fragments.size();i++)
+       {
+          fragments.get(i).render(); 
+       }
+       
+       //moves stars across the screen
        for(int i=0;i<stArray.size();i++)
        {
            stArray.get(i).move();
@@ -127,10 +136,7 @@ void draw()
       bin.detect();
       
       //checks if the user has reached the end of the game
-      endGame();
-      
-      println(objArray.size());
-      
+      endGame();  
       
    }
 
