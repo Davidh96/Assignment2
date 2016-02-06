@@ -6,7 +6,6 @@ void setup()
   size(600,650);
   objectW=width/(float)lanes;
   bLineY=height/2;
-  level=new Difficulty();
   
   for(int i=0;i<stars;i++)
   {
@@ -14,19 +13,12 @@ void setup()
      stArray.add(star);
   }
   
-   //create 10  initial towers -turrets
-   for(int i=0;i<objNum;i++)
-   {
-      Turret turret = new Turret(i);
-      twArray.add(turret);
-      //all towers are created
-      twCreated[i]=true;
-   }
 }
 
 boolean objectChosen=false;
 boolean objAllowed=true;
 boolean endGame=false;
+boolean difficultySet=false;
 float objectW;
 int objNum=10;
 int lanes=11;
@@ -70,14 +62,28 @@ void draw()
     strokeWeight(2);
     background(0);
     
+    for(int i=0;i<stArray.size();i++)
+     {
+         
+         stArray.get(i).move();
+     }
+    
     if(menuChoice==0)
     {
        menuControl();
     }
    
-   if(menuChoice==1)
+   if(menuChoice==1 && difficultySet==false)
    {
-       //menu.level();
+     if(difficultySet==false)
+     {
+       menu.level();
+       menu.mouseReleased();
+     }
+   }
+   
+    if(difficultySet)
+    {
        textSize(12);
        //create the star background first. This will ensure that it does not overlap any other objects
        bkground.generate();
@@ -89,12 +95,6 @@ void draw()
        for(int i=0;i<fragments.size();i++)
        {
           fragments.get(i).render(); 
-       }
-       
-       //moves stars across the screen
-       for(int i=0;i<stArray.size();i++)
-       {
-           stArray.get(i).move();
        }
        
        //create the towers on screen
@@ -142,7 +142,6 @@ void draw()
       
       //obj Descriptions
       desc= new ObjDescriptions();
-  
     }
     
     if(menuChoice==2)
@@ -167,7 +166,7 @@ void menuControl()
 
 void mouseReleased()
 {
-  if(menuChoice==1)
+  if(menuChoice==1 && difficultySet)
   {
       if(mouseX>width-objectW)
       {

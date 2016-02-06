@@ -1,5 +1,6 @@
 class Menu
 {
+  int frame=0;
    Menu()
    {
        
@@ -7,8 +8,6 @@ class Menu
    
    void display()
    {
-      
-       background();
        
        fill(255);
        stroke(0);
@@ -32,6 +31,10 @@ class Menu
    
    void level()
    {
+       fill(255);
+       stroke(0);
+       textAlign(CENTER,CENTER);
+       textSize(50);
        text("STAR CONFRONTATION",width/2,150);
        textSize(25);
        text("CHOOSE DIFFICULTY",width/2,200);
@@ -45,16 +48,43 @@ class Menu
        text("EASY",width/2,(height/2)+(objectW/2));
        text("NORMAL",width/2,(height/2)+(objectW/2)+objectW);
        text("HARD",width/2,(height/2)+(objectW/2)*5);
+     
+       
    }
    
-   void background()
+   void mouseReleased()
    {
-     
-       for(int i=0;i<stArray.size();i++)
-       {
-           
-           stArray.get(i).move();
-       }
+     if(frame>30){
+      if(mouseX>objectW && mouseX<width-objectW)
+      {
+        if(mouseY>height/2 && mouseY<height/2+(objectW)*3)
+        {
+           if(mouseY>height/2 && mouseY<height/2+objectW)
+           {
+              if(mousePressed)
+              {
+                 level=new Difficulty(1);
+              }
+              
+           }
+           if(mouseY>height/2+objectW && mouseY<height/2+(objectW*2))
+           {
+              if(mousePressed)
+              {
+                 level=new Difficulty(2);
+              }
+           }
+            if(mouseY>height/2+(objectW*2) && mouseY<height/2+(objectW*3))
+           {
+              if(mousePressed)
+              {
+                 level=new Difficulty(3);
+              }
+           }
+        }
+      }
+     }
+     frame++;
    }
    
    void interact()

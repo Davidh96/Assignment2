@@ -123,11 +123,26 @@ class Battlefield
    }
    
    int check=0;
+   int init=0;
    //This method will create the towers
    void createTower()
    {
     check=0;
     
+    if(init==0)
+    {
+      //create 10  initial towers -turrets
+     for(int i=0;i<objNum;i++)
+     {
+        Turret turret = new Turret(i);
+        twArray.add(turret);
+        //all towers are created
+        twCreated[i]=true;
+     }
+     init++;
+    }
+    else
+    {
     
      //create 10 towers
      for(int i=0;i<objNum;i++)
@@ -205,6 +220,7 @@ class Battlefield
         {
            twArray.get(i).render(); 
         }
+    }
       
    }
    
