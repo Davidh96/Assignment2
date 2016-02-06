@@ -46,6 +46,7 @@ ObjectMenu obmenu=new ObjectMenu();
 Battlefield bkground=new Battlefield();
 Credit credit = new Credit();
 Menu menu = new Menu();
+ObjDescriptions desc;
 
 //An array list for the stars in the background
 ArrayList<Star> stArray = new ArrayList<Star>();
@@ -137,6 +138,10 @@ void draw()
       
       //checks if the user has reached the end of the game
       endGame();  
+      
+      //obj Descriptions
+      desc= new ObjDescriptions();
+      
       
    }
 

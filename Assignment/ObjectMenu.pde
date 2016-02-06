@@ -14,6 +14,7 @@ class ObjectMenu
       rect(width-objectW,0,objectW,height); 
    }
    
+   //display the obj in themenu
   void objMenu()
   {
     float menuLane=(float)width-(float)objectW;
@@ -55,6 +56,7 @@ class ObjectMenu
     description();
   }
   
+  //controls what descriptions to display
   void description()
   {
     if(mouseX>width-objectW)
@@ -63,22 +65,31 @@ class ObjectMenu
       if(mouseY<=objectW)
       {
           rect(width-objectW,0,-objectW*2,objectW);
+          //show description
+          desc.Ship();
       }
       if(mouseY<=objectW*2 && mouseY>objectW)
       {
           rect(width-objectW,objectW,-objectW*2,objectW);
+          //show description
+          desc.IFO();
       }
       if(mouseY<=objectW*3 && mouseY>objectW*2)
       {
           rect(width-objectW,objectW*2,-objectW*2,objectW);
+          //show description
+          desc.Lineman();
       }
        if(mouseY<=objectW*4 && mouseY>objectW*3)
       {
          rect(width-objectW,objectW*3,-objectW*2,objectW);
+         //show description
+         desc.Bomber();
       }
     }
   }
   
+  //controls what objs have been selected form the objMenu
   void objChosen()
   {
 
