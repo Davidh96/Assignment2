@@ -64,27 +64,27 @@ class ObjectMenu
       fill(255,255,255,200);
       if(mouseY<=objectW)
       {
-          rect(width-objectW,0,-objectW*2,objectW);
+          rect(width-objectW,0,-objectW*4,objectW);
           //show description
-          desc.Ship();
+          desc.giveDescription(width-objectW*3,objectW/2,"Ship-");
       }
       if(mouseY<=objectW*2 && mouseY>objectW)
       {
-          rect(width-objectW,objectW,-objectW*2,objectW);
+          rect(width-objectW,objectW,-objectW*4,objectW);
           //show description
-          desc.IFO();
+          desc.giveDescription(width-objectW*3,objectW*1.5,"IFO-");
       }
       if(mouseY<=objectW*3 && mouseY>objectW*2)
       {
-          rect(width-objectW,objectW*2,-objectW*2,objectW);
+          rect(width-objectW,objectW*2,-objectW*4,objectW);
           //show description
-          desc.Lineman();
+          desc.giveDescription(width-objectW*3,objectW*2.5,"Lineman-");
       }
        if(mouseY<=objectW*4 && mouseY>objectW*3)
       {
-         rect(width-objectW,objectW*3,-objectW*2,objectW);
+         rect(width-objectW,objectW*3,-objectW*4,objectW);
          //show description
-         desc.Bomber();
+         desc.giveDescription(width-objectW*3,objectW*3.5,"Bomber-");
       }
     }
   }

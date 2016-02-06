@@ -15,75 +15,41 @@ class ObjDescriptions
 
    }
    
-   //will find the description for Ship
-   void Ship()
+   //will find the description for objs
+   void giveDescription(float x,float y,String find)
    {
-     find="Ship-";
      for(String s:descr)
      {
       index=s.indexOf(find);
+      
       //when  find is found
       if(index!=-1)
       {
-         //displays the text after find string
-         String disp=s.substring(find.length());
-         textSize(10);
-         text(disp,250,250); 
-      }
-     }
-   }
-   
-   //will find the description for IFO
-   void IFO()
-   {
-     find="IFO-";
-     for(String s:descr)
-     {
-      index=s.indexOf(find);
-      //when  find is found
-      if(index!=-1)
-      {
-         //displays the text after find string
-         String disp=s.substring(find.length());
-         textSize(10);
-         text(disp,250,250); 
-      }
-     }
-   }
-   
-   //will find the description for Lineman
-   void Lineman()
-   {
-     find="Lineman-";
-     for(String s:descr)
-     {
-      index=s.indexOf(find);
-      //when  find is found
-      if(index!=-1)
-      {
-         //displays the text after find string
-         String disp=s.substring(find.length());
-         textSize(10);
-         text(disp,250,250); 
+         String disp="";
+         int start=find.length();
+         for(int i=0;i<3;i++)
+         {
+            //displays the text after find string
+           disp+=s.substring(start,(s.length()/3)*(i+1));
+           
+           if(i!=2)
+           {
+             if(s.substring(((s.length()/3)*(i+1)))!="")
+             {
+                disp+="-";
+             }
+             
+             disp+="\n";
+           }
+           
+           start=(s.length()/3)*(i+1);
+           
+         }
+         textSize(11);
+         textAlign(CENTER,CENTER);
+         fill(0);
+         text(disp,x,y); 
       }
      } 
-   }
-   
-   //will find the description for Bomber
-   void Bomber()
-   {
-     find="Bomber-";
-     for(String s:descr)
-     {
-      index=s.indexOf(find);
-      //when  find is found
-      if(index!=-1)
-      {
-         //displays the text after find string
-         String disp=s.substring(find.length());
-         textSize(10);
-         text(disp,250,250); 
-      }
-     }
    }
 }
