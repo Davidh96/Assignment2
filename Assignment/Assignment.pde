@@ -6,6 +6,7 @@ void setup()
   size(600,650);
   objectW=width/(float)lanes;
   bLineY=height/2;
+  level=new Difficulty();
   
   for(int i=0;i<stars;i++)
   {
@@ -47,6 +48,7 @@ Battlefield bkground=new Battlefield();
 Credit credit = new Credit();
 Menu menu = new Menu();
 ObjDescriptions desc;
+Difficulty level;
 
 //An array list for the stars in the background
 ArrayList<Star> stArray = new ArrayList<Star>();
@@ -60,6 +62,8 @@ ArrayList<Probe> prArray=new ArrayList<Probe>();
 ArrayList<HealthPowerUp> hlArray=new ArrayList<HealthPowerUp>();
 //An array list for my fragments
 ArrayList<Fragment> fragments=new ArrayList<Fragment>();
+//Is used to decide the attributes of objs and towers depending on the difficulty level chosen
+ArrayList<String> difficulty=new ArrayList<String>();
 
 void draw()
 {
@@ -73,6 +77,7 @@ void draw()
    
    if(menuChoice==1)
    {
+       //menu.level();
        textSize(12);
        //create the star background first. This will ensure that it does not overlap any other objects
        bkground.generate();

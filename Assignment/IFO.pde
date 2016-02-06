@@ -1,9 +1,21 @@
 class IFO extends GameObject
 {
+  int readframe;
     
     IFO()
     { 
-      maxhealth=10;
+      int readhealth=0;
+      
+      for(String s:difficulty)
+      {
+         int i=s.indexOf("IFO,");
+         if(i!=-1)
+         {
+           readhealth=(int)parseFloat(s.substring(i+"IFO,".length(),s.lastIndexOf(",")));
+           readframe=(int)parseFloat(s.substring(s.lastIndexOf(",")+1));
+         }
+      }
+      maxhealth=readhealth;
       health=maxhealth;
       cost=200;
     }
@@ -63,7 +75,7 @@ class IFO extends GameObject
    void shoot()
    {
 
-      if(frame==25)
+      if(frame==readframe)
       {
         Bullet Bullet = new Bullet(pos.x,pos.y-objectW);
         blArray.add(Bullet);

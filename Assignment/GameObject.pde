@@ -12,6 +12,7 @@ abstract class GameObject
   abstract void render();
   abstract void move();
   
+  
   //This method deals with the placement of an obj
    void placeObj()
    {

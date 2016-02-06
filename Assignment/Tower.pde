@@ -140,9 +140,16 @@ abstract class Tower
                {
                  if(blArray.get(i).pos.y>objArray.get(j).pos.y-objectW)
                  {
+                   
+                    if(this instanceof Medusa)
+                    {
+                       objArray.get(j).health=0;
+                    }
                     //object takes damage
                     objArray.get(j).takeDamage();
                     blArray.remove(i); 
+                    
+
                  }
                }
              }

@@ -30,6 +30,23 @@ class Menu
       
    }
    
+   void level()
+   {
+       text("STAR CONFRONTATION",width/2,150);
+       textSize(25);
+       text("CHOOSE DIFFICULTY",width/2,200);
+       
+       for(int i=0;i<3;i++)
+       {
+          rect(objectW,(height/2)+(objectW)*i,width-(objectW*2),objectW);
+       }
+       
+       fill(0);
+       text("EASY",width/2,(height/2)+(objectW/2));
+       text("NORMAL",width/2,(height/2)+(objectW/2)+objectW);
+       text("HARD",width/2,(height/2)+(objectW/2)*5);
+   }
+   
    void background()
    {
      

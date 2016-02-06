@@ -1,10 +1,23 @@
 class Medusa extends Tower
 {
+  int readframe=0;
    Medusa(int i)
    {
+     int readhealth=0;
       pos=new PVector(i*objectW,0);
       lane=(int)map(pos.x,0,width,0,11);
-      maxhealth=10;
+      
+      for(String s:difficulty)
+      {
+         int j=s.indexOf("Medusa,");
+         if(j!=-1)
+         {
+           readhealth=(int)parseFloat(s.substring(j+"Medusa,".length(),s.lastIndexOf(",")));
+           readframe=(int)parseFloat(s.substring(s.lastIndexOf(",")+1));
+         }
+      }
+      maxhealth=readhealth;
+      health=maxhealth;
       health=maxhealth;
    }
    
@@ -27,8 +40,8 @@ class Medusa extends Tower
    //this creates bllets and shoots at tanks
    void shoot()
    {
-      //create a bullet every 25 frames
-      if(frame==200)
+      //create a bullet
+      if(frame==readframe)
       {
         Bullet Bullet = new Bullet(pos.x,pos.y+objectW);
         blArray.add(Bullet);
@@ -37,7 +50,7 @@ class Medusa extends Tower
       
       frame++;
         
-        doDamage();
+      doDamage();
     }
     
     //this method controls the destruction of medusa

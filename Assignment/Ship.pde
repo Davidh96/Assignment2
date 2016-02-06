@@ -1,12 +1,25 @@
 class Ship extends GameObject
 {
+  int readframe=0;
 
    Ship()
    {
-      maxhealth=10;
+      int readhealth=0;
+      
+      for(String s:difficulty)
+      {
+         int i=s.indexOf("Ship,");
+         if(i!=-1)
+         {
+           readhealth=(int)parseFloat(s.substring(i+"Ship,".length(),s.lastIndexOf(",")));
+           readframe=(int)parseFloat(s.substring(s.lastIndexOf(",")+1));
+         }
+      }
+      maxhealth=readhealth;
       health=maxhealth;
       cost=100;
    }
+   
    
    //draws the tank object
    void render()
@@ -74,7 +87,7 @@ class Ship extends GameObject
    void shoot()
    {
 
-      if(frame==40)
+      if(frame==readframe)
       {
         Bullet Bullet = new Bullet(pos.x,pos.y-objectW);
         blArray.add(Bullet);
