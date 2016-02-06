@@ -1,7 +1,23 @@
+Objective- You must destroy waves of towers with the options at your disposal. After the final tower of a lane has been destroyed you will capture that lane. Whoever has the most lanes by the end will win the game
+
+Probe- These are sent out by enemy towers, their mission is to capture lanes! You must try and stop them by clicking on them! For each one you destroy you will earn credits
+
+Credits- Credits can be spent on buying objects to help destroy towers.
+
+ObjectMenu- Provides you with various options to help you destroy towers
+
 Ship- Is slow to both move and fire, but each bullet packs a punch! 
 
-IFO- An Identified Flying Object, a nippy little assault, has less health than a Ship however.
+IFO- An Identified Flying Object, a nippy little assault, has less health than a Ship however
 
 Lineman- Moves the battleline and provides 10secs of cover, making it useless for enemy towers to shoot you!
 
-Bomber- Great choice for initial damage, however it only deals damage of half of a towers current health. 
+Bomber- Great choice for initial damage, however it only deals damage of half of a towers current health.
+
+Turret- Pretty basic tower, fire rate is not bad and can take a bit of damage. Only fires one bullet at a time
+
+Mech- As scary as it sounds, devestating in attack and can take quite a few hits
+
+Medusa- These guys are tough, in order to defeat them you must destroy both the towers that make up this fearsome foe! Also one bullet from this is instant destruction for any object unlucky to be in the same lane
+
+Mothership- Final tower! You must destroy as many parts of it in order to capture as many lanes as you can

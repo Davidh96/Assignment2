@@ -70,10 +70,6 @@ void draw()
     {
        menuControl();
     }
-    if(menuChoice==3)
-    {
-       exit(); 
-    }
    
    if(menuChoice==1)
    {
@@ -141,9 +137,19 @@ void draw()
       
       //obj Descriptions
       desc= new ObjDescriptions();
-      
-      
-   }
+  
+    }
+    
+    if(menuChoice==2)
+    {
+       Tutorial tut=new Tutorial();
+       tut.display();
+    }
+    
+    if(menuChoice==3)
+    {
+       exit(); 
+    }
 
 }
 
