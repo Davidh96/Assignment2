@@ -3,27 +3,15 @@ class Mech extends Tower
   //will be used to fire bullets from both arms of the mech
   boolean armSwitch=true;
   float armW=10;
-  int readframe;
   int fire1;
   int fire2;
   
    Mech(int i)
    {
-     int readhealth=0;
       pos=new PVector(i*objectW,0);
       lane=(int)map(pos.x,0,width,0,11);
       
-      for(String s:difficulty)
-      {
-         int j=s.indexOf("Mech,");
-         if(j!=-1)
-         {
-           readhealth=(int)parseFloat(s.substring(j+"Mech,".length(),s.lastIndexOf(",")));
-           readframe=(int)parseFloat(s.substring(s.lastIndexOf(",")+1));
-         }
-      }
-      maxhealth=readhealth;
-      health=maxhealth;
+       getAttributes("Mech,");
       health=maxhealth;
    }
    //draws the tower object

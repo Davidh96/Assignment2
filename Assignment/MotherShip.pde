@@ -1,25 +1,13 @@
 //This is the basic tower type
 class MotherShip extends Tower
 {
- int readframe=0;
   int fire=0;
    MotherShip(int i)
    {
-     int readhealth=0;
       pos=new PVector(i*objectW,0);
       lane=(int)map(pos.x,0,width,0,11);
       
-      for(String s:difficulty)
-      {
-         int j=s.indexOf("Mothership,");
-         if(j!=-1)
-         {
-           readhealth=(int)parseFloat(s.substring(j+"Mothership,".length(),s.lastIndexOf(",")));
-           readframe=(int)parseFloat(s.substring(s.lastIndexOf(",")+1));
-         }
-      }
-      maxhealth=readhealth;
-      health=maxhealth;
+      getAttributes("Mothership,");
       health=maxhealth;
    }
    

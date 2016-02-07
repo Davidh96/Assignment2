@@ -1,28 +1,15 @@
 class Medusa extends Tower
 {
-  int readframe=0;
   int num;
   float theta = 0.0f;
   float speed = 0.02f;
   
    Medusa(int i,int num)
    {
-     int readhealth=0;
       pos=new PVector(i*objectW,0);
       lane=(int)map(pos.x,0,width,0,11);
       
-      for(String s:difficulty)
-      {
-         int j=s.indexOf("Medusa,");
-         if(j!=-1)
-         {
-           readhealth=(int)parseFloat(s.substring(j+"Medusa,".length(),s.lastIndexOf(",")));
-           readframe=(int)parseFloat(s.substring(s.lastIndexOf(",")+1));
-         }
-      }
-      maxhealth=readhealth;
-      health=maxhealth;
-      health=maxhealth;
+      getAttributes("Medusa,");
       this.num=num;
       
    }

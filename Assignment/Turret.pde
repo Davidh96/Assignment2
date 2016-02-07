@@ -2,32 +2,19 @@
 class Turret extends Tower
 {
  
-  int readframe=0;
   int fire;
    Turret(int i)
    {
-     int readhealth=0;
       pos=new PVector(i*objectW,0);
       lane=(int)map(pos.x,0,width,0,11);
       
-      for(String s:difficulty)
-      {
-         int j=s.indexOf("Turret,");
-         if(j!=-1)
-         {
-           readhealth=(int)parseFloat(s.substring(j+"Turret,".length(),s.lastIndexOf(",")));
-           readframe=(int)parseFloat(s.substring(s.lastIndexOf(",")+1));
-         }
-      }
-      maxhealth=readhealth;
-      health=maxhealth;
-      health=maxhealth;
+      getAttributes("Turret,");
+
    }
    
    //draws the tower object
    void render()
    {
-
        fill(255,0,0);
        stroke(0);
        ellipse(pos.x+objectW/2,pos.y+objectW/2+10,objectW,objectW);

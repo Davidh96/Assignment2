@@ -7,9 +7,24 @@ abstract class Tower
   int lane;
   int maxhealth;
   int time=0;
+  int readframe=0;
   
   abstract void render();
   abstract void shoot();
+  
+  void getAttributes(String find)
+  {
+        for(String s:difficulty)
+      {
+         int j=s.indexOf(find);
+         if(j!=-1)
+         {
+           maxhealth=(int)parseFloat(s.substring(j+find.length(),s.lastIndexOf(",")));
+           readframe=(int)parseFloat(s.substring(s.lastIndexOf(",")+1));
+         }
+      }
+      health=maxhealth;
+  }
 
   //this method will try and capture a lane
   void capture()

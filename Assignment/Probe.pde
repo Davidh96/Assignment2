@@ -6,6 +6,7 @@ class Probe
   int rand2=0;
   float pWidth;
   int lane;
+  float move;
    
    Probe(float x,float y)
    {
@@ -13,6 +14,7 @@ class Probe
      rand1=(int)random(0,10);
      pWidth=(random(objectW/2,objectW));
      lane=(int)map(pos.x,0,width,0,11);
+     move=random(2,3);
    }
    
    //renders the probe
@@ -21,7 +23,7 @@ class Probe
       //if lane not yet captured
       if(laneCaptured[lane]==false && laneCleared[lane]==false)
       {
-        float move=2;
+        
   
         if(pos.y<height)
          {
