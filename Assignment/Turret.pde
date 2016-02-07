@@ -3,6 +3,7 @@ class Turret extends Tower
 {
  
   int readframe=0;
+  int fire;
    Turret(int i)
    {
      int readhealth=0;
@@ -33,8 +34,8 @@ class Turret extends Tower
        
        //gun turret
        fill(255,100,100);
-       rect(pos.x+objectW*.15,pos.y+objectW*.35,objectW*.15,objectW);
-       rect(pos.x+objectW*.85,pos.y+objectW*.35,-objectW*.15,objectW);
+       rect(pos.x+objectW*.15,pos.y+objectW*.35,objectW*.15,objectW+fire);
+       rect(pos.x+objectW*.85,pos.y+objectW*.35,-objectW*.15,objectW+fire);
        
        
        //healthbar
@@ -50,12 +51,19 @@ class Turret extends Tower
    //this creates bllets and shoots at tanks
    void shoot()
    {
-      //create a bullet every 25 frames
       if(frame==readframe)
       {
         Bullet Bullet = new Bullet(pos.x,pos.y+objectW);
         blArray.add(Bullet);
+        fire=10;
         frame=0;
+      }
+      else
+      {
+        if(fire!=0)
+        {
+         fire--; 
+        }
       }
       
       frame++;

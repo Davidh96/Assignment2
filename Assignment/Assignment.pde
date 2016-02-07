@@ -91,12 +91,6 @@ void draw()
        //reate the object menu which will be used by the player t choose items
        obmenu.render();
        
-       //renders fragments created from the destruction of objs and towers
-       for(int i=0;i<fragments.size();i++)
-       {
-          fragments.get(i).render(); 
-       }
-       
        //create the towers on screen
        bkground.createTower();
       
@@ -136,6 +130,13 @@ void draw()
       //will allow a user to delete an obj once they have been played
       Bin bin=new Bin();
       bin.detect();
+      
+       //renders fragments created from the destruction of objs and towers
+       for(int i=0;i<fragments.size();i++)
+       {
+          fragments.get(i).render(); 
+       }
+       
       
       //checks if the user has reached the end of the game
       endGame();  

@@ -170,14 +170,14 @@ class Battlefield
              {
                 //medusa has been created and cannot be created again in this lane
                 medusaCreated[i]=true;
-                Medusa medusa1 = new Medusa(i);
+                Medusa medusa1 = new Medusa(i,1);
                 twArray.add(medusa1);
                 //all towers are created
                 twCreated[i]=true;
                 
                 //medusa has been created and cannot be created again in this lane
                 medusaCreated[i+1]=true;
-                Medusa medusa2 = new Medusa(i+1);
+                Medusa medusa2 = new Medusa(i+1,2);
                 twArray.add(medusa2);
                 //all towers are created
                 twCreated[i+1]=true;

@@ -1,6 +1,7 @@
 class Ship extends GameObject
 {
   int readframe=0;
+  int fire;
 
    Ship()
    {
@@ -42,7 +43,7 @@ class Ship extends GameObject
      
      //gun turret
      fill(0,0,255);
-     rect(pos.x+(objectW/4),pos.y,objectW/2,-objectW);
+     rect(pos.x+(objectW/4),pos.y,objectW/2,-objectW+fire);
      fill(150,150,255);
      ellipse(pos.x+(objectW/2),pos.y-(objectW/4),objectW/2,objectW/2);
      
@@ -91,7 +92,15 @@ class Ship extends GameObject
       {
         Bullet Bullet = new Bullet(pos.x,pos.y-objectW);
         blArray.add(Bullet);
+        fire=10;
         frame=0;
+      }
+      else
+      {
+        if(fire!=0)
+        {
+         fire--; 
+        }
       }
       
       frame++;

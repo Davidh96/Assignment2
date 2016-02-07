@@ -4,6 +4,8 @@ class Mech extends Tower
   boolean armSwitch=true;
   float armW=10;
   int readframe;
+  int fire1;
+  int fire2;
   
    Mech(int i)
    {
@@ -34,8 +36,8 @@ class Mech extends Tower
        
        fill(255,0,0);
        //arms
-       rect(pos.x,pos.y+10,armW,objectW);
-       rect(pos.x+objectW,pos.y,-armW,objectW+armW);
+       rect(pos.x,pos.y+10,armW,objectW+fire1);
+       rect(pos.x+objectW,pos.y,-armW,objectW+armW+fire2);
        
        ellipse(pos.x+objectW/2,pos.y+objectW/2,objectW/3,objectW/3);
        
@@ -58,15 +60,30 @@ class Mech extends Tower
         {
           arm=pos.x-((objectW/2)-(armW/2));
           armSwitch=false;
+          fire1=20;
         }
         else
         {
           arm=pos.x+((objectW/2)-(armW/2));
           armSwitch=true;
+          fire2=20;
         }
         Bullet Bullet = new Bullet(arm,pos.y+objectW);
         blArray.add(Bullet);
+        
+        
         frame=0;
+      }
+      else
+      {
+        if(fire1!=0)
+        {
+         fire1--; 
+        }
+        if(fire2!=0)
+        {
+         fire2--; 
+        }
       }
       
       frame++;

@@ -112,7 +112,7 @@ abstract class Tower
            {
               for(int j=0;j<blArray.size();j++)
               {
-                 blArray.remove(j); 
+                 blArray.remove(j);
               }
            }
          }

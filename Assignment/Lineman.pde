@@ -1,5 +1,6 @@
 class Lineman extends GameObject
 {  
+  float extend;
   Lineman()
   {
      cost=250; 
@@ -12,8 +13,9 @@ class Lineman extends GameObject
      fill(0,0,255);
      ellipse(pos.x+objectW/2,pos.y-objectW/4,objectW/1.5,objectW/2);
      fill(150,150,255);
-     rect(pos.x,pos.y,objectW/4,-(objectW));
-     rect(pos.x+objectW-(objectW/4),pos.y,objectW/4,-(objectW));
+     //arms
+     rect(pos.x,pos.y,objectW/4,-(objectW)+extend);
+     rect(pos.x+objectW-(objectW/4),pos.y,objectW/4,-(objectW)+extend);
    } 
    
    //this method moves the linesman
@@ -32,23 +34,26 @@ class Lineman extends GameObject
          }
          if(pos.y<=(height/2)+objectW)
          {
-           //only move the bLineY once
-           if(frame==0)
-           {
-             bLineY-=objectW;
-           }
+ 
+             if(bLineY>(height/2)-objectW)
+             {
+               bLineY-=objectW;
+             }
            
-           //displays a counter so the user can see how long the linesman has left
-           text((int)map(frame,0,600,10,0),pos.x+objectW/2,pos.y-objectW/4);
-           
-           //if 10 seconds have passed then the bLineY will be reset
-           if(frame==600)
-           {
-             destroy();
-             bLineY+=objectW;
-             frame=0;
-           }
-           frame++;
+             extend=bLineY-(pos.y-objectW);
+             
+             //displays a counter so the user can see how long the linesman has left
+             text((int)map(frame,0,600,10,1),pos.x+objectW/2,pos.y-objectW/4);
+             
+             //if 10 seconds have passed then the bLineY will be reset
+             if(frame==600)
+             {
+               explode();
+               destroy();
+               bLineY+=objectW;
+               frame=0;
+             }
+             frame++;
          }
     }
      

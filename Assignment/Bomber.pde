@@ -1,11 +1,8 @@
 class Bomber extends GameObject
 {
-  //preExplode is used to deterine whether or not a bomber explodes before reaching the end of the lane
-   int preExplode;
    
    Bomber()
    {
-      preExplode=(int)random(0,2);
       cost=50;
    }
    
@@ -48,16 +45,6 @@ class Bomber extends GameObject
            pos.y-=move;
          }
          
-         //once the bomb reaches the battle line
-         if(pos.y<=(bLineY))
-         {
-            //if 1 then the bomb will exploe prematurely
-            if(preExplode==1)
-            {
-              destroy(); 
-            }
-         }
-         
          //will check for collision with tower 
          for(int i=0;i<twArray.size();i++)
          {
@@ -68,6 +55,7 @@ class Bomber extends GameObject
                 {
                    //will only half the health of a tower from its current health
                    twArray.get(i).health=twArray.get(i).health/2;
+                   explode();
                    destroy();
                 }
              }
