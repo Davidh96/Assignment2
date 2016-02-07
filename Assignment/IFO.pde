@@ -69,34 +69,5 @@ class IFO extends AttackObj
        }    
      }
    }
-   
-   //This method is used to detect wheth an object should be fired at
-   void detect()
-   {
-      for(int i=0;i<twArray.size();i++)
-      {
-         if(twArray.get(i).lane==lane)
-         {
-            shoot(); 
-         } 
-      } 
-   }
-   
-   //This method shoots bullets from the tank
-   void shoot()
-   {
-
-      if(frame==readframe)
-      {
-        Bullet Bullet = new Bullet(pos.x,pos.y-objectW);
-        blArray.add(Bullet);
-        frame=0;
-      }
-      
-      frame++;
-          
-      doDamage();
-      
-      }
   
 }

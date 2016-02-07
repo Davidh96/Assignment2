@@ -7,7 +7,7 @@ abstract class GameObject
   int cost;
   int health;
   int maxhealth;
-  ArrayList<Bullet> blArray = new ArrayList<Bullet>();
+  
   
   abstract void render();
   abstract void move();
@@ -35,6 +35,7 @@ abstract class GameObject
              objAllowed=true;
              objectChosen=false;
              laneUsed[(int)(mouseX/objectW)]=true;
+             credit.amount-=cost;
            }
 
           }
@@ -63,28 +64,6 @@ abstract class GameObject
       }
    }
   
-     void doDamage()
-   {
-         for(int i=0;i<blArray.size();i++)
-         {
-             boolean friendly=true;
-             blArray.get(i).render(friendly);
-             blArray.get(i).pos.y-=2;
-          
-            for(int j=0;j<twArray.size();j++)
-            {
-              if(lane==twArray.get(j).lane)
-              {
-               if(blArray.get(i).pos.y<objectW)
-               {
-                  //object takes damage
-                  twArray.get(j).takeDamage();
-                  blArray.remove(i); 
-               }
-              }
-            }
-         } 
-   }
    
     //This method deals with damage taken
    void takeDamage()

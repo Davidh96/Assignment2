@@ -9,7 +9,6 @@ class Turret extends Tower
       lane=(int)map(pos.x,0,width,0,11);
       
       getAttributes("Turret,");
-
    }
    
    //draws the tower object
@@ -21,8 +20,8 @@ class Turret extends Tower
        
        //gun turret
        fill(255,100,100);
-       rect(pos.x+objectW*.15,pos.y+objectW*.35,objectW*.15,objectW+fire);
-       rect(pos.x+objectW*.85,pos.y+objectW*.35,-objectW*.15,objectW+fire);
+       rect(pos.x+objectW*.15,pos.y+objectW*.35,objectW*.15,objectW-fire);
+       rect(pos.x+objectW*.85,pos.y+objectW*.35,-objectW*.15,objectW-fire);
        
        
        //healthbar
@@ -30,8 +29,6 @@ class Turret extends Tower
        rect(pos.x,pos.y,map(health,0,maxhealth,0,objectW),10);
        
        detect();
-
-       
    }
    
    

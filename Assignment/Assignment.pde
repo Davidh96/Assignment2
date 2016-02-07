@@ -25,6 +25,7 @@ int lanes=11;
 int stars=100;
 float bLineY;
 int menuChoice=0;
+int boxW=30;
                                                                                                                                                                                                                                                                                   
 boolean laneUsed[] = new boolean[objNum];
 boolean twCreated[]=new boolean [objNum];
@@ -82,7 +83,7 @@ void draw()
      }
    }
    
-    if(difficultySet)
+    if(difficultySet && menuChoice==1)
     {
        textSize(12);
        //create the star background first. This will ensure that it does not overlap any other objects
@@ -155,6 +156,7 @@ void draw()
     {
        exit(); 
     }
+
 
 }
 

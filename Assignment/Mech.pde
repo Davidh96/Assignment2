@@ -25,7 +25,7 @@ class Mech extends Tower
        fill(255,0,0);
        //arms
        rect(pos.x,pos.y+10,armW,objectW+fire1);
-       rect(pos.x+objectW,pos.y,-armW,objectW+armW+fire2);
+       rect(pos.x+objectW,pos.y+10,-armW,objectW+fire2);
        
        ellipse(pos.x+objectW/2,pos.y+objectW/2,objectW/3,objectW/3);
        

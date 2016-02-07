@@ -30,5 +30,19 @@ class Tutorial
          text(s,width/2,(height/(descr.size()))*i+objectW/2);
          i++;
       }
+      
+      fill(255,255,255,200);
+      rect(0,0,boxW,boxW);
+      fill(0);
+      text("<-",boxW/2,boxW/2);
+      
+      if(mouseX<boxW && mouseY<boxW)
+      {
+         if(mousePressed)
+         {
+            menuChoice=0; 
+         }
+      } 
+    
    }
 }
