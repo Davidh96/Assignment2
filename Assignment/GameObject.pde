@@ -36,6 +36,7 @@ abstract class GameObject
              objectChosen=false;
              laneUsed[(int)(mouseX/objectW)]=true;
              credit.amount-=cost;
+             selected=false;
            }
 
           }

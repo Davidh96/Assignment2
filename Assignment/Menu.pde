@@ -1,10 +1,6 @@
 class Menu
 {
   int frame=0;
-   Menu()
-   {
-       
-   }
    
    void display()
    {
@@ -52,7 +48,7 @@ class Menu
        
    }
    
-   void mouseReleased()
+   void levelinteract()
    {
      if(frame>30){
       if(mouseX>objectW && mouseX<width-objectW)

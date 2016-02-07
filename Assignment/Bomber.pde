@@ -14,7 +14,7 @@ class Bomber extends GameObject
       fill(255);
       stroke(255,0,0);
       laneUsed[lane]=true;
-      ellipse(pos.x+objectW/2-10,pos.y-objectW+10,random(5,10),random(5,10)); 
+      ellipse(pos.x+objectW/2-10,pos.y-objectW+10,random(objectW*.1,objectW*.2),random(objectW*.1,objectW*.2)); 
      }
      
      fill(0,0,255);
@@ -27,7 +27,7 @@ class Bomber extends GameObject
      line(pos.x+objectW/2,pos.y-objectW/2,pos.x+objectW/2-10,pos.y-objectW+10);
      fill(255, 165, 0);
      stroke(255, 165, 0);
-     ellipse(pos.x+objectW/2-10,pos.y-objectW+10,5,5);
+     ellipse(pos.x+objectW/2-10,pos.y-objectW+10,objectW*.1,objectW*.1);
 
    }
    

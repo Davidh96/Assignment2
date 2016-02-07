@@ -8,6 +8,7 @@ abstract class Tower
   int maxhealth;
   int time=0;
   int readframe=0;
+  int fire=10;
   
   abstract void render();
   abstract void shoot();
@@ -89,6 +90,7 @@ abstract class Tower
        }
        
        explode();
+       credit.applyTo();
     
      } 
    }
@@ -128,6 +130,7 @@ abstract class Tower
               for(int j=0;j<blArray.size();j++)
               {
                  blArray.remove(j);
+                 fire=10;
               }
            }
          }

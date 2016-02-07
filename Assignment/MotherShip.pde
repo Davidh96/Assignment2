@@ -5,7 +5,7 @@ class MotherShip extends Tower
    MotherShip(int i)
    {
       pos=new PVector(i*objectW,0);
-      lane=(int)map(pos.x,0,width,0,11);
+      lane=round((map(pos.x,0,width,0,11)));
       
       getAttributes("Mothership,");
 
@@ -28,7 +28,7 @@ class MotherShip extends Tower
       
      //healthbar
      fill(0,255,0);
-     rect(pos.x,pos.y,map(health,0,maxhealth,0,objectW),10);
+     rect(pos.x,pos.y,map(health,0,maxhealth,0,objectW),objectW*.2);
        
       detect();
       endGame=true;

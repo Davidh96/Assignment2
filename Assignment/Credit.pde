@@ -10,7 +10,7 @@ class Credit implements PowerUp
   void display()
   {
      fill(255);
-     text("Credits",width-objectW/2,height-objectW-boxW);
+     text("Credits",width-objectW/2,height-objectW-boxW/2);
      text(amount,width-objectW/2,height-objectW/2-boxW);
   }
   

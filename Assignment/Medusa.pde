@@ -7,7 +7,7 @@ class Medusa extends Tower
    Medusa(int i,int num)
    {
       pos=new PVector(i*objectW,0);
-      lane=(int)map(pos.x,0,width,0,11);
+      lane=round((map(pos.x,0,width,0,11)));
       
       getAttributes("Medusa,");
       this.num=num;
@@ -47,7 +47,7 @@ class Medusa extends Tower
        //healthbar
        fill(0,255,0);
        stroke(0);
-       rect(pos.x,pos.y,map(health,0,maxhealth,0,objectW),10);
+       rect(pos.x,pos.y,map(health,0,maxhealth,0,objectW),objectW*.2);
        
        detect();
        destroy();  

@@ -2,8 +2,8 @@ class Bullet
 {
    PVector pos;
    float move=2;
-   float bulletW=5;
-   float bulletH=10;
+   float bulletW=objectW*.1;
+   float bulletH=objectW*.2;
   
    Bullet(float x,float y)
    {

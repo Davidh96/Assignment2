@@ -1,10 +1,7 @@
 class ObjectMenu
 {
    ArrayList<GameObject> menuObjs=new ArrayList<GameObject>();
-   ObjectMenu()
-   {
-      
-   }
+   float objSelect=0;
    
    //draws a menu to the side that will allow users to pick items
    void render()
@@ -39,6 +36,11 @@ class ObjectMenu
       menuObjs.add(bomber);
       bomber.render();
       
+      //will allow a user to delete an obj once they have been played
+      Bin bin=new Bin();
+      bin.pos=new PVector(menuLane,objectW*5);
+      bin.render();
+      
       
       for(int i=1;i<5;i++)
       {
@@ -48,7 +50,7 @@ class ObjectMenu
       //checks if mouseX is over objmenu
       if(mouseX>width-objectW)
       {
-        //will capture where the mouse is on y axis
+        //will highlight the obj that the user is currently looking at
         if(mouseY<objectW*4)
         {   fill(255,255,255,100);
             rect(width-objectW,(int)map(mouseY,0,objectW*4,0,4)*objectW,objectW,objectW);
@@ -138,7 +140,7 @@ class ObjectMenu
        objAllowed=false; 
       }
     }
-     if(mouseY<=objectW*4 && mouseY>objectW*3)
+    if(mouseY<=objectW*4 && mouseY>objectW*3)
     {
       if(credit.amount>=50)
       {
@@ -148,8 +150,25 @@ class ObjectMenu
        objAllowed=false;
       }
     }
-
+    if(mouseY<=objectW*5 && mouseY>objectW*4)
+    {
+      deleteObj=true;
+    }
     
-    
+    selected=true;
+    objSelect=(int)(map(mouseY,0,objectW*4,0,4))*objectW;
+  }
+  
+  //will display what object has been selected from the object menu
+  void showSelected()
+  {
+    if(objSelect<objectW*5)
+    {
+      if(selected)
+      {
+        fill(0,0,255,100);
+        rect(width-objectW,objSelect,objectW,objectW);
+      }
+    }
   }
 }

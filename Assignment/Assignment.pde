@@ -4,9 +4,11 @@
 void setup()
 {
   size(600,650);
+  //fullScreen();
   objectW=width/(float)lanes;
   bLineY=height/2;
   
+  //creates stars
   for(int i=0;i<stars;i++)
   {
      Star star = new Star();
@@ -19,6 +21,8 @@ boolean objectChosen=false;
 boolean objAllowed=true;
 boolean endGame=false;
 boolean difficultySet=false;
+boolean deleteObj=false;
+boolean selected=false;
 float objectW;
 int objNum=10;
 int lanes=11;
@@ -32,7 +36,6 @@ boolean twCreated[]=new boolean [objNum];
 boolean createMech[]=new boolean [objNum];
 boolean createMedusa[]=new boolean [objNum];
 boolean medusaCreated[]=new boolean [objNum];
-
 boolean laneCaptured[] = new boolean[objNum];
 boolean laneCleared[]=new boolean[objNum];
 
@@ -63,28 +66,53 @@ void draw()
     strokeWeight(2);
     background(0);
     
+    //moves the stars across the screen
     for(int i=0;i<stArray.size();i++)
      {
          
          stArray.get(i).move();
      }
     
+    //menu
     if(menuChoice==0)
     {
-       menuControl();
+        menu.display();
+        menu.interact();
     }
-   
-   if(menuChoice==1 && difficultySet==false)
+    
+    //if they choose to play a game
+   if(menuChoice==1)
    {
      if(difficultySet==false)
      {
+       //display difficulties
        menu.level();
-       menu.mouseReleased();
+       menu.levelinteract();
+     }
+     if(difficultySet)
+     {
+       //play game
+        play();
      }
    }
-   
-    if(difficultySet && menuChoice==1)
+    
+    //if player chooses tutorial
+    if(menuChoice==2)
     {
+       Tutorial tut=new Tutorial();
+       tut.display();
+    }
+    
+    //if they choose to exit
+    if(menuChoice==3)
+    {
+       exit(); 
+    }
+
+}
+
+void play()
+{
        textSize(12);
        //create the star background first. This will ensure that it does not overlap any other objects
        bkground.generate();
@@ -104,6 +132,7 @@ void draw()
         objArray.get(i).placeObj();
       }
      
+     //checks if thereis any towers
      if(twArray.size()>0)
      {
       //call the capture function from a random tower
@@ -115,6 +144,9 @@ void draw()
       
       //display objects to select from
       obmenu.objMenu();
+      
+      //shows what obj has been selected
+      obmenu.showSelected();
       
       //cals the method that will control the creation of powerups
       bkground.createPowerUp();
@@ -128,44 +160,25 @@ void draw()
       //displays the amount of credits a user has
       credit.display();
       
-      //will allow a user to delete an obj once they have been played
-      Bin bin=new Bin();
-      bin.detect();
-      
        //renders fragments created from the destruction of objs and towers
        for(int i=0;i<fragments.size();i++)
        {
           fragments.get(i).render(); 
        }
        
+       //will check if the user wants to delete an obj
+       if(deleteObj)
+       {
+          Bin bin=new Bin();
+          bin.detect(); 
+       }
       
       //checks if the user has reached the end of the game
       endGame();  
       
       //obj Descriptions
-      desc= new ObjDescriptions();
-    }
-    
-    if(menuChoice==2)
-    {
-       Tutorial tut=new Tutorial();
-       tut.display();
-    }
-    
-    if(menuChoice==3)
-    {
-       exit(); 
-    }
-
-
+      desc= new ObjDescriptions(); 
 }
-
-void menuControl()
-{
-   menu.display();
-   menu.interact();
-}
-
 
 void mouseReleased()
 {
@@ -186,7 +199,7 @@ void endGame()
   
    if(endGame)
    {
-     if(twArray.size()<objNum)
+     if(twArray.size()<objNum && credit.amount<50)
      {
         stroke(random(0,255),random(0,255),random(0,255));
         rect((width-objectW)/2-objectW,height/2+(height/4),objectW*2,objectW);
@@ -227,6 +240,10 @@ void endGame()
        if(win<lose)
        {
           text("YOU LOSE!",(width-objectW)/2,150);
+       }
+       if(win<lose)
+       {
+          text("DRAW!",(width-objectW)/2,150);
        }
      }
      

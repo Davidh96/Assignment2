@@ -2,14 +2,14 @@ class Mech extends Tower
 {
   //will be used to fire bullets from both arms of the mech
   boolean armSwitch=true;
-  float armW=10;
+  float armW=objectW*.20;
   int fire1;
   int fire2;
   
    Mech(int i)
    {
       pos=new PVector(i*objectW,0);
-      lane=(int)map(pos.x,0,width,0,11);
+      lane=round((map(pos.x,0,width,0,11)));
       
       getAttributes("Mech,");
 
@@ -31,7 +31,7 @@ class Mech extends Tower
        
        //healthbar
        fill(0,255,0);
-       rect(pos.x,pos.y,map(health,0,maxhealth,0,objectW),armW);
+       rect(pos.x,pos.y,map(health,0,maxhealth,0,objectW),objectW*.2);
        
        detect();
    }
@@ -43,19 +43,20 @@ class Mech extends Tower
       if(frame==readframe)
       {
         float arm;
-        
         if(armSwitch)
         {
-          arm=pos.x-((objectW/2)-(armW/2));
-          armSwitch=false;
-          fire1=20;
+          arm=pos.x-((objectW/2)-(armW)/2);
+          armSwitch=false; 
+          fire1=fire;
         }
         else
         {
-          arm=pos.x+((objectW/2)-(armW/2));
+          arm=pos.x+((objectW/2)-(armW)/2);
           armSwitch=true;
-          fire2=20;
+          fire2=fire;
         }
+        
+        
         Bullet Bullet = new Bullet(arm,pos.y+objectW);
         blArray.add(Bullet);
         
