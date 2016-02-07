@@ -11,8 +11,8 @@ class Mech extends Tower
       pos=new PVector(i*objectW,0);
       lane=(int)map(pos.x,0,width,0,11);
       
-       getAttributes("Mech,");
-      health=maxhealth;
+      getAttributes("Mech,");
+
    }
    //draws the tower object
    void render()

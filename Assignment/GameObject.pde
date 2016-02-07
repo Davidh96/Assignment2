@@ -4,14 +4,13 @@ abstract class GameObject
   int lane;
   boolean placedinSlot=false;
   int frame=0;
+  int cost;
   int health;
   int maxhealth;
   ArrayList<Bullet> blArray = new ArrayList<Bullet>();
-  int cost;
   
   abstract void render();
   abstract void move();
-  
   
   //This method deals with the placement of an obj
    void placeObj()
@@ -47,21 +46,6 @@ abstract class GameObject
 
    }
    
-  
-  //This method deals with damage taken
-   void takeDamage()
-   {
-     //decrease health by 1
-     health--;
-     
-     //if health is below 1 then the tower has been destroyed
-     if(health<1)
-     { 
-       destroy();
-       explode();
-     } 
-     
-   }
    
    void destroy()
    {
@@ -69,7 +53,17 @@ abstract class GameObject
      objArray.remove(this);
    }
    
-   void doDamage()
+   void explode()
+   {
+      for(int i=0;i<50;i++)
+      {
+         Fragment frag=new Fragment();
+         frag.pos=new PVector(pos.x+objectW/2,pos.y);
+         fragments.add(frag);
+      }
+   }
+  
+     void doDamage()
    {
          for(int i=0;i<blArray.size();i++)
          {
@@ -92,14 +86,18 @@ abstract class GameObject
          } 
    }
    
-   void explode()
+    //This method deals with damage taken
+   void takeDamage()
    {
-      for(int i=0;i<50;i++)
-      {
-         Fragment frag=new Fragment();
-         frag.pos=new PVector(pos.x+objectW/2,pos.y);
-         fragments.add(frag);
-      }
+     //decrease health by 1
+     health--;
+     
+     //if health is below 1 then the tower has been destroyed
+     if(health<1)
+     { 
+       destroy();
+       explode();
+     } 
+     
    }
-  
 }

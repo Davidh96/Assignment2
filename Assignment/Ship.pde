@@ -1,23 +1,10 @@
-class Ship extends GameObject
+class Ship extends AttackObj
 {
-  int readframe=0;
   int fire;
 
    Ship()
    {
-      int readhealth=0;
-      
-      for(String s:difficulty)
-      {
-         int i=s.indexOf("Ship,");
-         if(i!=-1)
-         {
-           readhealth=(int)parseFloat(s.substring(i+"Ship,".length(),s.lastIndexOf(",")));
-           readframe=(int)parseFloat(s.substring(s.lastIndexOf(",")+1));
-         }
-      }
-      maxhealth=readhealth;
-      health=maxhealth;
+      getAttributes("Ship,");
       cost=100;
    }
    

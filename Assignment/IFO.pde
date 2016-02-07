@@ -1,24 +1,12 @@
-class IFO extends GameObject
+class IFO extends AttackObj
 {
-  int readframe;
+
   float theta = 0.0f;
   float speed = 0.02f;
     
     IFO()
-    { 
-      int readhealth=0;
-      
-      for(String s:difficulty)
-      {
-         int i=s.indexOf("IFO,");
-         if(i!=-1)
-         {
-           readhealth=(int)parseFloat(s.substring(i+"IFO,".length(),s.lastIndexOf(",")));
-           readframe=(int)parseFloat(s.substring(s.lastIndexOf(",")+1));
-         }
-      }
-      maxhealth=readhealth;
-      health=maxhealth;
+    {       
+      getAttributes("IFO,");
       cost=200;
     }
   

@@ -8,7 +8,7 @@ class MotherShip extends Tower
       lane=(int)map(pos.x,0,width,0,11);
       
       getAttributes("Mothership,");
-      health=maxhealth;
+
    }
    
    //draws the tower object
