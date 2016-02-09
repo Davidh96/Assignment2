@@ -15,6 +15,7 @@ class Tutorial
 
    }
    
+   //displays the tutrial on screen
    void display()
    {
      int i=0;
@@ -27,7 +28,7 @@ class Tutorial
             String sub=s.substring(0,110)+"\n";
             s=sub+s.substring(110);
          }
-         text(s,width/2,(height/(descr.size()))*i+objectW/2);
+         text(s,width/2,(height/(descr.size()))*i+boxW);
          i++;
       }
       
@@ -36,6 +37,7 @@ class Tutorial
       fill(0);
       text("<-",boxW/2,boxW/2);
       
+      //back button, brings user back to menu
       if(mouseX<boxW && mouseY<boxW)
       {
          if(mousePressed)

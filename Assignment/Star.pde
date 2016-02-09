@@ -13,6 +13,7 @@ class Star
      speed=random(2,4);
    }
    
+   //controls movement of stars accross screen
    void move()
    {
      fill(255);

@@ -5,18 +5,20 @@ class HealthPowerUp extends GameObject implements PowerUp
   
   HealthPowerUp()
   {
+    //will give the health power up a random position away from obj menu
     pos=new PVector(width-objectW, random(objectW, height-objectW)); 
     move = new PVector(-5, 0);
   }
   
+  //renders what the health power looks like
   void render()
   {
     pushMatrix();
-    translate(pos.x, pos.y);
-    rotate(theta);
-    stroke(0,255,0);
-    fill(0,255,0);
-    rect(-objectW,-objectW,objectW,objectW);
+      translate(pos.x, pos.y);
+      rotate(theta);
+      stroke(0,255,0);
+      fill(0,255,0);
+      rect(-objectW,-objectW,objectW,objectW);
     popMatrix();
     
     move();
@@ -34,6 +36,7 @@ class HealthPowerUp extends GameObject implements PowerUp
        if(pos.dist(mouse)<objectW)
        {
          applyTo();
+         credit.applyTo();
          hlArray.remove(this);
        }
     } 

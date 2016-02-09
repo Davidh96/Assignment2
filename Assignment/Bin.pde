@@ -41,6 +41,7 @@ class Bin
       } 
     }
     
+    //renders a bin on screen
     void render()
     {
        stroke(0);

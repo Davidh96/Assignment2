@@ -31,14 +31,13 @@ class MotherShip extends Tower
      rect(pos.x,pos.y,map(health,0,maxhealth,0,objectW),objectW*.2);
        
       detect();
-      endGame=true;
        
    }
    
    //this creates bllets and shoots at tanks
    void shoot()
    {
-      
+      //create a bullet at readframe
       if(frame==readframe)
       {
         Bullet Bullet = new Bullet(pos.x,pos.y+objectW);
@@ -46,6 +45,7 @@ class MotherShip extends Tower
         fire=10;
         frame=0;
       }
+      //will give illusion of parts retracting
       else
       {
         if(fire!=0)

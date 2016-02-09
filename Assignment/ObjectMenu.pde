@@ -82,25 +82,25 @@ class ObjectMenu
       if(mouseY<=objectW)
       {
           rect(width-objectW,0,-objectW*4,objectW);
-          //show description
+          //show description for ship
           desc.giveDescription(width-objectW*3,objectW/2,"Ship-");
       }
       if(mouseY<=objectW*2 && mouseY>objectW)
       {
           rect(width-objectW,objectW,-objectW*4,objectW);
-          //show description
+          //show description IFO
           desc.giveDescription(width-objectW*3,objectW*1.5,"IFO-");
       }
       if(mouseY<=objectW*3 && mouseY>objectW*2)
       {
           rect(width-objectW,objectW*2,-objectW*4,objectW);
-          //show description
+          //show description for Lineman
           desc.giveDescription(width-objectW*3,objectW*2.5,"Lineman-");
       }
        if(mouseY<=objectW*4 && mouseY>objectW*3)
       {
          rect(width-objectW,objectW*3,-objectW*4,objectW);
-         //show description
+         //show description Bomber
          desc.giveDescription(width-objectW*3,objectW*3.5,"Bomber-");
       }
     }
@@ -109,7 +109,7 @@ class ObjectMenu
   //controls what objs have been selected form the objMenu
   void objChosen()
   {
-
+    //Ship
     if(mouseY<=objectW)
     {
       if(credit.amount>=100)
@@ -120,6 +120,7 @@ class ObjectMenu
          objAllowed=false;
       }
     }
+    //IFO
     if(mouseY<=objectW*2 && mouseY>objectW)
     {
       if(credit.amount>=200)
@@ -130,6 +131,7 @@ class ObjectMenu
        objAllowed=false; 
       }
     }
+    //Lineman
     if(mouseY<=objectW*3 && mouseY>objectW*2)
     {
       if(credit.amount>=250)
@@ -140,6 +142,7 @@ class ObjectMenu
        objAllowed=false; 
       }
     }
+    //Bomber
     if(mouseY<=objectW*4 && mouseY>objectW*3)
     {
       if(credit.amount>=50)
@@ -150,6 +153,7 @@ class ObjectMenu
        objAllowed=false;
       }
     }
+    //Bin
     if(mouseY<=objectW*5 && mouseY>objectW*4)
     {
       deleteObj=true;
@@ -166,7 +170,7 @@ class ObjectMenu
     {
       if(selected)
       {
-        fill(0,0,255,100);
+        fill(255,255,255,100);
         rect(width-objectW,objSelect,objectW,objectW);
       }
     }

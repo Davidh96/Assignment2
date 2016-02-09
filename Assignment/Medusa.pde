@@ -10,6 +10,7 @@ class Medusa extends Tower
       lane=round((map(pos.x,0,width,0,11)));
       
       getAttributes("Medusa,");
+      //num will be used to differentiate between the two towers of a medusa
       this.num=num;
       
    }
@@ -17,16 +18,17 @@ class Medusa extends Tower
    //draws the tower object
    void render()
    {
-         theta += speed;
-    if (theta > TWO_PI)
-    {
-      theta = 0;
-    }
+      theta += speed;
+      
+      if (theta > TWO_PI)
+      {
+        theta = 0;
+      }
 
        fill(255,0,0);
        stroke(0);
        ellipse(pos.x+objectW/2,pos.y+objectW/2+10,objectW,objectW);
-       //will make medusa look like its 
+       //will make medusa look like it has mving parts
        pushMatrix();
          stroke(0);
          translate(pos.x+objectW/2,pos.y+objectW/2+10);

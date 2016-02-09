@@ -32,19 +32,15 @@ class ObjDescriptions
             //displays the text after find string
            disp+=s.substring(start,(s.length()/3)*(i+1));
            
+           //if not last line
            if(i!=2)
            {
-             if(s.substring(((s.length()/3)*(i+1)))!="")
-             {
-                disp+="-";
-             }
-             
-             disp+="\n";
+              disp+="\n";
            }
            
            start=(s.length()/3)*(i+1);
            
-         }
+          }
          textSize(11);
          textAlign(CENTER,CENTER);
          fill(0);

@@ -6,6 +6,7 @@ class Fragment
    
    Fragment()
    {
+     //gives fragments a random direction
       move=new PVector(random(-1,1),random(-1,1));
    }
    

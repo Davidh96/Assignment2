@@ -48,16 +48,19 @@ abstract class GameObject
 
    }
    
-   
+   //deals with what happens after an obj has been destroyed
    void destroy()
    {
      laneUsed[lane]=false;
      objArray.remove(this);
    }
    
+   //will display fragments on the screen to give an explosion effect
    void explode()
    {
-      for(int i=0;i<50;i++)
+      int fragCount=50;
+      
+      for(int i=0;i<fragCount;i++)
       {
          Fragment frag=new Fragment();
          frag.pos=new PVector(pos.x+objectW/2,pos.y);

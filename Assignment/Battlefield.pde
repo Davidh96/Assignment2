@@ -111,6 +111,7 @@ class Battlefield
    }
    
    int frame=0;
+   //creates a health power up every 10 seconds
    void createPowerUp()
    {
       if(frame==60*10)

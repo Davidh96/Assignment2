@@ -36,13 +36,15 @@ class Mech extends Tower
        detect();
    }
    
-   //this creates bllets and shoots at tanks
+   //this creates bullets and shoots at tanks
    void shoot()
    {
       //create a bullet every 25 frames
       if(frame==readframe)
       {
         float arm;
+        
+        //this will switch between arms to fire bullets
         if(armSwitch)
         {
           arm=pos.x-((objectW/2)-(armW)/2);
@@ -63,6 +65,7 @@ class Mech extends Tower
         
         frame=0;
       }
+      //will give impression of arm moving back
       else
       {
         if(fire1!=0)

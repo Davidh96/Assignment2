@@ -111,6 +111,7 @@ void draw()
 
 }
 
+//runs the game;
 void play()
 {
        textSize(12);
@@ -182,8 +183,10 @@ void play()
 
 void mouseReleased()
 {
+  //if the game has started
   if(menuChoice==1 && difficultySet)
   {
+      //if an obj has been chosen
       if(mouseX>width-objectW)
       {
          //This will ensure that only +1 object is created
@@ -192,39 +195,28 @@ void mouseReleased()
   }
 }
 
+//controls when to end a game
 void endGame()
 {
   int win=0;
   int lose=0;
+  int check=0;
   
-   if(endGame)
-   {
-     if(twArray.size()<objNum && credit.amount<50)
+     //if there are fewer than 10 towers
+     if(twArray.size()<objNum)
      {
-        stroke(random(0,255),random(0,255),random(0,255));
-        rect((width-objectW)/2-objectW,height/2+(height/4),objectW*2,objectW);
-        textSize(15);
-        fill(0);
-        text("END GAME?",(width-objectW)/2,height/2+(height/4)+objectW/2);
-        if(mouseX>(width-objectW)/2-objectW && mouseX<(width-objectW)/2+objectW)
-        {
-          if(mouseY>height/2+(height/4) && mouseY<height/2+(height/4)+objectW)
-          {
-             if(mousePressed)
-             {
-                menuChoice=0; 
-             }
-          }
-        }
         
+       //calculate how many lanes have been won and lost
        for(int i=0;i<objNum;i++)
        {
           if(laneCleared[i])
           {
+             check++;
              win++;
           }
           if(laneCaptured[i])
           {
+             check++;
              lose++; 
           }
        }
@@ -233,20 +225,39 @@ void endGame()
        textSize(50);
        fill(255);
        
-       if(win>lose)
+       //will display the result of the game
+       if(check==objNum)
        {
-          text("YOU WIN!",(width-objectW)/2,150);
-       }
-       if(win<lose)
-       {
-          text("YOU LOSE!",(width-objectW)/2,150);
-       }
-       if(win<lose)
-       {
-          text("DRAW!",(width-objectW)/2,150);
-       }
-     }
-     
+         if(win>lose)
+         {
+            text("YOU WIN!",(width-objectW)/2,150);
+         }
+         if(win<lose)
+         {
+            text("YOU LOSE!",(width-objectW)/2,150);
+         }
+         if(win==lose)
+         {
+            text("DRAW!",(width-objectW)/2,150);
+         }
+         
+         //allow user to finish the game
+         stroke(0);
+         rect((width-objectW)/2-objectW,height/2+(height/4),objectW*2,objectW);
+         textSize(15);
+         fill(0);
+         text("END GAME?",(width-objectW)/2,height/2+(height/4)+objectW/2);
+         if(mouseX>(width-objectW)/2-objectW && mouseX<(width-objectW)/2+objectW)
+         {
+           if(mouseY>height/2+(height/4) && mouseY<height/2+(height/4)+objectW)
+           {
+              if(mousePressed)
+              {
+                 exit(); 
+              }
+           }
+         }
+       }     
      
    }
 }

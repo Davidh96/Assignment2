@@ -6,9 +6,10 @@ class Bomber extends GameObject
       cost=50;
    }
    
+   //renders a bomber on screen
    void render()
    {
-
+     //once placed in a slot
      if(placedinSlot)
      {
       fill(255);
@@ -31,6 +32,7 @@ class Bomber extends GameObject
 
    }
    
+   //method that controls bomber movement 
    void move()
    {
     int move=2;

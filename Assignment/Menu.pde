@@ -2,6 +2,7 @@ class Menu
 {
   int frame=0;
    
+   //displays the welcoming menu
    void display()
    {
        
@@ -11,7 +12,7 @@ class Menu
        textSize(50);
        text("STAR CONFRONTATION",width/2,150);
        textSize(25);
-       text("BY DAVID HUNT",width/2,200);
+       text("DAVID HUNT'S",width/2,100);
        
        for(int i=0;i<3;i++)
        {
@@ -25,6 +26,42 @@ class Menu
       
    }
    
+      //controls how to respond to users on the welcoming menu
+   void interact()
+   {
+      if(mouseX>objectW && mouseX<width-objectW)
+      {
+        if(mouseY>height/2 && mouseY<height/2+(objectW)*3)
+        {
+           if(mouseY>height/2 && mouseY<height/2+objectW)
+           {
+             //if play pressed
+              if(mousePressed)
+              {
+                 menuChoice=1;
+              }
+           }
+           if(mouseY>height/2+objectW && mouseY<height/2+(objectW*2))
+           {
+             //if tutorial pressed
+              if(mousePressed)
+              {
+                 menuChoice=2;
+              }
+           }
+            if(mouseY>height/2+(objectW*2) && mouseY<height/2+(objectW*3))
+           {
+             //if exit is pressed
+              if(mousePressed)
+              {
+                 menuChoice=3;
+              }
+           }
+        }
+      }
+   }
+   
+   //will display the menu to allow a user to choose a difficulty
    void level()
    {
        fill(255);
@@ -48,69 +85,45 @@ class Menu
        
    }
    
+   //controls how to respond to users on the difficulty level menu
    void levelinteract()
    {
-     if(frame>30){
-      if(mouseX>objectW && mouseX<width-objectW)
-      {
-        if(mouseY>height/2 && mouseY<height/2+(objectW)*3)
+     //this is to prevent the user accidently clicking easy
+     if(frame>30)
+     {
+        if(mouseX>objectW && mouseX<width-objectW)
         {
-           if(mouseY>height/2 && mouseY<height/2+objectW)
-           {
-              if(mousePressed)
-              {
-                 level=new Difficulty(1);
-              }
-              
-           }
-           if(mouseY>height/2+objectW && mouseY<height/2+(objectW*2))
-           {
-              if(mousePressed)
-              {
-                 level=new Difficulty(2);
-              }
-           }
-            if(mouseY>height/2+(objectW*2) && mouseY<height/2+(objectW*3))
-           {
-              if(mousePressed)
-              {
-                 level=new Difficulty(3);
-              }
-           }
+          if(mouseY>height/2 && mouseY<height/2+(objectW)*3)
+          {
+             if(mouseY>height/2 && mouseY<height/2+objectW)
+             {
+               //if easy pressed
+                if(mousePressed)
+                {
+                   level=new Difficulty(1);
+                }
+                
+             }
+             if(mouseY>height/2+objectW && mouseY<height/2+(objectW*2))
+             {
+               //if normal pressed
+                if(mousePressed)
+                {
+                   level=new Difficulty(2);
+                }
+             }
+              if(mouseY>height/2+(objectW*2) && mouseY<height/2+(objectW*3))
+             {
+                if(mousePressed)
+                {
+                  //if hard pressed
+                   level=new Difficulty(3);
+                }
+             }
+          }
         }
-      }
      }
      frame++;
    }
    
-   void interact()
-   {
-      if(mouseX>objectW && mouseX<width-objectW)
-      {
-        if(mouseY>height/2 && mouseY<height/2+(objectW)*3)
-        {
-           if(mouseY>height/2 && mouseY<height/2+objectW)
-           {
-              if(mousePressed)
-              {
-                 menuChoice=1;
-              }
-           }
-           if(mouseY>height/2+objectW && mouseY<height/2+(objectW*2))
-           {
-              if(mousePressed)
-              {
-                 menuChoice=2;
-              }
-           }
-            if(mouseY>height/2+(objectW*2) && mouseY<height/2+(objectW*3))
-           {
-              if(mousePressed)
-              {
-                 menuChoice=3;
-              }
-           }
-        }
-      }
-   }
 }

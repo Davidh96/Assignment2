@@ -13,6 +13,7 @@ abstract class Tower
   abstract void render();
   abstract void shoot();
   
+  //will take in a text file and break it down to give towers appropriate attributes
   void getAttributes(String find)
   {
         for(String s:difficulty)
@@ -95,6 +96,7 @@ abstract class Tower
      } 
    }
    
+   //controls explosion effect for towers
    void explode()
    {
       for(int i=0;i<50;i++)
@@ -138,6 +140,7 @@ abstract class Tower
       }
    }
    
+   //controls the damage done to objs
    void doDamage()
    {
        //go through every bullet in the array

@@ -34,7 +34,7 @@ class Lineman extends GameObject
          }
          if(pos.y<=(height/2)+objectW)
          {
- 
+             //extend the bLineY if lineman at half way point
              if(bLineY>(height/2)-objectW)
              {
                bLineY-=objectW;

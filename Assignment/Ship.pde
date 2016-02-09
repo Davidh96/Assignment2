@@ -21,9 +21,9 @@ class Ship extends AttackObj
      }
      
      fill(0,0,255);
-     //left wheel
+     //left wing
      rect(pos.x,pos.y,(objectW*.25),-objectW/2);
-     //right wheel
+     //right wing
      rect(pos.x+objectW*.75,pos.y,(objectW*.25),-objectW/2);
      
      //gun turret
@@ -40,7 +40,7 @@ class Ship extends AttackObj
    {
      int move=1;
      
-       //if the tank has been placed, it will move to the battleline
+       //if the ship has been placed, it will move to the battleline
        if(placedinSlot==true)
        {
          render(); 
