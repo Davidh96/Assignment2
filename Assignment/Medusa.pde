@@ -41,6 +41,7 @@ class Medusa extends Tower
        fill(255,100,100);
        stroke(255,100,100);
        ellipse(pos.x+objectW/2,pos.y+objectW/2+10,objectW/2,objectW/2);
+       text(num,pos.x+objectW/2,pos.y+50);
        if(num==2)
        {
           rect(pos.x+objectW/2,pos.y+objectW/2,-objectW,objectW/4);
@@ -77,16 +78,20 @@ class Medusa extends Tower
        
        if(health<1)
        {
+
          //set the healh to 0 so that the health doesnt go into minus values
          health=0;
+         
           for(int i=0;i<twArray.size();i++)
           {
             if(num==2)
             {
+
               //find the index of the medusa half in the next lane
                if(lane==twArray.get(i).lane+1)
                {
-                    if(twArray.get(i).health<1)
+               
+                   if(twArray.get(i).health<1)
                     {   
                         twCreated[lane]=false;
                         twCreated[lane-1]=false;
@@ -95,9 +100,44 @@ class Medusa extends Tower
                         twArray.remove(i);
                     }
                }
+               //allows the user to destroy a medusa half if the lane of its other half was captured
+               else
+               {
+                  if(twArray.get(i).health<1)
+                  {
+                     twCreated[lane]=false;
+                     twArray.remove(this);
+                     
+                  }
+               }
             }
-
+            if(num==1)
+            {
+               //find the index of the medusa half in the next lane
+               if(lane==twArray.get(i).lane-1)
+               {
+                    if(twArray.get(i).health<1)
+                    {   
+                        twCreated[lane]=false;
+                        twCreated[lane+1]=false;
+                        //the two halfs are destroyed
+                        twArray.remove(this);
+                        twArray.remove(i);
+                    }
+               }
+               //allows the user to destroy a medusa half if the lane of its other half was captured
+               else
+               {
+                  if(twArray.get(i).health<1)
+                  {
+                     twCreated[lane]=false;
+                     twArray.remove(this);
+                     
+                  }
+               }
+            }
           }
-       }
-    }
+        }
+     }
 }
+  
