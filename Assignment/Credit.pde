@@ -4,7 +4,7 @@ class Credit implements PowerUp
   
   Credit()
   {
-    amount=300;
+    amount=30000;
   }
   
   //displays how many credits a player has
@@ -21,4 +21,6 @@ class Credit implements PowerUp
   {
     amount+=50;
   }
+  
+   
 }

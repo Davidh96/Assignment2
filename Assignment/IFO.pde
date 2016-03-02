@@ -42,9 +42,7 @@ class IFO extends AttackObj
      //this is to ensure that the check lane is for objs placed and not for the object in the objMenu
      if(placedinSlot)
      {
-       //healthbar
-       fill(0,255,0);
-       rect(pos.x,pos.y,map(health,0,maxhealth,0,objectW),objectW*.2);
+       displayHealth();
      } 
      
    } 

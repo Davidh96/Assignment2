@@ -2,8 +2,11 @@ class Star
 {
    PVector pos;
    float speed;
-   float starW=.5;
-   float starH=.5;
+   float starW=1;
+   float starH=1;
+   float Brightness[] = new float[100];
+   float starX[]=new float[100];
+   float starY[]=new float[100];
    
    Star()
    {
@@ -33,5 +36,30 @@ class Star
      }
 
    }
-  
+   
+   void initialFStars()
+   {
+       for(int i=0;i<100;i++)
+       {
+          Brightness[i]=random(5,255);
+          stroke(Brightness[i]);
+          float x=random(0,width);
+          float y=random(height);
+          point(x,y);
+          starX[i]=x;
+          starY[i]=y;
+       }
+   }
+   
+   
+   void flicker()
+   {
+      for(int i=0;i<100;i++)
+      {
+         stroke(Brightness[i]+random(-5,10));
+         float x=starX[i];
+         float y=starY[i];
+         point(x,y);
+      }
+   }
 }

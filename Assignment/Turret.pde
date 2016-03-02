@@ -11,22 +11,19 @@ class Turret extends Tower
    
    //draws the tower object
    void render()
-   {
-     
-       fill(255,0,0);
-       stroke(0);
-       ellipse(pos.x+objectW/2,pos.y+objectW/2+10,objectW,objectW);
-       
-       //gun turret
-       fill(255,100,100);
-       rect(pos.x+objectW*.15,pos.y+objectW*.35,objectW*.15,objectW-fire);
-       rect(pos.x+objectW*.85,pos.y+objectW*.35,-objectW*.15,objectW-fire);
-       
-       
-       //healthbar
-       fill(0,255,0);
-       rect(pos.x,pos.y,map(health,0,maxhealth,0,objectW),objectW*.2);
-       
+   {   
+      stroke(0);
+      fill(255,100,100);
+      rect(pos.x+(objectW/2)+20,pos.y+objectW,-10,objectW/4+fire);
+      rect(pos.x+(objectW/2)-20,pos.y+objectW,10,objectW/4+fire);
+      
+      fill(255,0,0);
+      rect(pos.x,pos.y+10,objectW,objectW);
+      
+      fill(255,100,100);
+      rect(pos.x+(objectW/2)+10,pos.y+objectW+20,-20,-objectW/2-fire);
+      
+       displayHealth();
        detect();
    }
    

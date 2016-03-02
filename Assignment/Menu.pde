@@ -10,9 +10,7 @@ class Menu
        stroke(0);
        textAlign(CENTER,CENTER);
        textSize(50);
-       text("STAR CONFRONTATION",width/2,150);
-       textSize(25);
-       text("DAVID HUNT'S",width/2,100);
+       text("STAR\nCONFRONTATION",width/2,150);
        
        for(int i=0;i<3;i++)
        {
@@ -20,6 +18,7 @@ class Menu
        }
        
        fill(0);
+       textSize(25);
        text("PLAY",width/2,(height/2)+(objectW/2));
        text("TUTORIAL",width/2,(height/2)+(objectW/2)+objectW);
        text("EXIT",width/2,(height/2)+(objectW/2)*5);

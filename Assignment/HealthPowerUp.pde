@@ -18,7 +18,8 @@ class HealthPowerUp extends GameObject implements PowerUp
       rotate(theta);
       stroke(0,255,0);
       fill(0,255,0);
-      rect(-objectW,-objectW,objectW,objectW);
+      rect(0,0,objectW/2,objectW);
+      rect(-objectW/4,objectW/4,objectW,objectW/2);
     popMatrix();
     
     move();

@@ -7,7 +7,7 @@ class Fragment
    Fragment()
    {
      //gives fragments a random direction
-      move=new PVector(random(-1,1),random(-1,1));
+      move=new PVector(random(-5,5),random(-5,5));
    }
    
    //displays fragments
@@ -15,7 +15,15 @@ class Fragment
    {
       fill(255);
       stroke(255);
-      rect(pos.x,pos.y,5,5);
+      rect(pos.x,pos.y,2,2);
+      move();
+   }
+   
+   void displayCredit()
+   {
+      fill(255);
+      stroke(255);
+      text("+1",pos.x+objectW/2,pos.y+objectW/2);
       move();
    }
    
@@ -34,7 +42,7 @@ class Fragment
       {
          fragments.remove(this); 
       }
-      if(frame>60*5)
+      if(frame>60)
       {
         fragments.remove(this);
       }

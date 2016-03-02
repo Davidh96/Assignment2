@@ -47,10 +47,9 @@ class Medusa extends Tower
           rect(pos.x+objectW/2,pos.y+objectW/2,-objectW,objectW/4);
        }
 
-       //healthbar
-       fill(0,255,0);
-       stroke(0);
-       rect(pos.x,pos.y,map(health,0,maxhealth,0,objectW),objectW*.2);
+       displayHealth();
+       
+       twCreated[lane]=true;
        
        detect();
        destroy();  
@@ -95,46 +94,14 @@ class Medusa extends Tower
                     {   
                         twCreated[lane]=false;
                         twCreated[lane-1]=false;
+                        laneCleared[lane]=true; 
+                        laneCleared[lane-1]=true; 
                         //the two halfs are destroyed
                         twArray.remove(this);
                         twArray.remove(i);
                     }
                }
-               //allows the user to destroy a medusa half if the lane of its other half was captured
-               else
-               {
-                  if(twArray.get(i).health<1)
-                  {
-                     twCreated[lane]=false;
-                     twArray.remove(this);
-                     
-                  }
-               }
-            }
-            if(num==1)
-            {
-               //find the index of the medusa half in the next lane
-               if(lane==twArray.get(i).lane-1)
-               {
-                    if(twArray.get(i).health<1)
-                    {   
-                        twCreated[lane]=false;
-                        twCreated[lane+1]=false;
-                        //the two halfs are destroyed
-                        twArray.remove(this);
-                        twArray.remove(i);
-                    }
-               }
-               //allows the user to destroy a medusa half if the lane of its other half was captured
-               else
-               {
-                  if(twArray.get(i).health<1)
-                  {
-                     twCreated[lane]=false;
-                     twArray.remove(this);
-                     
-                  }
-               }
+    
             }
           }
         }

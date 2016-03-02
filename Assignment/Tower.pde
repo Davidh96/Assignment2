@@ -8,7 +8,7 @@ abstract class Tower
   int maxhealth;
   int time=0;
   int readframe=0;
-  int fire=10;
+  int fire=15;
   
   abstract void render();
   abstract void shoot();
@@ -61,6 +61,14 @@ abstract class Tower
 
   }
   
+    void displayHealth()
+    {
+        //healthbar
+       fill(0,255,0);
+       stroke(4,75,11);
+       rect(pos.x,pos.y,map(health,0,maxhealth,0,objectW),objectW*.2); 
+    }
+  
      void takeDamage()
    {
      //decrease health by 1
@@ -84,18 +92,13 @@ abstract class Tower
          twArray.remove(this);
        }
        
-       if(this instanceof MotherShip)
-       {
-          laneCleared[lane]=true;
-          twArray.remove(this); 
-       }
-       
        explode();
        credit.applyTo();
     
      } 
    }
    
+
    //controls explosion effect for towers
    void explode()
    {
@@ -104,7 +107,11 @@ abstract class Tower
          Fragment frag=new Fragment();
          frag.pos=new PVector(pos.x+objectW/2,pos.y+objectW/2);
          fragments.add(frag);
+         TWfragments.add(frag);
+         
       }
+      
+      
    }
    
    //This method is used to detect wheth an object should be fired at
@@ -132,8 +139,8 @@ abstract class Tower
               for(int j=0;j<blArray.size();j++)
               {
                  blArray.remove(j);
-                 fire=10;
               }
+              fire=10;
            }
          }
         }

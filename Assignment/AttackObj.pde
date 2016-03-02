@@ -34,6 +34,14 @@ abstract class AttackObj extends GameObject
       } 
    }
    
+  void displayHealth()
+  {
+      //healthbar
+     fill(0,255,0);
+     stroke(4,75,11);
+     rect(pos.x,pos.y,map(health,0,maxhealth,0,objectW),objectW*.2); 
+  }
+   
       
    //This method shoots bullets from the bj
    void shoot()

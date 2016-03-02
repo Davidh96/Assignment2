@@ -1,5 +1,8 @@
 class Battlefield
 {
+   float brightness[] = new float[720];
+   float starX[]=new float[brightness.length];
+   float starY[]=new float[brightness.length];
    
    //this method creates the moving background
    void generate()
@@ -187,31 +190,6 @@ class Battlefield
                 
           }
          
-       
-       
-       //checks if all other towers have been destroyed
-       if(twArray.size()<1)
-       {
-         //checks that a mothership can be created, which is only after the creation of a Medusa
-         for(int j=0;j<objNum;j++)
-         {
-            if(createMedusa[j] || laneCaptured[j])
-            {
-               check++; 
-            }
-         }
-    
-          for(int k=0;k<objNum;k++)
-          {
-             //check if a mthersip can be created
-             if(check==10 && twCreated[k]==false)
-             {
-               twCreated[k]=true;
-               MotherShip mShip = new MotherShip(k);
-               twArray.add(mShip);
-      
-             }
-          }
         }
        
      }
@@ -222,8 +200,39 @@ class Battlefield
            twArray.get(i).render(); 
         }
     }
-      
+    
+   void initialFStars()
+   {
+       for(int i=0;i<brightness.length;i++)
+       {
+          brightness[i]=random(5,255);
+          stroke(brightness[i]);
+          float x=random(0,width);
+          float y=random(height);
+          point(x,y);
+          starX[i]=x;
+          starY[i]=y;
+       }
    }
+   
+   
+   void flicker()
+   {
+      for(int i=0;i<brightness.length;i++)
+      {
+         stroke(brightness[i]+random(-50,50));
+         float x=starX[i];
+         float y=starY[i]++;
+         
+         if(starY[i]>height)
+         {
+           starY[i]=0;
+         }
+         point(x,y);
+      }
+   }
+      
+   
    
    
 }

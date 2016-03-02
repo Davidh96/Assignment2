@@ -15,6 +15,9 @@ void setup()
      stArray.add(star);
   }
   
+  bkground.initialFStars();
+  
+  
 }
 
 boolean objectChosen=false;
@@ -58,13 +61,14 @@ ArrayList<Probe> prArray=new ArrayList<Probe>();
 ArrayList<HealthPowerUp> hlArray=new ArrayList<HealthPowerUp>();
 //An array list for my fragments
 ArrayList<Fragment> fragments=new ArrayList<Fragment>();
+ArrayList<Fragment> TWfragments=new ArrayList<Fragment>();
 //Is used to decide the attributes of objs and towers depending on the difficulty level chosen
 ArrayList<String> difficulty=new ArrayList<String>();
 
 void draw()
 {
-    strokeWeight(2);
-    background(0);
+    background(0);  //<>//
+    bkground.flicker();
     
     //moves the stars across the screen
     for(int i=0;i<stArray.size();i++)
@@ -108,6 +112,7 @@ void draw()
     {
        exit(); 
     }
+    
 
 }
 
@@ -165,6 +170,11 @@ void play()
        for(int i=0;i<fragments.size();i++)
        {
           fragments.get(i).render(); 
+          
+       }
+       for(int i=0;i<TWfragments.size();i++)
+       {
+         TWfragments.get(i).displayCredit();
        }
        
        //will check if the user wants to delete an obj

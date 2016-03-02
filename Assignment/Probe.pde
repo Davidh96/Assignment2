@@ -12,9 +12,8 @@ class Probe
    {
      pos=new PVector(x+objectW/2,y);
      rand1=(int)random(0,10);
-     pWidth=(random(objectW/2,objectW));
      lane=(int)map(pos.x,0,width,0,11);
-     move=random(2,3);
+     move=random(2,4);
    }
    
    //renders the probe
@@ -29,7 +28,7 @@ class Probe
          {
            pos.y+=move;
            //by varying the pwidth each frame it makes the probe look like its flashing
-           pWidth=(random(objectW/2,objectW));
+           pWidth=random(20,35);
          }
          //if the probe has reached the end of the lane
          else
@@ -55,10 +54,10 @@ class Probe
     void destroy()
     {
         //if the mouse is within the same x values as the probe
-       if(mouseX>pos.x-objectW/2 && mouseX<pos.x+objectW/2)
+       if(mouseX>pos.x-pWidth/2 && mouseX<pos.x+pWidth/2)
        {
          //if the mouse is within the same y values as the probe
-         if(mouseY>pos.y-objectW/2 && mouseY<pos.y+objectW/2)
+         if(mouseY>pos.y-pWidth/2 && mouseY<pos.y+pWidth/2)
          {
            if(mousePressed)
            {

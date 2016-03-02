@@ -17,23 +17,30 @@ class Mech extends Tower
    //draws the tower object
    void render()
    {
-       stroke(0);
-       
-       fill(255,100,100);
-       rect(pos.x,pos.y+10,objectW,objectW/2);
        
        fill(255,0,0);
-       //arms
-       rect(pos.x,pos.y+10,armW,objectW+fire1);
-       rect(pos.x+objectW,pos.y+10,-armW,objectW+fire2);
+       stroke(0);
+       ellipse(pos.x+objectW/2,pos.y+objectW/2+10,objectW,objectW);
        
-       ellipse(pos.x+objectW/2,pos.y+objectW/2,objectW/3,objectW/3);
+       //gun turret
+       fill(255,100,100);
+       rect(pos.x+objectW*.15,pos.y+objectW*.35,objectW*.15,objectW-fire1);
+       rect(pos.x+objectW*.85,pos.y+objectW*.35,-objectW*.15,objectW-fire2);
        
-       //healthbar
-       fill(0,255,0);
-       rect(pos.x,pos.y,map(health,0,maxhealth,0,objectW),objectW*.2);
        
-       detect();
+       displayHealth();
+        
+      //will give impression of arm moving back
+      if(fire1!=0)
+      {
+       fire1--; 
+      }
+      if(fire2!=0)
+      {
+       fire2--; 
+      }
+       
+      detect();
    }
    
    //this creates bullets and shoots at tanks
@@ -47,13 +54,13 @@ class Mech extends Tower
         //this will switch between arms to fire bullets
         if(armSwitch)
         {
-          arm=pos.x-((objectW/2)-(armW)/2);
+          arm=pos.x-(objectW*.15)-objectW*.15;
           armSwitch=false; 
           fire1=fire;
         }
         else
         {
-          arm=pos.x+((objectW/2)-(armW)/2);
+          arm=pos.x+(objectW*.15)+objectW*.15;
           armSwitch=true;
           fire2=fire;
         }
@@ -64,18 +71,6 @@ class Mech extends Tower
         
         
         frame=0;
-      }
-      //will give impression of arm moving back
-      else
-      {
-        if(fire1!=0)
-        {
-         fire1--; 
-        }
-        if(fire2!=0)
-        {
-         fire2--; 
-        }
       }
       
       frame++;
