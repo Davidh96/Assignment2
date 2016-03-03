@@ -24,8 +24,8 @@ boolean objectChosen=false;
 boolean objAllowed=true;
 boolean endGame=false;
 boolean difficultySet=false;
-boolean deleteObj=false;
 boolean selected=false;
+boolean menuSelect=false;
 float objectW;
 int objNum=10;
 int lanes=11;
@@ -67,7 +67,11 @@ ArrayList<String> difficulty=new ArrayList<String>();
 
 void draw()
 {
-    background(0);  //<>//
+    if(menuSelect==false)
+    {
+      background(0);  //<>//
+    }
+    
     bkground.flicker();
     
     //moves the stars across the screen
@@ -175,13 +179,6 @@ void play()
        for(int i=0;i<TWfragments.size();i++)
        {
          TWfragments.get(i).displayCredit();
-       }
-       
-       //will check if the user wants to delete an obj
-       if(deleteObj)
-       {
-          Bin bin=new Bin();
-          bin.detect(); 
        }
       
       //checks if the user has reached the end of the game

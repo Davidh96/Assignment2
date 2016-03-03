@@ -34,15 +34,9 @@ class ObjectMenu
       Bomber bomber = new Bomber();
       bomber.pos=new PVector(menuLane,(objectW*4));
       menuObjs.add(bomber);
-      bomber.render();
+      bomber.render();    
       
-      //will allow a user to delete an obj once they have been played
-      Bin bin=new Bin();
-      bin.pos=new PVector(menuLane,objectW*5);
-      bin.render();
-      
-      
-      for(int i=1;i<5;i++)
+      for(int i=1;i<4;i++)
       {
          stroke(255);
          line(menuLane,objectW*i,menuLane+objectW,objectW*i);
@@ -153,11 +147,6 @@ class ObjectMenu
        objAllowed=false;
       }
     }
-    //Bin
-    if(mouseY<=objectW*5 && mouseY>objectW*4)
-    {
-      deleteObj=true;
-    }
     
     selected=true;
     objSelect=(int)(map(mouseY,0,objectW*4,0,4))*objectW;
@@ -166,7 +155,7 @@ class ObjectMenu
   //will display what object has been selected from the object menu
   void showSelected()
   {
-    if(objSelect<objectW*5)
+    if(objSelect<objectW*4)
     {
       if(selected)
       {
