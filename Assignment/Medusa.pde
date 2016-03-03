@@ -61,6 +61,7 @@ class Medusa extends Tower
       //create a bullet
       if(frame==readframe)
       {
+        bulletFired();
         Bullet Bullet = new Bullet(pos.x,pos.y+objectW);
         blArray.add(Bullet);
         frame=0;

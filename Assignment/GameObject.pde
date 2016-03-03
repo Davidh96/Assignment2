@@ -66,6 +66,8 @@ abstract class GameObject
          frag.pos=new PVector(pos.x+objectW/2,pos.y);
          fragments.add(frag);
       }
+      explosionSound.play();
+      explosionSound.rewind();
    }
   
    

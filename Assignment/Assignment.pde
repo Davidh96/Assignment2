@@ -1,6 +1,15 @@
 //Tower Attack Game
 //David Hunt
 
+import ddf.minim.*;
+
+AudioPlayer bulletSound1;
+AudioPlayer bulletSound2;
+AudioPlayer explosionSound;
+AudioPlayer music;
+
+Minim minim;
+
 void setup()
 {
   size(600,650);
@@ -17,7 +26,18 @@ void setup()
   
   bkground.initialFStars();
   
+  minim = new Minim(this);
+  bulletSound1 = minim.loadFile("Bullet_sound.wav", 2048);
+  bulletSound2 = minim.loadFile("Bullet_sound2.wav", 2048);
+  explosionSound = minim.loadFile("explosion.wav", 2048);
+  music = minim.loadFile("game_music.wav", 2048);
   
+  bulletSound1.setGain(-20);
+  bulletSound2.setGain(-20);
+  explosionSound.setGain(-20);
+  music.setGain(-30);
+  
+  music.loop();
 }
 
 boolean objectChosen=false;
@@ -66,13 +86,16 @@ ArrayList<Fragment> TWfragments=new ArrayList<Fragment>();
 ArrayList<String> difficulty=new ArrayList<String>();
 
 void draw()
-{
+{ 
+    //controls music
+    
     if(menuSelect==false)
     {
       background(0);  //<>//
     }
     
     bkground.flicker();
+    
     
     //moves the stars across the screen
     for(int i=0;i<stArray.size();i++)

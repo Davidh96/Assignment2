@@ -37,6 +37,7 @@ class Turret extends Tower
         blArray.add(Bullet);
         fire=10;
         frame=0;
+        bulletFired();
       }
       else
       {

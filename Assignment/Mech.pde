@@ -50,6 +50,7 @@ class Mech extends Tower
       if(frame==readframe)
       {
         float arm;
+        bulletFired();
         
         //this will switch between arms to fire bullets
         if(armSwitch)

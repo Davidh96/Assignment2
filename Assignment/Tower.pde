@@ -27,6 +27,13 @@ abstract class Tower
       }
       health=maxhealth;
   }
+  
+  void bulletFired()
+  {
+      //set this to play every time a bullet fires
+      bulletSound2.play();
+      bulletSound2.rewind(); 
+  }
 
   //this method will try and capture a lane
   void capture()
@@ -110,7 +117,8 @@ abstract class Tower
          TWfragments.add(frag);
          
       }
-      
+      explosionSound.play();
+      explosionSound.rewind();
       
    }
    

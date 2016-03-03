@@ -53,6 +53,10 @@ abstract class AttackObj extends GameObject
         blArray.add(Bullet);
         //will extend the turret of the ship
         fire=10;
+        
+        //set this to play every time a bullet shoots, i dont know how
+        bulletSound1.play();
+        bulletSound1.rewind();
         frame=0;
       }
       //will reduce the turret length
