@@ -23,7 +23,7 @@ class Battlefield
            //remove obj in captured lane
            for(int j=0;j<objArray.size();j++)
            {
-             if(objArray.get(j).lane==i)
+             if(objArray.get(j).lane==i && objArray.get(j).placedinSlot)
              {
                  objArray.remove(j);
              }
@@ -45,6 +45,7 @@ class Battlefield
            fill(0,0,255,100);
            stroke(0,0,255);
            rect(i*objectW,height,objectW,-height);
+            laneUsed[i]=true;
         }
       }
    }
@@ -103,7 +104,7 @@ class Battlefield
       if(objArray.size()<objNum)
       {
         //if the user chooses another obj
-        if(objAllowed==false)
+        if(objAllowed==false && objArray.size()>0)
         {
            objArray.remove(objArray.size()-1);
            objAllowed=true;
@@ -170,7 +171,7 @@ class Battlefield
             if(i<9)
             {
              //if the tower up one also allows for a medusa and if the tower up one has not been created already
-             if(createMedusa[i+1] && medusaCreated[i+1]==false)
+             if(createMedusa[i+1] && medusaCreated[i+1]==false && laneCaptured[i+1]==false && laneCleared[i+1]==false)
              {
                 //medusa has been created and cannot be created again in this lane
                 medusaCreated[i]=true;
@@ -186,6 +187,17 @@ class Battlefield
                 //all towers are created
                 twCreated[i+1]=true;
              }
+             if((medusaCreated[i+1]  || laneCaptured[i+1]) && twCreated[i]==false)
+             {
+                laneCleared[i]=true;
+             }
+           }
+           else
+           {
+             if((medusaCreated[i-1]  || laneCaptured[i-1]) && twCreated[i]==false)
+             {
+                laneCleared[i]=true;
+             } 
            }
                 
           }

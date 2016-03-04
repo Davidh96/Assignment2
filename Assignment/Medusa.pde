@@ -81,17 +81,19 @@ class Medusa extends Tower
 
          //set the healh to 0 so that the health doesnt go into minus values
          health=0;
+         int check1=0;
+         int check2=0;
          
           for(int i=0;i<twArray.size();i++)
           {
             if(num==2)
             {
-
               //find the index of the medusa half in the next lane
                if(lane==twArray.get(i).lane+1)
                {
+                 check1++;
                
-                   if(twArray.get(i).health<1)
+                   if(twArray.get(i).health<1 )
                     {   
                         twCreated[lane]=false;
                         twCreated[lane-1]=false;
@@ -102,7 +104,26 @@ class Medusa extends Tower
                         twArray.remove(i);
                     }
                }
-    
+               //for when one half is destroyed by that lane being captured
+               if(i==twArray.size()-1 && check1==0)
+               {
+                  twArray.remove(this);
+                  laneCleared[lane]=true;
+               }
+            }
+            if(num==1)
+            {
+                 //find the index of the medusa half in the next lane
+               if(lane==twArray.get(i).lane-1)
+               {
+                 check2++;
+               }
+               //for when one half is destroyed by that lane being captured
+               if(i==twArray.size()-1 && check2==0)
+               {
+                  twArray.remove(this);
+                  laneCleared[lane]=true;
+               }
             }
           }
         }

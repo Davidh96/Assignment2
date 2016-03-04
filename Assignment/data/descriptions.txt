@@ -1,13 +1,14 @@
 Objective- You must destroy waves of towers with the options at your disposal. After the final tower of a lane has been destroyed you will capture that lane. Whoever has the most lanes by the end will win the game
 Probe- These are sent out by enemy towers, their mission is to capture lanes! You must try and stop them by clicking on them! For each one you destroy you will earn credits
+Ship- Costs 100C, Is slow to both move and fire, but each bullet packs a punch! 
+IFO- Costs 200C, An Identified Flying Object, a nippy little assault option, less health than a Ship however.
+Lineman- Costs 250C, Moves the battleline and provides 10secs of cover, enemy towers cannot shoot you.
+Bomber- Costs 50C, Great choice for initial damage, it only deals damage of half of a towers current health.
+Turret- Pretty basic tower, fire rate is not bad and can take a bit of damage. Only fires one bullet at a time.
+Mech- As scary as it sounds, devastating in attack and can take quite a few hits.
+Medusa- These guys are tough, in order to defeat them you must destroy both the towers that make up this fearsome foe! Also one bullet from this is instant destruction for any object unlucky to be in the same lane.
 Credits- C can be spent on buying objects to help destroy towers.
-ObjectMenu- Provides you with various options to help you destroy towers
-Ship- 100C, Is slow to both move and fire, but each bullet packs a punch! 
-IFO- 200C, An Identified Flying Object, a nippy little assault option, less health than a Ship however
-Lineman- 250C, Moves the battleline and provides 10secs of cover, enemy towers cannot shoot you
-Bomber- 50C, Great choice for initial damage, it only deals damage of half of a towers current health
-Bin- Allows user to remove an obj once no towers are in the same lane
-Turret- Pretty basic tower, fire rate is not bad and can take a bit of damage. Only fires one bullet at a time
-Mech- As scary as it sounds, devestating in attack and can take quite a few hits
-Medusa- These guys are tough, in order to defeat them you must destroy both the towers that make up this fearsome foe! Also one bullet from this is instant destruction for any object unlucky to be in the same lane
-Health- Will give full health to all objects currently on the battlefield amd will give you some extra credits
+ObjectMenu- Provides you with various options to help you destroy towers.
+Health- Will give full health to all objects currently on the battlefield and will give you some extra credits.
+Battlefield - This is where all the action takes place. Towers and any placed objects are here.
+Battleline - Represents how far the enemy towers can see. Any artillery behind this line cannot be seen.

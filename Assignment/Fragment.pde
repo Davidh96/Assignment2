@@ -24,7 +24,7 @@ class Fragment
       fill(255);
       stroke(255);
       text("+1",pos.x+objectW/2,pos.y+objectW/2);
-      move();
+      moveCredits();
    }
    
    //moves fragments
@@ -32,6 +32,13 @@ class Fragment
    {
       pos.add(move);
       destroy();
+   }
+   
+    //moves fragments
+   void moveCredits()
+   {
+      pos.add(move);
+      destroyCredits();
    }
    
    //removes the fragments
@@ -45,6 +52,19 @@ class Fragment
       if(frame>60)
       {
         fragments.remove(this);
+      }
+   }
+   
+   void destroyCredits()
+   {
+      frame++;
+      if(pos.x<0 || pos.x>width)
+      {
+         TWfragments.remove(this); 
+      }
+      if(frame>60)
+      {
+        TWfragments.remove(this);
       }
    }
 }

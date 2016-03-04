@@ -1,7 +1,6 @@
 class Menu
 {
   int frame=0;
-  int move;
   int boxes=3;
   color hover[] ={255,255,255};
   String title="STAR\nCOMMANDER";
@@ -84,18 +83,8 @@ class Menu
    {
        fill(255);
        stroke(0);
-       textAlign(CENTER,CENTER);
-       textSize(width*.15);
-       text(title,width/2,150+move);
        textSize(50);
-       fill(0);
        text("CHOOSE DIFFICULTY",width/2,(height/2)-objectW);
-       menuSelect=true;
-       
-       if(menuSelect)
-       {
-          move+=3; 
-       }
        
        fill(255);
        for(int i=0;i<3;i++)
@@ -131,7 +120,6 @@ class Menu
                 {
                    
                    level=new Difficulty(1);
-                   menuSelect=false;
                 }
                 
              }
@@ -143,7 +131,6 @@ class Menu
                 {
                    
                    level=new Difficulty(2);
-                   menuSelect=false;
                 }
              }
               if(mouseY>height/2+(objectW*2) && mouseY<height/2+(objectW*3))
@@ -154,7 +141,6 @@ class Menu
                    
                   //if hard pressed
                    level=new Difficulty(3);
-                   menuSelect=false;
                 }
              }
           }

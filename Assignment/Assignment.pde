@@ -1,5 +1,4 @@
 //Tower Attack Game
-//David Hunt
 
 import ddf.minim.*;
 
@@ -32,10 +31,10 @@ void setup()
   explosionSound = minim.loadFile("explosion.wav", 2048);
   music = minim.loadFile("game_music.wav", 2048);
   
-  bulletSound1.setGain(-20);
-  bulletSound2.setGain(-20);
+  bulletSound1.setGain(-30);
+  bulletSound2.setGain(-30);
   explosionSound.setGain(-20);
-  music.setGain(-30);
+  music.setGain(-40);
   
   music.loop();
 }
@@ -45,7 +44,6 @@ boolean objAllowed=true;
 boolean endGame=false;
 boolean difficultySet=false;
 boolean selected=false;
-boolean menuSelect=false;
 float objectW;
 int objNum=10;
 int lanes=11;
@@ -89,11 +87,7 @@ void draw()
 { 
     //controls music
     
-    if(menuSelect==false)
-    {
-      background(0);  //<>//
-    }
-    
+     background(0);  //<>//
     bkground.flicker();
     
     
