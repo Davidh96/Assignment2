@@ -35,9 +35,14 @@ class ObjectMenu
       Bomber bomber = new Bomber();
       bomber.pos=new PVector(menuLane,(objectW*4));
       menuObjs.add(bomber);
-      bomber.render();    
+      bomber.render();
       
-      for(int i=1;i<4;i++)
+      Catcher catcher=new Catcher();
+      catcher.pos=new PVector(menuLane,objectW*5);
+      menuObjs.add(catcher);
+      catcher.render();
+      
+      for(int i=1;i<6;i++)
       {
          stroke(255);
          line(menuLane,objectW*i,menuLane+objectW,objectW*i);
@@ -46,7 +51,7 @@ class ObjectMenu
       if(mouseX>width-objectW)
       {
         //will highlight the obj that the user is currently looking at
-        if(mouseY<objectW*4)
+        if(mouseY<objectW*5)
         {   fill(255,255,255,100);
             rect(width-objectW,(int)map(mouseY,0,objectW*4,0,4)*objectW,objectW,objectW);
         }
@@ -167,7 +172,23 @@ class ObjectMenu
       {
           selectColor=color(255,0,0,200);
       }
-    }
+     }
+      //Catcher
+     if(mouseY<=objectW*5 && mouseY>objectW*4)
+     {
+       if(credit.amount>=50)
+       {
+        Catcher catcher = new Catcher();
+        objArray.add(catcher);
+        objectChosen=true;
+        objAllowed=false;
+        selectColor=color(255,255,255,100);
+       }
+       else  
+       {
+           selectColor=color(255,0,0,200);
+       }
+     }
     
     selected=true;
     objSelect=(int)(map(mouseY,0,objectW*4,0,4))*objectW;

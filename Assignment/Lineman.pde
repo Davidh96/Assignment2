@@ -41,7 +41,8 @@ class Lineman extends GameObject
              }
            
              extend=bLineY-(pos.y-objectW);
-             
+             fill(255);
+             textSize(12);
              //displays a counter so the user can see how long the linesman has left
              text((int)map(frame,0,600,10,1),pos.x+objectW/2,pos.y-objectW/4);
              
