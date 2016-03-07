@@ -103,6 +103,12 @@ class ObjectMenu
          //show description Bomber
          desc.giveDescription(width-objectW*3,objectW*3.5,"Bomber-");
       }
+      if(mouseY<=objectW*5 && mouseY>objectW*4)
+      {
+         rect(width-objectW,objectW*4,-objectW*4,objectW);
+         //show description Bomber
+         desc.giveDescription(width-objectW*3,objectW*4.5,"BlackHole-");
+      }
     }
   }
   

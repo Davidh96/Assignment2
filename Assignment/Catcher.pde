@@ -2,9 +2,9 @@ class Catcher extends GameObject
 {
   void render()
   {
-     fill(0,0,255,200);
+     fill(0,0,0,100);
      stroke(0,0,255);
-     rect(pos.x,pos.y,objectW,-objectW);
+     ellipse(pos.x+objectW/2,pos.y-objectW/2,objectW,-objectW);
   }
   
   //controls the capture of probes
@@ -43,7 +43,7 @@ class Catcher extends GameObject
              fill(255);
              textSize(12);
              //displays a counter so the user can see how long the linesman has left
-             text((int)map(frame,0,60*20,20,1),pos.x+objectW/2,pos.y-objectW/4);
+             text((int)map(frame,0,60*20,20,1),pos.x+objectW/2,pos.y-objectW/2);
              
              //destroy after 20 seconds
              if(frame==60*20)
