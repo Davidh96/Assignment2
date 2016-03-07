@@ -47,7 +47,7 @@ boolean selected=false;
 float objectW;
 int objNum=10;
 int lanes=11;
-int stars=100;
+int stars=50;
 float bLineY;
 int menuChoice=0;
 int boxW=30;
@@ -250,7 +250,7 @@ void endGame()
        fill(255);
        
        //will display the result of the game
-       if(check==objNum)
+       if(win>5 || lose>5)
        {
          if(win>lose)
          {

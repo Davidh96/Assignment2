@@ -56,7 +56,7 @@ abstract class Tower
           else
           {
              //wait 120 frames
-             if(time==120)
+             if(time==60)
              {
              //before removing the probe from the array list and trying to get the same random numbers again
              prArray.remove(i);
@@ -91,18 +91,49 @@ abstract class Tower
          createMech[lane]=true;
          twCreated[lane]=false;
          twArray.remove(this);
+         explode();
+         credit.applyTo();
        }
        if(this instanceof Mech)
        {
          createMedusa[lane]=true;
          twCreated[lane]=false;
          twArray.remove(this);
+         explode();
+         credit.applyTo();
        }
        
-       explode();
-       credit.applyTo();
+       
+       upgradeObj();
+       
+       
     
      } 
+   }
+   
+   void upgradeObj()
+   {
+      for(int i=0;i<objArray.size();i++)
+      {
+        //if the object has been placed, prevents program from crashing
+        if(objArray.get(i).placedinSlot==true)
+        {
+          //if an object is in the same lane
+         if(objArray.get(i).lane==lane)
+         {
+
+             //this is to ensure that the towers will only shoot at tanks and ifos
+             if(objArray.get(i) instanceof Ship || objArray.get(i) instanceof IFO)
+             {
+                objArray.get(i).maxhealth+=10;
+                objArray.get(i).readframe-=5;
+                objArray.get(i).upgraded=true;
+             }
+           
+         }
+        }
+      }
+       
    }
    
 

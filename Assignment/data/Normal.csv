@@ -1,6 +1,6 @@
 Obj,health,shoot
-Ship,15,60
-IFO,15,25
-Turret,10,25
-Mech,25,25
-Medusa,35,300
+Ship,10,40
+IFO,10,30
+Turret,30,25
+Mech,40,20
+Medusa,50,300

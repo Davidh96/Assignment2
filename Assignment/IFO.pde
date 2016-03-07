@@ -45,6 +45,8 @@ class IFO extends AttackObj
        displayHealth();
      } 
      
+     displayUpgrade();
+     
    } 
    
    

@@ -41,7 +41,6 @@ class Medusa extends Tower
        fill(255,100,100);
        stroke(255,100,100);
        ellipse(pos.x+objectW/2,pos.y+objectW/2+10,objectW/2,objectW/2);
-       text(num,pos.x+objectW/2,pos.y+50);
        if(num==2)
        {
           rect(pos.x+objectW/2,pos.y+objectW/2,-objectW,objectW/4);
@@ -99,6 +98,8 @@ class Medusa extends Tower
                         twCreated[lane-1]=false;
                         laneCleared[lane]=true; 
                         laneCleared[lane-1]=true; 
+                        explode();
+                        credit.applyTo();
                         //the two halfs are destroyed
                         twArray.remove(this);
                         twArray.remove(i);
@@ -109,6 +110,8 @@ class Medusa extends Tower
                {
                   twArray.remove(this);
                   laneCleared[lane]=true;
+                  explode();
+                  credit.applyTo();
                }
             }
             if(num==1)
@@ -121,8 +124,10 @@ class Medusa extends Tower
                //for when one half is destroyed by that lane being captured
                if(i==twArray.size()-1 && check2==0)
                {
-                  twArray.remove(this);
                   laneCleared[lane]=true;
+                  explode();
+                  credit.applyTo();
+                  twArray.remove(this);
                }
             }
           }

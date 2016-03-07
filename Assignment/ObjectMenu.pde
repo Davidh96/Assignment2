@@ -2,6 +2,7 @@ class ObjectMenu
 {
    ArrayList<GameObject> menuObjs=new ArrayList<GameObject>();
    float objSelect=0;
+   color selectColor=color(255,255,255,100);
    
    //draws a menu to the side that will allow users to pick items
    void render()
@@ -112,6 +113,11 @@ class ObjectMenu
          objArray.add(ship);
          objectChosen=true;
          objAllowed=false;
+         selectColor=color(255,255,255,100);
+      }
+      else  
+      {
+          selectColor=color(255,0,0,200);
       }
     }
     //IFO
@@ -123,6 +129,11 @@ class ObjectMenu
        objArray.add(ifo);
        objectChosen=true;
        objAllowed=false; 
+       selectColor=color(255,255,255,100);
+      }
+       else  
+      {
+          selectColor=color(255,0,0,200);
       }
     }
     //Lineman
@@ -133,7 +144,12 @@ class ObjectMenu
        Lineman lineman = new Lineman();
        objArray.add(lineman);
        objectChosen=true;
-       objAllowed=false; 
+       objAllowed=false;
+       selectColor=color(255,255,255,100);
+      }
+      else  
+      {
+          selectColor=color(255,0,0,200);
       }
     }
     //Bomber
@@ -145,6 +161,11 @@ class ObjectMenu
        objArray.add(bomber);
        objectChosen=true;
        objAllowed=false;
+       selectColor=color(255,255,255,100);
+      }
+      else  
+      {
+          selectColor=color(255,0,0,200);
       }
     }
     
@@ -159,7 +180,7 @@ class ObjectMenu
     {
       if(selected)
       {
-        fill(255,255,255,100);
+        fill(selectColor);
         rect(width-objectW,objSelect,objectW,objectW);
       }
     }

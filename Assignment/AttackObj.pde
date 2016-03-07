@@ -1,7 +1,6 @@
 abstract class AttackObj extends GameObject
 {
   
-  int readframe;
   int fire;
   ArrayList<Bullet> blArray = new ArrayList<Bullet>();
   

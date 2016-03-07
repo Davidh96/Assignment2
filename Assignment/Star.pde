@@ -10,7 +10,7 @@ class Star
      //give the star a random position on the battlefield
      pos=new PVector(random(0,width),random(0,height));
      //random speeds
-     speed=random(3,5);
+     speed=random(5,8);
    }
    
    //controls movement of stars accross screen
@@ -19,8 +19,8 @@ class Star
      fill(255);
      stroke(255);
      
-     //rect(pos.x,pos.y,starW,starH);
-     ellipse(pos.x,pos.y,starW,starH);
+     rect(pos.x,pos.y,starW,starH);
+     //ellipse(pos.x,pos.y,starW,starH);
      
      //change x position by -speed, looks like stars flying by
      pos.y+=speed;

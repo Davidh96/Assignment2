@@ -23,6 +23,7 @@ class Bomber extends GameObject
      ellipse(pos.x+objectW/2,pos.y-objectW/3,objectW/1.5,objectW/1.5);
      fill(0);
      textAlign(CENTER,CENTER);
+     textSize(12);
      text("Boom",pos.x+objectW/2,pos.y-objectW/3);
      stroke(0,0,255);
      line(pos.x+objectW/2,pos.y-objectW/2,pos.x+objectW/2-10,pos.y-objectW+10);

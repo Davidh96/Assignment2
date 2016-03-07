@@ -30,7 +30,7 @@ class Ship extends AttackObj
        displayHealth();
      }
      
-     
+     displayUpgrade();
 
    } 
    

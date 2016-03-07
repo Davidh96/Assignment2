@@ -19,15 +19,7 @@ class Battlefield
            stroke(255,0,0);
            rect(i*objectW,height,objectW,-height);
            laneUsed[i]=true;
-           
-           //remove obj in captured lane
-           for(int j=0;j<objArray.size();j++)
-           {
-             if(objArray.get(j).lane==i && objArray.get(j).placedinSlot)
-             {
-                 objArray.remove(j);
-             }
-           }
+           bLineY=height/2;
            
            //remove tower in captured lane
            for(int j=0;j<twArray.size();j++)
@@ -45,8 +37,21 @@ class Battlefield
            fill(0,0,255,100);
            stroke(0,0,255);
            rect(i*objectW,height,objectW,-height);
-            laneUsed[i]=true;
+           laneUsed[i]=true;
         }
+        
+        if(laneCleared[i] || laneCaptured[i])
+        {
+           //remove obj in captured/cleared lane
+           for(int j=0;j<objArray.size();j++)
+           {
+             if(objArray.get(j).lane==i && objArray.get(j).placedinSlot)
+             {
+                 objArray.remove(j);
+             }
+           } 
+        }
+      
       }
    }
    

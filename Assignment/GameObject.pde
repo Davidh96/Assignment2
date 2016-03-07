@@ -7,6 +7,8 @@ abstract class GameObject
   int cost;
   int health;
   int maxhealth;
+  int readframe;
+  boolean upgraded=false;
   
   
   abstract void render();
@@ -84,5 +86,26 @@ abstract class GameObject
        explode();
      } 
      
+   }
+   
+   int time=0;
+   float shrink=0;
+   void displayUpgrade()
+   {  
+      if(upgraded)
+      {
+         textSize(8+shrink);
+         fill(0,255,0);
+         text("Health Upgraded!",pos.x+(objectW/2),pos.y-(objectW));
+         text("Rate Of Fire Upgraded!",pos.x+(objectW/2),pos.y-(objectW/2));
+         if(time==(60*2))
+         {
+            time=0;
+            shrink=0;
+            upgraded=false; 
+         }
+         time++;
+         shrink+=.1;
+      }
    }
 }

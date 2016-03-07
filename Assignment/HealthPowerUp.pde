@@ -37,7 +37,6 @@ class HealthPowerUp extends GameObject implements PowerUp
        if(pos.dist(mouse)<objectW)
        {
          applyTo();
-         credit.applyTo();
          hlArray.remove(this);
        }
     } 
